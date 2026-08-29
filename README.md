@@ -7,7 +7,7 @@
 > [!IMPORTANT]
 > Unlike the [original C-Turtle](https://github.com/walkerje/C-Turtle) this branch isn't a single header file, you instead can set it up with [Meson](https://en.wikipedia.org/wiki/Meson_(software)) or add it as a git submodule.
 <br>
-C-Turtle is a port of Python's Turtle facility for C++11, with the intent of being a close analog to the Python implementation. This package was developed with the intent of student usage under an academic setting, and was designed to be "as easy to use as possible". This package has been released under the MIT license accordingly.
+C-Turtle is a port of Python's Turtle facility for C++17, with the intent of being a close analog to the Python implementation. This package was developed with the intent of student usage under an academic setting, and was designed to be "as easy to use as possible". This package has been released under the MIT license accordingly.
 <br>
 This package heavily uses [CImg](http://cimg.eu/) for its display and drawing functions. As such, it must be available in the include path alongside CTurtle itself.
 
