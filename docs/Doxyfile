@@ -1,5 +1,6 @@
 PROJECT_NAME = "C-Turtle"
-INPUT = "../src"
+INPUT = "../src" \
+        "../README.md"
 RECURSIVE = YES
 HTML_EXTRA_STYLESHEET  = \
     doxygen-awesome-css/doxygen-awesome.css \
@@ -15,3 +16,4 @@ HTML_COLORSTYLE = LIGHT
 SOURCE_BROWSER = YES
 VERBATIM_HEADERS = YES
 GENERATE_TREEVIEW = YES
+USE_MDFILE_AS_MAINPAGE = "../README.md"
