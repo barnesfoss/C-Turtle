@@ -8,6 +8,7 @@
 #include <list>
 #include <sstream>
 #include <string>
+
 namespace cturtle {
 /**\brief The Text class represents a basic string that is drawn on the screen.
  */

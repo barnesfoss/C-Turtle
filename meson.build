@@ -16,7 +16,7 @@ if host_machine.system() == 'linux'
   cturtle_deps += dependency('x11')
 endif
 
-cturtle_inc = include_directories('src', 'CImg/')
+cturtle_inc = include_directories('src', 'third-party/CImg', 'third-party/stb')
 
 cturtle_dep = declare_dependency(
   include_directories: cturtle_inc,
