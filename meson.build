@@ -1,4 +1,3 @@
-
 project(
   'cturtle',
   'cpp',
@@ -18,8 +17,11 @@ if host_machine.system() == 'linux'
   cturtle_deps += dependency('x11')
 endif
 
+cturtle_inc = include_directories('src')
+
 cturtle_dep = declare_dependency(
   dependencies: cturtle_deps,
+  include_directories: cturtle_inc,
 )
 
 meson.override_dependency('cturtle', cturtle_dep)
