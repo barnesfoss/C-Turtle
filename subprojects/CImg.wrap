@@ -3,5 +3,6 @@ directory = CImg
 url = https://github.com/GreycLab/CImg
 revision = master
 patch_directory=CImg
+depth = 1
 [provide]
 dependency_names = cimg

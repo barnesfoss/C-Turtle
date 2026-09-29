@@ -18,6 +18,7 @@ To use this branch of C-Turtle include it in your project as a subproject :
 directory = C-Turtle
 url = https://github.com/barnesfoss/C-Turtle
 revision = master
+depth = 1
 [provide]
 dependency_names = cturtle
 ```
