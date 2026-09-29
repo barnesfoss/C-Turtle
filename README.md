@@ -5,14 +5,29 @@
 
 # C-Turtle 1.0.5
 > [!IMPORTANT]
-> Unlike the [original C-Turtle](https://github.com/walkerje/C-Turtle) this branch isn't a single header file, you instead can set it up with [Meson](https://en.wikipedia.org/wiki/Meson_(software)) or add it as a git submodule.
+> Unlike the [original C-Turtle](https://github.com/walkerje/C-Turtle) this branch isn't a single header file, you instead should set it up with [Meson](https://build.meson).
 <br>
-C-Turtle is a port of Python's Turtle facility for C++17, with the intent of being a close analog to the Python implementation. This package was developed with the intent of student usage under an academic setting, and was designed to be "as easy to use as possible". This package has been released under the MIT license accordingly.
+C-Turtle is a port of Python's Turtle facility for C++17, with the intent of being a close analog to the Python implementation. This package was developed with the intent of student usage under an academic setting. This package has been released under the MIT license accordingly.
 <br>
-This package heavily uses [CImg](http://cimg.eu/) for its display and drawing functions. As such, it must be available in the include path alongside CTurtle itself.
+This package heavily uses [CImg](http://cimg.eu/) for its display and drawing functions it is included in [CImg.wrap](./subprojects/CImg.wrap).
 
-#### Is it "C-Turtle" or "CTurtle"?
-Either one works. The "C" prefix is a nod to the single dependency of this project, [CImg](http://cimg.eu/). CTurtle quickly became the preference in reference to the name of the header file, "CTurtle.hpp", whereas C-Turtle was originally though to be its proper name. As time has progressed, the two spellings have become synonymous in meaning.
+## Usage
+To use this branch of C-Turtle include it in your project as a subproject :
+```
+[wrap-git]
+directory = C-Turtle
+url = https://github.com/barnesfoss/C-Turtle
+revision = master
+[provide]
+dependency_names = cturtle
+```
+Then include it :
+```meson
+project('cturtle-test','cpp')
+subproject('cturtle')
+executable('main','main.cpp',dependencies: dependency('cturtle'))
+```
+Thats it, Meson handles the rest!
 
 ## Direct Comparison between C++ and Python
 The following table contains examples, which do the exact same thing, between C-Turtle and Python's Turtle.
@@ -97,12 +112,13 @@ int main(int argc, char** argv) {
 }
 ```
 
+## FAQ
+#### Is it "C-Turtle" or "CTurtle"?
+Either one works. The "C" prefix is a nod to the single dependency of this project, [CImg](http://cimg.eu/). CTurtle quickly became the preference in reference to the name of the header file, "CTurtle.hpp", whereas C-Turtle was originally though to be its proper name. As time has progressed, the two spellings have become synonymous in meaning.
 #### Why does headless mode take so long to save a GIF file?
 A frame is added to the resulting GIF for every change in state for a Turtle. This includes rotation, pen changes, size changes, etcetera. You can choose to display only every N frames, and thus save only every N frames, by taking advantage of tracer settings (see ```tracer(int countmax, unsigned int delayMS)``` function in TurtleScreen documentation). This dramatically reduces file size and write time in exchange for less frames in the image.
-
 #### Why does headless mode print HTML + Base64 by default?
 Headless mode was developed with the intention of being embedded in web applications, namely [Runestone Interactive](https://runestone.academy/) textbooks. As such, it prints HTML to display the results of the executed code by printing a Base64-encoded version of the resulting GIF file. This lets CTurtle be very easily embedded without needing any extra tricks or external File IO with any kind of backend. This can be disabled by having ```#define CTURTLE_HEADLESS_NO_HTML``` before the inclusion of CTurtle.
-
 # Examples and Derivative Works
 ## Packaged alongside CTurtle
 These examples can be found in the `examples` directory at the root of this repository. Many are derived from Runestone Interactive textbooks, such as the Sierpinski Triangle, Knight's Tour, Multiple Turtles, and Recursion Tree examples. Others, such as the Koch Fractal examples, are derived from Berea College coursework and were manually converted from Python.

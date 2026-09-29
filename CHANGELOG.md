@@ -5,6 +5,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/2.0.0/),
 ### Changed
     - Removed changelog from CTurtle.hpp and moved it to its own file `CHANGELOG.md`.
     - Completely refactored, no longer a single header, should be easier to maintain.
+    - Moved to Meson build system!
 ## [1.0.5] - 2025-02-06
 ### Changed
     - Updated dead links to documentation to new host.
