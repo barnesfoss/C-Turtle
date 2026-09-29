@@ -1,0 +1,7 @@
+[wrap-git]
+directory = CImg
+url = https://github.com/GreycLab/CImg
+revision = master
+patch_directory=CImg
+[provide]
+dependency_names = cimg
