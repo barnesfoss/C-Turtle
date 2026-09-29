@@ -6,6 +6,8 @@ project(
   default_options: [
     'cpp_std=c++17',
   ],
+  license: 'MIT',
+  license_files: 'LICENSE.txt'
 )
 
 CImg = subproject('CImg')
