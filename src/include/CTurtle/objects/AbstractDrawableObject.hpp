@@ -1,6 +1,6 @@
 #pragma once
-#include "../color.hpp"
-#include "../geometry/Transform.hpp"
+#include "CTurtle/geometry/Transform.hpp"
+#include "CTurtle/types/Color.hpp"
 namespace cturtle {
 /**\brief AbstractDrawableObject is a base class, intended to be
  *        inherited from by all drawable objects.

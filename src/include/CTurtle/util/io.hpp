@@ -1,3 +1,4 @@
+#pragma once
 #include "CImg.h"
 #include <functional>
 #include <string>
@@ -224,7 +225,6 @@ struct InputEvent {
  * @param name
  * @return
  */
-inline KeyboardKey keyFromName(const std::string &name) {
-  return NAMED_KEYS.at(name);
-}
+KeyboardKey keyFromName(const std::string &name);
+
 } // namespace cturtle

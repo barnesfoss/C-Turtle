@@ -1,7 +1,8 @@
 #pragma once
-#include "../geometry/Transform.hpp"
-#include "../objects/AbstractDrawableObject.hpp"
+#include "CTurtle/geometry/Transform.hpp"
+#include "CTurtle/objects/AbstractDrawableObject.hpp"
 #include "TurtleSpeed.hpp"
+#include <memory>
 namespace cturtle {
 /**\brief The Pen State structure Holds all pen attributes, which are grouped in
  * this way to allow stack-based undo for Turtle objects. Instances of this
@@ -38,37 +39,8 @@ struct PenState {
   float cursorTilt = 0;
 
   PenState() = default;
-  PenState(const PenState &copy) {
-    transform = copy.transform;
-    moveSpeed = copy.moveSpeed;
-    tracing = copy.tracing;
-    angleMode = copy.angleMode;
-    penWidth = copy.penWidth;
-    filling = copy.filling;
-    penColor = copy.penColor;
-    fillColor = copy.fillColor;
-    cursor.reset(copy.cursor ? copy.cursor->copy() : nullptr);
-    curStamp = copy.curStamp;
-    visible = copy.visible;
-    cursorTilt = copy.cursorTilt;
-    objectsBefore = copy.objectsBefore;
-  }
+  PenState(const PenState &copy);
 
-  PenState &operator=(const PenState &copy) {
-    transform = copy.transform;
-    moveSpeed = copy.moveSpeed;
-    tracing = copy.tracing;
-    angleMode = copy.angleMode;
-    penWidth = copy.penWidth;
-    filling = copy.filling;
-    penColor = copy.penColor;
-    fillColor = copy.fillColor;
-    cursor.reset(copy.cursor ? copy.cursor->copy() : nullptr);
-    curStamp = copy.curStamp;
-    visible = copy.visible;
-    cursorTilt = copy.cursorTilt;
-    objectsBefore = copy.objectsBefore;
-    return *this;
-  }
+  PenState &operator=(const PenState &copy);
 };
 } // namespace cturtle

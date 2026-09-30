@@ -10,7 +10,7 @@
 !README.md
 !meson.build
 !src
-!src/*
+!src/**
 !examples
 !examples/*
 !docs

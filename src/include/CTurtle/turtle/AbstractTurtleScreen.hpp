@@ -1,19 +1,15 @@
 #pragma once
-#include "../color.hpp"
-#include "../font.hpp"
-#include "../font/BitmapFont.hpp"
-#include "../geometry/Transform.hpp"
-#include "../geometry/ivec2.hpp"
-#include "../objects/Polygon.hpp"
-#include "../objects/SceneObject.hpp"
-#include "../types/Image.hpp"
+#include "CTurtle/font/BitmapFont.hpp"
+#include "CTurtle/geometry/Transform.hpp"
+#include "CTurtle/geometry/ivec2.hpp"
+#include "CTurtle/objects/Polygon.hpp"
+#include "CTurtle/objects/SceneObject.hpp"
+#include "CTurtle/types/Color.hpp"
+#include "CTurtle/types/Image.hpp"
 #include "ScreenMode.hpp"
 #include <list>
 namespace cturtle {
-// Turtle class prototype so we can go ahead and define abstract turtle screen
-// type.
 class Turtle;
-
 /**
  * \brief The AbstractTurtleScreen class is the abstract type for most turtle
  * functionality. It intentionally excludes all input/output functionality,
@@ -66,13 +62,13 @@ public:
 
   /**Alias for clearscreen function
    *\sa clearscreen()*/
-  inline void clear() { clearscreen(); }
+  void clear();
 
   /**Resets all turtles belonging to this screen to their original state.*/
   virtual void resetscreen() = 0;
 
   /**Resets all turtles belonging to this screen to their original state.*/
-  inline void reset() { resetscreen(); }
+  void reset();
 
   /**
    * @return a boolean indicating if this turtle screen supports live animation.
@@ -152,27 +148,7 @@ protected:
    * while performing default initialization.
    * @return the decoded default font image.
    */
-  static Image decodeDefaultFont() {
-    Image img(DEFAULT_FONT_PIXELS_WIDTH, DEFAULT_FONT_PIXELS_HEIGHT);
-    img.channels(0, 3); // force RGBA
-    for (int pixId = 0; pixId < DEFAULT_FONT_PIXELS_LEN; pixId++) {
-      const unsigned int decodeVal = DEFAULT_FONT_PIXELS[pixId];
-      // 8 integers per row of pixels (8*32=256)
-      const int pixY = pixId / 8;
-      const int pixOffsX =
-          (pixId % 8) * 32; // offset of every pixel for the current integer.
-
-      for (int i = 0; i < 32; i++) { // for every bit in the unsigned integer...
-        const int pixX =
-            pixOffsX + (31 - i); // 31 due to number of bits in unsigned int...
-        // get i'th pixel in the integer by bitmask and multiply
-        const uint8_t pixel = ((decodeVal >> i) & 1) * 255;
-        for (int c = 0; c < 4; c++)
-          img(pixX, pixY, 0, c) = pixel;
-      }
-    }
-    return img;
-  }
+  static Image decodeDefaultFont();
 
   /*The default shapes that screens initialize with.*/
   std::unordered_map<std::string, Polygon> shapes = {

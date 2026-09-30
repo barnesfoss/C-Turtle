@@ -1,6 +1,7 @@
 #pragma once
 #include "AbstractDrawableObject.hpp"
 #include <list>
+#include <memory>
 namespace cturtle {
 /**
  * \brief a Compound Polygon instance is composed from a number of smaller
@@ -19,11 +20,7 @@ public:
 
   CompoundPolygon() = default;
 
-  CompoundPolygon(const CompoundPolygon &copy) : AbstractDrawableObject(copy) {
-
-    for (const component_t &component : copy.components)
-      components.emplace_back(component.first, component.second->copy());
-  }
+  CompoundPolygon(const CompoundPolygon &copy);
 
   ~CompoundPolygon() override = default;
 
@@ -33,25 +30,17 @@ public:
    * @param transform relative to root transform.
    */
   void addcomponent(const AbstractDrawableObject &obj,
-                    const Transform &transform = Transform()) {
-    components.emplace_back(transform, obj.copy());
-  }
+                    const Transform &transform = Transform());
 
   /**
    * Creates a copy of this Compound Polygon allocated with the new keyword.
    * This must be deleted at the responsibility of the invoker.
    */
-  AbstractDrawableObject *copy() const override {
-    return new CompoundPolygon(*this);
-  }
+  AbstractDrawableObject *copy() const override;
 
   /**Draws this CompoundPolygon.
    * Disregards the Color attribute in favor of the components' colors*/
-  void draw(const Transform &t, Image &imgRef) const override {
-    for (const component_t &comp : components) {
-      comp.second->draw(t.copyConcatenate(comp.first), imgRef);
-    }
-  }
+  void draw(const Transform &t, Image &imgRef) const override;
 
 protected:
   std::list<component_t> components;

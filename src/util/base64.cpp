@@ -1,4 +1,4 @@
-#pragma once
+#include "CTurtle/util/base64.hpp"
 #include <cstdint> //For well-defined integer types.
 #include <cstring> //For memcpy
 #include <sstream> //used for base64 encoding.
@@ -8,17 +8,7 @@
 // source. The below has been modified to use unsigned characters to avoid
 // signed->unsigned->signed fiddling.
 namespace base64 {
-static constexpr unsigned char kEncodeLookup[] =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-static constexpr unsigned char kPadCharacter = '=';
-
-/**
- * Encodes a given unsigned character buffer to Base64.
- * Can be a file, for example.
- * @param input data buffer
- * @return Base64 encoded string.
- */
-inline std::string encode(const std::vector<unsigned char> &input) {
+std::string encode(const std::vector<unsigned char> &input) {
   std::stringstream encoded;
   std::uint32_t temp{};
 
@@ -53,4 +43,5 @@ inline std::string encode(const std::vector<unsigned char> &input) {
 
   return encoded.str();
 }
+
 } // namespace base64
