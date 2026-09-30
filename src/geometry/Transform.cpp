@@ -189,14 +189,6 @@ Point Transform::transform(Point in, Point *dst) const {
   return *dstPtr;
 }
 
-template <typename ITER_T>
-void Transform::transformSet(ITER_T cur, ITER_T end) const {
-  while (cur != end) {
-    transform(&(*cur), &(*cur));
-    cur++;
-  }
-}
-
 Point Transform::operator()(Point in) const { return transform(in); }
 
 float &Transform::at(int row, int col) { return value[row * 3 + col]; }

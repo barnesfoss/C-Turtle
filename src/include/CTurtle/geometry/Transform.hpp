@@ -149,7 +149,12 @@ public:
   /**\brief Transforms a set of points given a begin and end iterator.
    *\param cur The beginning iterator of a set.
    *\param end The ending iterator of a set.*/
-  template <typename ITER_T> void transformSet(ITER_T cur, ITER_T end) const;
+  template <typename ITER_T> void transformSet(ITER_T cur, ITER_T end) const {
+    while (cur != end) {
+      transform(&(*cur), &(*cur));
+      cur++;
+    }
+  }
 
   /*Operator overload to transform a single point, for convenience.*/
 
