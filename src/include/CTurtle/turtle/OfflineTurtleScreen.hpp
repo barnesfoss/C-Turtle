@@ -100,7 +100,7 @@ class OfflineTurtleScreen : public AbstractTurtleScreen {
 
     /**The total objects on screen the last time this screen was drawn.
      * Used to keep track of newer scene objects for a speed improvement.*/
-    int lastTotalObjects = 0;
+    size_t lastTotalObjects = 0;
 
     /**The background color of this TurtleScreen.*/
     Color backgroundColor = Color("white");

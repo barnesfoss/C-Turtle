@@ -444,6 +444,9 @@ inline void jo_gif_end(jo_gif_t* gif) {
 // #define CTURTLE_HEADLESS_NO_HTML
 
 // Disable CImg Display
+#ifdef cimg_display
+#undef cimg_display
+#endif
 #define cimg_display 0
 
 // Define default width and height.
