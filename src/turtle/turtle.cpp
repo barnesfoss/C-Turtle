@@ -4,8 +4,9 @@
 // See LICENSE for details.
 // File: turtle.cpp
 // Unclassified method definitions for the `Turtle` class
-#include <CTurtle.hpp>
 #include <string>
+
+#include "CTurtle.hpp"
 
 namespace cturtle {
 Turtle::Turtle(AbstractTurtleScreen& scr) {

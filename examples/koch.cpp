@@ -4,7 +4,7 @@
 // See LICENSE for details.
 // Derived from http://cs.berea.edu/courses/csc226/tasks/koch-curve.py
 
-#include <CTurtle.hpp>
+#include "CTurtle.hpp"
 
 namespace ct = cturtle;
 

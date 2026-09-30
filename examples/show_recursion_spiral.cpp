@@ -4,7 +4,7 @@
 // See LICENSE for details.
 // File:   show_recursion_spiral.cpp
 
-#include <CTurtle.hpp>
+#include "CTurtle.hpp"
 
 namespace ct = cturtle;
 

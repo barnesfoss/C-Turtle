@@ -5,13 +5,13 @@
 #ifndef CTURTLE_HEADLESS /*NOT DEFINED CTURTLE_HEADLESS*/
 #include "CTurtle/turtle/InteractiveTurtleScreen.hpp"
 
-#include <CTurtle.hpp>
 #include <list>
 #include <memory>
 #include <mutex>
 #include <string>
 #include <thread>
 
+#include "CTurtle.hpp"
 #include "CTurtle/font.hpp"
 #include "CTurtle/util/io.hpp"
 namespace cturtle {

@@ -5,10 +5,10 @@
 #ifdef CTURTLE_HEADLESS
 #include "CTurtle/turtle/OfflineTurtleScreen.hpp"
 
-#include <CTurtle.hpp>
 #include <fstream>
 #include <iostream>
 
+#include "CTurtle.hpp"
 #include "CTurtle/util/base64.hpp"
 #include "CTurtle/util/headless.hpp"
 // Automatic linking when operating under MSVC
@@ -197,10 +197,11 @@ ivec2 OfflineTurtleScreen::screensize() {
     return {canvas.width(), canvas.height()};
 }
 
-void OfflineTurtleScreen::update(bool invalidateDraw, bool processInput) {
-    redraw(invalidateDraw);
-    // processInput is ignored. OfflineTurtleScreen does NOT support input.
-}
+Image& OfflineTurtleScreen::getcanvas() { return canvas; }
+
+bool OfflineTurtleScreen::isclosed() { return isClosed; }
+
+bool OfflineTurtleScreen::supports_live_animation() const { return false; }
 
 void OfflineTurtleScreen::delay(unsigned int ms) { delayMS = ms; }
 

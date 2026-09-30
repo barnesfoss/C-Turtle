@@ -44,6 +44,12 @@ class OfflineTurtleScreen : public AbstractTurtleScreen {
 
     void update(bool invalidateDraw = false, bool processInput = false);
 
+    bool supports_live_animation() const;
+
+    Image& getcanvas();
+
+    bool isclosed();
+
     void delay(unsigned int ms);
 
     unsigned int delay() const;

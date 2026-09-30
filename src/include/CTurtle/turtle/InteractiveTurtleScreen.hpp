@@ -4,10 +4,10 @@
 // See LICENSE for details.
 #pragma once
 #ifndef CTURTLE_HEADLESS
-#include <CTurtle.hpp>
 #include <mutex>
 #include <thread>
 
+#include "CTurtle.hpp"
 #include "CTurtle/util/io.hpp"
 namespace cturtle {
 constexpr int SCREEN_DEFAULT_WIDTH = 800;
@@ -107,7 +107,8 @@ class InteractiveTurtleScreen : public AbstractTurtleScreen {
      *\param invalidateDraw Completely redraws the scene if true.
      *                      If false, only draws the newest geometry.
      *\param processInput A boolean indicating to process input.*/
-    void update(bool invalidateDraw, bool processInput) override;
+    void update(bool invalidateDraw = false,
+                bool processInput = false) override;
 
     /**Sets the delay set between turtle commands.*/
     void delay(unsigned int ms) override;

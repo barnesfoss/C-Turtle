@@ -5,10 +5,10 @@
 // File : draw.cpp
 // Definitions for the `Turtle` class drawing methods
 
-#include <CTurtle.hpp>
 #include <list>
 #include <string>
 
+#include "CTurtle.hpp"
 #include "CTurtle/font.hpp"
 #include "CTurtle/objects/Circle.hpp"
 #include "CTurtle/objects/Text.hpp"

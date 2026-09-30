@@ -10,7 +10,7 @@
 #define CTURTLE_HEADLESS_WIDTH 800   // Optional define, default is 400
 #define CTURTLE_HEADLESS_HEIGHT 600  // Optional define, default is 300
 
-#include <CTurtle.hpp>
+#include "CTurtle.hpp"
 
 namespace ct = cturtle;
 
