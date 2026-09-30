@@ -52,11 +52,11 @@ cturtle_sources = files(
   'src/turtle/turtle.cpp',
 
   # Types
-  'src/types/Color.cpp'
+  'src/types/Color.cpp',
 
   # Utilities
   'src/util/base64.cpp',
-  'src/util/io.cpp'
+  'src/util/io.cpp',
 
 )
 
