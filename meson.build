@@ -69,6 +69,7 @@ cturtle_dep = declare_dependency(
     link_with: cturtle_lib,
     dependencies: cturtle_deps,
     include_directories: cturtle_inc,
+    compile_args: cturtle_args,
 )
 
 meson.override_dependency('cturtle', cturtle_dep)
