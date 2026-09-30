@@ -26,8 +26,8 @@
 #ifndef JO_INCLUDE_GIF_H
 #define JO_INCLUDE_GIF_H
 
+#include <stdint.h>
 #include <stdio.h>
-
 // Header edited to inline all GIF functionality to avoid re-definitions across
 // compilation units otherwise, left the same.
 
@@ -82,7 +82,7 @@ inline void jo_gif_quantize(unsigned char* rgba, int rgbaSize, int sample,
 
     // defs for decreasing alpha factor
     const int alphabiasshift = 10; /* alpha starts at 1.0 */
-    const int initalpha = static_cast < int > 1 << alphabiasshift;
+    const int initalpha = static_cast<int>(1) << alphabiasshift;
 
     // radbias and alpharadbias used for radpower calculation
     const int radbiasshift = 8;
