@@ -185,14 +185,16 @@ protected:
  * the following: val*(PI/180.0)
  * \param val The value to convert from degress to radians.
  * \return A value of the same type as val, converted to radians.*/
-template <typename T> T toRadians(T val);
+template <typename T> T toRadians(T val) { return T(val * (M_PI / 180.0)); }
 
 /**\brief Converts radians to degrees.
  * A generic toDegrees function. Performs
  * the following: val*(180.0/PI)
  * \param val The value to convert from radians to degrees.
  * \return A value of the same type as val, converted to degrees.*/
-template <typename T> T toDegrees(T val);
+template <typename T> T toDegrees(T val) {
+  return std::round(T(val * (180.0 / M_PI)));
+}
 
 /**\brief Draws a rounded line of variable thickness on the specified image.
  *\param imgRef The image on which to draw the line.

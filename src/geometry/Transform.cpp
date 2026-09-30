@@ -203,12 +203,6 @@ float &Transform::at(int row, int col) { return value[row * 3 + col]; }
 
 float Transform::at(int row, int col) const { return value[row * 3 + col]; }
 
-template <typename T> T toRadians(T val) { return T(val * (M_PI / 180.0)); }
-
-template <typename T> T toDegrees(T val) {
-  return std::round(T(val * (180.0 / M_PI)));
-}
-
 void drawLine(Image &imgRef, int x1, int y1, int x2, int y2, const Color &c,
               int width) {
   if (x1 == x2 && y1 == y2)
