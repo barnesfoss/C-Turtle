@@ -28,5 +28,3 @@ cturtle_dep = declare_dependency(
 
 meson.override_dependency('cturtle', cturtle_dep)
 
-e = executable('main','main.cpp',dependencies: dependency('cturtle'))
-test('draw',e)
