@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD041 -->
+<!-- markdownlint-disable MD046 -->
 <p align="center">
   <img src="https://i.imgur.com/YzKH7P3.png">
   <br>
@@ -11,13 +13,13 @@
 
 C-Turtle is a port of Python's Turtle facility for C++17, with the intent of being a close analog to the Python implementation. This package was developed with the intent of student usage under an academic setting. This package has been released under the MIT license accordingly.
 <br>
-This package heavily uses [CImg](http://cimg.eu/) for its display and drawing functions it is included in [CImg.wrap](./subprojects/CImg.wrap).
+This package heavily uses [CImg](http://cimg.eu/) for its display and drawing functions it is included in `CImg.wrap`.
 
 ## Usage
 
 To use this branch of C-Turtle include it in your project as a subproject :
 
-```
+```ini
 [wrap-git]
 directory = C-Turtle
 url = https://github.com/barnesfoss/C-Turtle
@@ -168,12 +170,12 @@ As time progresses, and as I am afforded the opportunity, I will provide visual 
 Three examples of artwork generated in the style of Piet Mondrian as part of an assignment on Recursion.
 &nbsp;
 
-##### Azis Toktobaev - Berea College
+### Azis Toktobaev - Berea College
 
 ![Mondrian Art Example 1](https://i.imgur.com/PoMCwXn.png)
 &nbsp;
 
-##### Bryar Frank - Berea College
+### Bryar Frank - Berea College
 
 ![Mondrian Art Example 2](https://i.imgur.com/ixf4fUE.jpg)
 &nbsp;
