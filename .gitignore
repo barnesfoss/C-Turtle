@@ -16,3 +16,4 @@
 !docs
 !docs/*
 !.clang-format
+!meson_options.txt
