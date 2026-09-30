@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/2.0.0/),
 
 ## [Unreleased]
 
-    Work in progress by [barnesfoss]
+    Work in progress by [@barnesfoss]
 
 ### Changed
 
@@ -17,7 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/2.0.0/),
 
 ## [1.0.5] - 2025-02-06
 
-    Signed off by [walkerje]
+    Signed off by [@walkerje]
 
 ### Changed
 
@@ -26,7 +26,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/2.0.0/),
 
 ## [1.0.4] - 2021-10-30
 
-    Signed off by [walkerje]
+    Signed off by [@walkerje]
 
 ### Fixed
 
@@ -55,7 +55,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/2.0.0/),
 
 ## [1.0.2] - 2021-02-25
 
-    Signed off by [walkerje]
+    Signed off by [@walkerje]
 
 ### Added
 
@@ -67,7 +67,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/2.0.0/),
 
 ## [1.0.1] - 2021-02-15
 
-    Signed off by [walkerje]
+    Signed off by [@walkerje]
 
 ### Added
 
@@ -85,7 +85,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/2.0.0/),
 ## [1.0.0] - 2021-02-13
 
     First major release of C-Turtle
-    Signed off by [walkerje]
+    Signed off by [@walkerje]
 
 ### Added
 
@@ -108,17 +108,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/2.0.0/),
 
 ## [0.2.X] - 2020-04-23
 
-    Signed off by [walkerje]
+    Signed off by [@walkerje]
     - See GitHub commit histories 744dd6d through e7e17de
 
 ## [0.1.X] - 2020-04-23
 
-    Signed off by [walkerje]
+    Signed off by [@walkerje]
     - See GitHub commit histories a93dc4d through 744dd6d
 
 ## [0.0.X] - 2019-09-07
 
-    Signed off by [walkerje]
+    Signed off by [@walkerje]
     - See GitHub commit histories 12888e7 through a93dc4d
 
 [SemVer]: https://semver.org

@@ -195,7 +195,7 @@ class Transform {
 /**\brief Converts degrees to radians.
  * A generic toRadians function. Performs
  * the following: val*(PI/180.0)
- * \param val The value to convert from degress to radians.
+ * \param val The value to convert from degrees to radians.
  * \return A value of the same type as val, converted to radians.*/
 template <typename T>
 T toRadians(T val) {

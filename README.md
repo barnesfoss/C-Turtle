@@ -1,7 +1,7 @@
 <!-- markdownlint-disable MD041 -->
 <!-- markdownlint-disable MD046 -->
 <p align="center">
-  <img src="https://i.imgur.com/YzKH7P3.png">
+  <img src="https://i.imgur.com/YzKH7P3.png" alt="C-Turtle Logo">
   <br>
 </p>
 
@@ -95,9 +95,14 @@ The following table contains examples, which do the exact same thing, between C-
 
 ## Headless Mode
 
-C-Turtle also supports drawing to an animated GIF instead of a display (e.g, "headless"). This is configurable through the "headless" preprocessor definitions, seen in following example. To write GIFs, C-Turtle uses [jo_gif](https://www.jonolick.com/home/gif-writer), a wonderful public domain GIF library created by Jon Olick. This avoids having ImageMagick as a dependency, which is what CImg uses by default to save animated GIFs.
+C-Turtle also supports drawing to an animated GIF instead of a display (e.g, "headless").
+This is configurable through the "headless" preprocessor definitions, seen in following example.
+To write GIFs, C-Turtle uses [jo_gif](https://www.jonolick.com/home/gif-writer), a wonderful public domain GIF library created by Jon Olick.
+This avoids having ImageMagick as a dependency, which is what CImg uses by default to save animated GIFs.
 
-In "headless" mode, TurtleScreen has all functionality relating to input and background images removed. This is due to 1) the lack of a display to receive event notifications, and 2) the lack of a guarantee of a safely-usable filesystem to _load_ images from. It does work under the assumption that the filesystem is safe to save to, however.
+In "headless" mode, TurtleScreen has all functionality relating to input and background images removed.
+This is due to 1) the lack of a display to receive event notifications, and 2) the lack of a guarantee of a safely-usable filesystem to _load_ images from.
+It does work under the assumption that the filesystem is safe to save to, however.
 
 ```C++
 //Make special note of these defines prior to usage.
@@ -161,7 +166,7 @@ The following four works are shared with permission of their creator, Dr. Mark L
 - [Connect 4](https://github.com/markhliu/Cplusplus-graphical-Connect-Four-Game)
 - [Voice-Controlled Connect 4](https://github.com/markhliu/CPP-Voice-Connect-Four)
 - [Tic-Tac-Toe](https://github.com/markhliu/CPP-graphical-Tic-Tac-Toe)
-- [Voice-Controlled Tic-Tac-Toe ](https://github.com/markhliu/Cplusplus-Voice-Tic-Tac-Toe)
+- [Voice-Controlled Tic-Tac-Toe](https://github.com/markhliu/Cplusplus-Voice-Tic-Tac-Toe)
 
 ## Student Work Showcase
 
@@ -180,6 +185,6 @@ Three examples of artwork generated in the style of Piet Mondrian as part of an 
 ![Mondrian Art Example 2](https://i.imgur.com/ixf4fUE.jpg)
 &nbsp;
 
-##### Karina Agliullova - Berea College
+### Karina Agliullova - Berea College
 
 ![Mondrian Art Example 3](https://i.imgur.com/fsgkYfc.png)
