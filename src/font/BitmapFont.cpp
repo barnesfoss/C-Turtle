@@ -22,7 +22,7 @@ const Image &BitmapFont::getGlyphImage(unsigned char c) const {
   return glyphs.at(c - asciiOffset);
 }
 
-inline const Image &BitmapFont::operator[](unsigned char c) const {
+const Image &BitmapFont::operator[](unsigned char c) const {
   return getGlyphImage(c);
 }
 

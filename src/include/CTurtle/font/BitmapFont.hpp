@@ -32,7 +32,7 @@ public:
    * Returns the appropriate image for the specified character.
    * \param c character to retrieve the associated image for.
    */
-  inline const Image &operator[](unsigned char c) const;
+  const Image &operator[](unsigned char c) const;
 
   /**
    * \brief Returns the position of the specified character in the font image.
