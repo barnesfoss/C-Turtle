@@ -52,6 +52,11 @@ cturtle_sources = files(
     'src/util/base64.cpp',
     'src/util/io.cpp',
 )
+cturtle_args = []
+
+if get_option('headless').enabled()
+  cturtle_args += '-DCTURTLE_HEADLESS'
+endif
 
 cturtle_lib = static_library(
     'cturtle',
