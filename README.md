@@ -37,6 +37,13 @@ subproject('cturtle')
 executable('main','main.cpp',dependencies: dependency('cturtle'))
 ```
 
+Or headless
+```meson
+project('cturtle-test','cpp')
+subproject('cturtle', default_options: 'headless=enabled')
+executable('main','main.cpp',dependencies: dependency('cturtle'))
+```
+
 That's it, Meson handles the rest!
 
 ## Direct Comparison between C++ and Python
