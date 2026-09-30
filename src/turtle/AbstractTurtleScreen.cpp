@@ -6,7 +6,7 @@ void AbstractTurtleScreen::reset() { resetscreen(); }
 Image AbstractTurtleScreen::decodeDefaultFont() {
   Image img(DEFAULT_FONT_PIXELS_WIDTH, DEFAULT_FONT_PIXELS_HEIGHT);
   img.channels(0, 3); // force RGBA
-  for (int pixId = 0; pixId < DEFAULT_FONT_PIXELS_LEN; pixId++) {
+  for (uint32_t pixId = 0; pixId < DEFAULT_FONT_PIXELS_LEN; pixId++) {
     const unsigned int decodeVal = DEFAULT_FONT_PIXELS[pixId];
     // 8 integers per row of pixels (8*32=256)
     const int pixY = pixId / 8;

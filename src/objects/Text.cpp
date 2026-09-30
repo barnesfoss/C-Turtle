@@ -45,7 +45,7 @@ void Text::draw(const Transform &t, Image &imgRef) const {
   auto lineIter = textLines.begin();
   while (lineIter != textLines.end()) {
     const std::string &lineText = *lineIter;
-
+    int textSize = static_cast<int>(lineText.size());
     // lineText alignment with some relatively simple maths.
     int hOffset = 0;
 
@@ -53,15 +53,14 @@ void Text::draw(const Transform &t, Image &imgRef) const {
     case TEXT_ALIGN_LEFT:
       break; // left align left needs no horizontal offset...
     case TEXT_ALIGN_RIGHT:
-      hOffset = strPixLen - (static_cast<int>(lineText.size()) * glyphSz.x);
+      hOffset = strPixLen - (textSize * glyphSz.x);
       break;
     case TEXT_ALIGN_CENTER:
-      hOffset = (strPixLen / 2) -
-                ((static_cast<int>(lineText.size()) * glyphSz.x) / 2);
+      hOffset = (strPixLen / 2) - ((textSize * glyphSz.x) / 2);
       break;
     }
 
-    for (int i = 0; i < lineText.size(); i++) {
+    for (int i = 0; i < textSize; i++) {
       const char curChar = lineText[i];
       if (curChar == ' ' ||
           !font.isValid(curChar)) // skip space or out-of-range characters...

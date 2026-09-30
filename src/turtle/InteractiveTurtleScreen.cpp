@@ -228,9 +228,9 @@ void InteractiveTurtleScreen::redraw(bool invalidate) {
     canvas.resize(display);
     hasInvalidated = true;
   }
-
-  if (lastTotalObjects <= objects.size()) {
-    fromBack = static_cast<int>(objects.size() - lastTotalObjects);
+  int objectSize = static_cast<int>(objects.size());
+  if (lastTotalObjects <= objectSize) {
+    fromBack = objects.size() - lastTotalObjects;
   }
 
   if (hasInvalidated) {

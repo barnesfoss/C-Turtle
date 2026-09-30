@@ -38,7 +38,7 @@ ivec2 BitmapFont::getGlyphExtent() const { return {glyphWidth, glyphHeight}; }
 int BitmapFont::getTotalGlyphs() const { return glyphsX * glyphsY; }
 
 bool BitmapFont::isValid(char c) const {
-  return glyphs.size() > (c - asciiOffset);
+  return glyphs.size() > static_cast<size_t>(c - asciiOffset);
 }
 
 ivec2 BitmapFont::getGlyphAxes() const { return {glyphsX, glyphsY}; }

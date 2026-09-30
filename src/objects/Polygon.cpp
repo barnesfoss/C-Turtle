@@ -25,7 +25,7 @@ void Polygon::draw(const Transform &t, Image &imgRef) const {
     elements in the point vector.*/
   cimg_library::CImg<int> passPts(static_cast<int>(points.size()), 2);
 
-  for (int i = 0; i < points.size(); i++) {
+  for (size_t i = 0; i < points.size(); i++) {
     const Point pt = t(points[i]);
     passPts(i, 0) = pt.x;
     passPts(i, 1) = pt.y;
@@ -35,7 +35,7 @@ void Polygon::draw(const Transform &t, Image &imgRef) const {
 
   if (outlineWidth > 0) { // draw outline using previously generated points.
     // LineLoop impl
-    for (int i = 1; i < points.size(); i++) {
+    for (size_t i = 1; i < points.size(); i++) {
       drawLine(imgRef, passPts(i - 1, 0), passPts(i - 1, 1), passPts(i, 0),
                passPts(i, 1), outlineColor, outlineWidth);
     }
