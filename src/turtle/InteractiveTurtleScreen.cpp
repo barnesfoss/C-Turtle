@@ -13,6 +13,7 @@
 
 #include "CTurtle.hpp"
 #include "CTurtle/font.hpp"
+#include "CTurtle/types/Color.hpp"
 #include "CTurtle/util/io.hpp"
 namespace cturtle {
 InteractiveTurtleScreen::InteractiveTurtleScreen()
