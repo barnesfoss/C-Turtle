@@ -21,7 +21,7 @@ time_t epochTime() {
            std::chrono::milliseconds(1);
 }
 
-void sleep(int32_t ms) {
+void sleep(uint32_t ms) {
     if (ms <= 0) return;
     std::this_thread::sleep_for(std::chrono::milliseconds(ms));
 }
