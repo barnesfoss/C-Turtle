@@ -10,6 +10,8 @@
 #include "CTurtle/turtle/AbstractTurtleScreen.hpp"
 #ifdef CTURTLE_HEADLESS
 #include "CTurtle/turtle/OfflineTurtleScreen.hpp"
+#else
+#include "CTurtle/turtle/InteractiveTurtleScreen.hpp"
 #endif
 #include "CTurtle/turtle/PenState.hpp"
 
