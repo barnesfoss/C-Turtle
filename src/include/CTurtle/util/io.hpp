@@ -1,7 +1,12 @@
+// Copyright 2021 Jesse W. Walker
+//
+// Licensed under the MIT License.
+// See LICENSE for details.
 #pragma once
-#include "CImg.h"
 #include <functional>
 #include <string>
+
+#include "CImg.h"
 namespace cturtle {
 /*Mouse event callback type.*/
 typedef std::function<void(int, int)> MouseFunc;
@@ -16,94 +21,94 @@ typedef std::function<void(void)> TimerFunc;
  *        accepted keyboard input keys.
  * \see keyFromName()*/
 enum KeyboardKey {
-  KEY_ESC = cimg_library::cimg::keyESC,
-  KEY_F1 = cimg_library::cimg::keyF1,
-  KEY_F2 = cimg_library::cimg::keyF2,
-  KEY_F3 = cimg_library::cimg::keyF3,
-  KEY_F4 = cimg_library::cimg::keyF4,
-  KEY_F5 = cimg_library::cimg::keyF5,
-  KEY_F6 = cimg_library::cimg::keyF6,
-  KEY_F7 = cimg_library::cimg::keyF7,
-  KEY_F8 = cimg_library::cimg::keyF8,
-  KEY_F9 = cimg_library::cimg::keyF9,
-  KEY_F10 = cimg_library::cimg::keyF10,
-  KEY_F11 = cimg_library::cimg::keyF11,
-  KEY_F12 = cimg_library::cimg::keyF12,
-  KEY_PAUSE = cimg_library::cimg::keyPAUSE,
-  KEY_1 = cimg_library::cimg::key1,
-  KEY_2 = cimg_library::cimg::key2,
-  KEY_3 = cimg_library::cimg::key3,
-  KEY_4 = cimg_library::cimg::key4,
-  KEY_5 = cimg_library::cimg::key5,
-  KEY_6 = cimg_library::cimg::key6,
-  KEY_7 = cimg_library::cimg::key7,
-  KEY_8 = cimg_library::cimg::key8,
-  KEY_9 = cimg_library::cimg::key9,
-  KEY_0 = cimg_library::cimg::key0,
-  KEY_BACKSPACE = cimg_library::cimg::keyBACKSPACE,
-  KEY_INSERT = cimg_library::cimg::keyINSERT,
-  KEY_HOME = cimg_library::cimg::keyHOME,
-  KEY_PAGEUP = cimg_library::cimg::keyPAGEUP,
-  KEY_TAB = cimg_library::cimg::keyTAB,
-  KEY_Q = cimg_library::cimg::keyQ,
-  KEY_W = cimg_library::cimg::keyW,
-  KEY_E = cimg_library::cimg::keyE,
-  KEY_R = cimg_library::cimg::keyR,
-  KEY_T = cimg_library::cimg::keyT,
-  KEY_Y = cimg_library::cimg::keyY,
-  KEY_U = cimg_library::cimg::keyU,
-  KEY_I = cimg_library::cimg::keyI,
-  KEY_O = cimg_library::cimg::keyO,
-  KEY_P = cimg_library::cimg::keyP,
-  KEY_DELETE = cimg_library::cimg::keyDELETE,
-  KEY_END = cimg_library::cimg::keyEND,
-  KEY_PAGEDOWN = cimg_library::cimg::keyPAGEDOWN,
-  KEY_CAPSLOCK = cimg_library::cimg::keyCAPSLOCK,
-  KEY_A = cimg_library::cimg::keyA,
-  KEY_S = cimg_library::cimg::keyS,
-  KEY_D = cimg_library::cimg::keyD,
-  KEY_F = cimg_library::cimg::keyF,
-  KEY_G = cimg_library::cimg::keyG,
-  KEY_H = cimg_library::cimg::keyH,
-  KEY_J = cimg_library::cimg::keyJ,
-  KEY_K = cimg_library::cimg::keyK,
-  KEY_L = cimg_library::cimg::keyL,
-  KEY_ENTER = cimg_library::cimg::keyENTER,
-  KEY_SHIFTLEFT = cimg_library::cimg::keySHIFTLEFT,
-  KEY_Z = cimg_library::cimg::keyZ,
-  KEY_X = cimg_library::cimg::keyX,
-  KEY_C = cimg_library::cimg::keyC,
-  KEY_V = cimg_library::cimg::keyV,
-  KEY_B = cimg_library::cimg::keyB,
-  KEY_N = cimg_library::cimg::keyN,
-  KEY_M = cimg_library::cimg::keyM,
-  KEY_SHIFTRIGHT = cimg_library::cimg::keySHIFTRIGHT,
-  KEY_ARROWUP = cimg_library::cimg::keyARROWUP,
-  KEY_CTRLLEFT = cimg_library::cimg::keyCTRLLEFT,
-  KEY_APPLEFT = cimg_library::cimg::keyAPPLEFT,
-  KEY_ALT = cimg_library::cimg::keyALT,
-  KEY_SPACE = cimg_library::cimg::keySPACE,
-  KEY_ALTGR = cimg_library::cimg::keyALTGR,
-  KEY_APPRIGHT = cimg_library::cimg::keyAPPRIGHT,
-  KEY_MENU = cimg_library::cimg::keyMENU,
-  KEY_CTRLRIGHT = cimg_library::cimg::keyCTRLRIGHT,
-  KEY_ARROWLEFT = cimg_library::cimg::keyARROWLEFT,
-  KEY_ARROWDOWN = cimg_library::cimg::keyARROWDOWN,
-  KEY_ARROWRIGHT = cimg_library::cimg::keyARROWRIGHT,
-  KEY_PAD0 = cimg_library::cimg::keyPAD0,
-  KEY_PAD1 = cimg_library::cimg::keyPAD1,
-  KEY_PAD2 = cimg_library::cimg::keyPAD2,
-  KEY_PAD3 = cimg_library::cimg::keyPAD3,
-  KEY_PAD4 = cimg_library::cimg::keyPAD4,
-  KEY_PAD5 = cimg_library::cimg::keyPAD5,
-  KEY_PAD6 = cimg_library::cimg::keyPAD6,
-  KEY_PAD7 = cimg_library::cimg::keyPAD7,
-  KEY_PAD8 = cimg_library::cimg::keyPAD8,
-  KEY_PAD9 = cimg_library::cimg::keyPAD9,
-  KEY_PADADD = cimg_library::cimg::keyPADADD,
-  KEY_PADSUB = cimg_library::cimg::keyPADSUB,
-  KEY_PADMUL = cimg_library::cimg::keyPADMUL,
-  KEY_PADDIV = cimg_library::cimg::keyPADDIV
+    KEY_ESC = cimg_library::cimg::keyESC,
+    KEY_F1 = cimg_library::cimg::keyF1,
+    KEY_F2 = cimg_library::cimg::keyF2,
+    KEY_F3 = cimg_library::cimg::keyF3,
+    KEY_F4 = cimg_library::cimg::keyF4,
+    KEY_F5 = cimg_library::cimg::keyF5,
+    KEY_F6 = cimg_library::cimg::keyF6,
+    KEY_F7 = cimg_library::cimg::keyF7,
+    KEY_F8 = cimg_library::cimg::keyF8,
+    KEY_F9 = cimg_library::cimg::keyF9,
+    KEY_F10 = cimg_library::cimg::keyF10,
+    KEY_F11 = cimg_library::cimg::keyF11,
+    KEY_F12 = cimg_library::cimg::keyF12,
+    KEY_PAUSE = cimg_library::cimg::keyPAUSE,
+    KEY_1 = cimg_library::cimg::key1,
+    KEY_2 = cimg_library::cimg::key2,
+    KEY_3 = cimg_library::cimg::key3,
+    KEY_4 = cimg_library::cimg::key4,
+    KEY_5 = cimg_library::cimg::key5,
+    KEY_6 = cimg_library::cimg::key6,
+    KEY_7 = cimg_library::cimg::key7,
+    KEY_8 = cimg_library::cimg::key8,
+    KEY_9 = cimg_library::cimg::key9,
+    KEY_0 = cimg_library::cimg::key0,
+    KEY_BACKSPACE = cimg_library::cimg::keyBACKSPACE,
+    KEY_INSERT = cimg_library::cimg::keyINSERT,
+    KEY_HOME = cimg_library::cimg::keyHOME,
+    KEY_PAGEUP = cimg_library::cimg::keyPAGEUP,
+    KEY_TAB = cimg_library::cimg::keyTAB,
+    KEY_Q = cimg_library::cimg::keyQ,
+    KEY_W = cimg_library::cimg::keyW,
+    KEY_E = cimg_library::cimg::keyE,
+    KEY_R = cimg_library::cimg::keyR,
+    KEY_T = cimg_library::cimg::keyT,
+    KEY_Y = cimg_library::cimg::keyY,
+    KEY_U = cimg_library::cimg::keyU,
+    KEY_I = cimg_library::cimg::keyI,
+    KEY_O = cimg_library::cimg::keyO,
+    KEY_P = cimg_library::cimg::keyP,
+    KEY_DELETE = cimg_library::cimg::keyDELETE,
+    KEY_END = cimg_library::cimg::keyEND,
+    KEY_PAGEDOWN = cimg_library::cimg::keyPAGEDOWN,
+    KEY_CAPSLOCK = cimg_library::cimg::keyCAPSLOCK,
+    KEY_A = cimg_library::cimg::keyA,
+    KEY_S = cimg_library::cimg::keyS,
+    KEY_D = cimg_library::cimg::keyD,
+    KEY_F = cimg_library::cimg::keyF,
+    KEY_G = cimg_library::cimg::keyG,
+    KEY_H = cimg_library::cimg::keyH,
+    KEY_J = cimg_library::cimg::keyJ,
+    KEY_K = cimg_library::cimg::keyK,
+    KEY_L = cimg_library::cimg::keyL,
+    KEY_ENTER = cimg_library::cimg::keyENTER,
+    KEY_SHIFTLEFT = cimg_library::cimg::keySHIFTLEFT,
+    KEY_Z = cimg_library::cimg::keyZ,
+    KEY_X = cimg_library::cimg::keyX,
+    KEY_C = cimg_library::cimg::keyC,
+    KEY_V = cimg_library::cimg::keyV,
+    KEY_B = cimg_library::cimg::keyB,
+    KEY_N = cimg_library::cimg::keyN,
+    KEY_M = cimg_library::cimg::keyM,
+    KEY_SHIFTRIGHT = cimg_library::cimg::keySHIFTRIGHT,
+    KEY_ARROWUP = cimg_library::cimg::keyARROWUP,
+    KEY_CTRLLEFT = cimg_library::cimg::keyCTRLLEFT,
+    KEY_APPLEFT = cimg_library::cimg::keyAPPLEFT,
+    KEY_ALT = cimg_library::cimg::keyALT,
+    KEY_SPACE = cimg_library::cimg::keySPACE,
+    KEY_ALTGR = cimg_library::cimg::keyALTGR,
+    KEY_APPRIGHT = cimg_library::cimg::keyAPPRIGHT,
+    KEY_MENU = cimg_library::cimg::keyMENU,
+    KEY_CTRLRIGHT = cimg_library::cimg::keyCTRLRIGHT,
+    KEY_ARROWLEFT = cimg_library::cimg::keyARROWLEFT,
+    KEY_ARROWDOWN = cimg_library::cimg::keyARROWDOWN,
+    KEY_ARROWRIGHT = cimg_library::cimg::keyARROWRIGHT,
+    KEY_PAD0 = cimg_library::cimg::keyPAD0,
+    KEY_PAD1 = cimg_library::cimg::keyPAD1,
+    KEY_PAD2 = cimg_library::cimg::keyPAD2,
+    KEY_PAD3 = cimg_library::cimg::keyPAD3,
+    KEY_PAD4 = cimg_library::cimg::keyPAD4,
+    KEY_PAD5 = cimg_library::cimg::keyPAD5,
+    KEY_PAD6 = cimg_library::cimg::keyPAD6,
+    KEY_PAD7 = cimg_library::cimg::keyPAD7,
+    KEY_PAD8 = cimg_library::cimg::keyPAD8,
+    KEY_PAD9 = cimg_library::cimg::keyPAD9,
+    KEY_PADADD = cimg_library::cimg::keyPADADD,
+    KEY_PADSUB = cimg_library::cimg::keyPADSUB,
+    KEY_PADMUL = cimg_library::cimg::keyPADMUL,
+    KEY_PADDIV = cimg_library::cimg::keyPADDIV
 };
 
 const std::unordered_map<std::string, KeyboardKey> NAMED_KEYS = {
@@ -199,10 +204,10 @@ const std::unordered_map<std::string, KeyboardKey> NAMED_KEYS = {
 /**\brief The MouseButton Enumeration holds all accepted mouse
  *        input buttons.
  *  These button enumerations are represented as bitwise flags.*/
-enum MouseButton { // Stored as bitwise flags from CImgDisplay
-  MOUSEB_LEFT,     // Left Mouse Button
-  MOUSEB_RIGHT,    // Right Mouse Button
-  MOUSEB_MIDDLE    // Middle Mouse Button
+enum MouseButton {  // Stored as bitwise flags from CImgDisplay
+    MOUSEB_LEFT,    // Left Mouse Button
+    MOUSEB_RIGHT,   // Right Mouse Button
+    MOUSEB_MIDDLE   // Middle Mouse Button
 };
 
 /**
@@ -211,13 +216,13 @@ enum MouseButton { // Stored as bitwise flags from CImgDisplay
  * callback pointers for either case.
  */
 struct InputEvent {
-  // True for keyboard, false for mouse
-  bool type = false;
-  // mouseX, mouseY
-  int mX = 0;
-  int mY = 0;
-  /*void callback pointer. cast and called when processed.*/
-  void *cbPointer = nullptr;
+    // True for keyboard, false for mouse
+    bool type = false;
+    // mouseX, mouseY
+    int mX = 0;
+    int mY = 0;
+    /*void callback pointer. cast and called when processed.*/
+    void* cbPointer = nullptr;
 };
 
 /**
@@ -225,6 +230,6 @@ struct InputEvent {
  * @param name
  * @return
  */
-KeyboardKey keyFromName(const std::string &name);
+KeyboardKey keyFromName(const std::string& name);
 
-} // namespace cturtle
+}  // namespace cturtle

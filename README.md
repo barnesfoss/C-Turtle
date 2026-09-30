@@ -4,15 +4,19 @@
 </p>
 
 # C-Turtle 1.0.5
+
 > [!IMPORTANT]
 > Unlike the [original C-Turtle](https://github.com/walkerje/C-Turtle) this branch isn't a single header file, you instead should set it up with [Meson](https://build.meson).
-<br>
+> <br>
+
 C-Turtle is a port of Python's Turtle facility for C++17, with the intent of being a close analog to the Python implementation. This package was developed with the intent of student usage under an academic setting. This package has been released under the MIT license accordingly.
 <br>
 This package heavily uses [CImg](http://cimg.eu/) for its display and drawing functions it is included in [CImg.wrap](./subprojects/CImg.wrap).
 
 ## Usage
+
 To use this branch of C-Turtle include it in your project as a subproject :
+
 ```
 [wrap-git]
 directory = C-Turtle
@@ -22,15 +26,19 @@ depth = 1
 [provide]
 dependency_names = cturtle
 ```
+
 Then include it :
+
 ```meson
 project('cturtle-test','cpp')
 subproject('cturtle')
 executable('main','main.cpp',dependencies: dependency('cturtle'))
 ```
-Thats it, Meson handles the rest!
+
+That's it, Meson handles the rest!
 
 ## Direct Comparison between C++ and Python
+
 The following table contains examples, which do the exact same thing, between C-Turtle and Python's Turtle.
 
 <table>
@@ -42,9 +50,9 @@ The following table contains examples, which do the exact same thing, between C-
     <pre lang="c++">
 
       #include "CTurtle.hpp"
-    
+
       namespace ct = cturtle;
-    
+
       int main(int argc, char** argv) {
           ct::TurtleScreen scr;
           ct::Turtle turtle(scr);
@@ -59,23 +67,24 @@ The following table contains examples, which do the exact same thing, between C-
           scr.bye();
           return 0;
       }
+
   </pre>
   </td>
   <td>
     <pre lang="python">
-     
+
       import turtle
-    
+
       turt = turtle.Turtle()
       turt.fillcolor("purple")
       turt.speed("slowest")
-    
+
       turt.begin_fill()
       for i in range(4):
           turt.forward(50)
           turt.right(90)
       turt.end_fill()
-    
+
       turt.bye()
 
    </pre>
@@ -83,9 +92,10 @@ The following table contains examples, which do the exact same thing, between C-
 </table>
 
 ## Headless Mode
+
 C-Turtle also supports drawing to an animated GIF instead of a display (e.g, "headless"). This is configurable through the "headless" preprocessor definitions, seen in following example. To write GIFs, C-Turtle uses [jo_gif](https://www.jonolick.com/home/gif-writer), a wonderful public domain GIF library created by Jon Olick. This avoids having ImageMagick as a dependency, which is what CImg uses by default to save animated GIFs.
 
-In "headless" mode, TurtleScreen has all functionality relating to input and background images removed. This is due to 1) the lack of a display to receive event notifications, and 2) the lack of a guarantee of a safely-usable filesystem to *load* images from. It does work under the assumption that the filesystem is safe to save to, however.
+In "headless" mode, TurtleScreen has all functionality relating to input and background images removed. This is due to 1) the lack of a display to receive event notifications, and 2) the lack of a guarantee of a safely-usable filesystem to _load_ images from. It does work under the assumption that the filesystem is safe to save to, however.
 
 ```C++
 //Make special note of these defines prior to usage.
@@ -114,14 +124,23 @@ int main(int argc, char** argv) {
 ```
 
 ## FAQ
+
 #### Is it "C-Turtle" or "CTurtle"?
+
 Either one works. The "C" prefix is a nod to the single dependency of this project, [CImg](http://cimg.eu/). CTurtle quickly became the preference in reference to the name of the header file, "CTurtle.hpp", whereas C-Turtle was originally though to be its proper name. As time has progressed, the two spellings have become synonymous in meaning.
+
 #### Why does headless mode take so long to save a GIF file?
-A frame is added to the resulting GIF for every change in state for a Turtle. This includes rotation, pen changes, size changes, etcetera. You can choose to display only every N frames, and thus save only every N frames, by taking advantage of tracer settings (see ```tracer(int countmax, unsigned int delayMS)``` function in TurtleScreen documentation). This dramatically reduces file size and write time in exchange for less frames in the image.
-#### Why does headless mode print HTML + Base64 by default?
-Headless mode was developed with the intention of being embedded in web applications, namely [Runestone Interactive](https://runestone.academy/) textbooks. As such, it prints HTML to display the results of the executed code by printing a Base64-encoded version of the resulting GIF file. This lets CTurtle be very easily embedded without needing any extra tricks or external File IO with any kind of backend. This can be disabled by having ```#define CTURTLE_HEADLESS_NO_HTML``` before the inclusion of CTurtle.
+
+A frame is added to the resulting GIF for every change in state for a Turtle. This includes rotation, pen changes, size changes, etcetera. You can choose to display only every N frames, and thus save only every N frames, by taking advantage of tracer settings (see `tracer(int countmax, unsigned int delayMS)` function in TurtleScreen documentation). This dramatically reduces file size and write time in exchange for less frames in the image.
+
+#### Why does headless mode print HTML + base64 by default?
+
+Headless mode was developed with the intention of being embedded in web applications, namely [Runestone Interactive](https://runestone.academy/) textbooks. As such, it prints HTML to display the results of the executed code by printing a base64-encoded version of the resulting GIF file. This lets CTurtle be very easily embedded without needing any extra tricks or external File IO with any kind of backend. This can be disabled by having `#define CTURTLE_HEADLESS_NO_HTML` before the inclusion of CTurtle.
+
 # Examples and Derivative Works
+
 ## Packaged alongside CTurtle
+
 These examples can be found in the `examples` directory at the root of this repository. Many are derived from Runestone Interactive textbooks, such as the Sierpinski Triangle, Knight's Tour, Multiple Turtles, and Recursion Tree examples. Others, such as the Koch Fractal examples, are derived from Berea College coursework and were manually converted from Python.
 
 - [Headless Mode](https://github.com/walkerje/C-Turtle/blob/master/examples/headless.cpp)
@@ -143,15 +162,22 @@ The following four works are shared with permission of their creator, Dr. Mark L
 - [Voice-Controlled Tic-Tac-Toe ](https://github.com/markhliu/Cplusplus-Voice-Tic-Tac-Toe)
 
 ## Student Work Showcase
+
 As time progresses, and as I am afforded the opportunity, I will provide visual examples of work students have done using this library. None of these are produced by my own work (but did use C-Turtle in their generation), however permission was given to post the works here!
 
 Three examples of artwork generated in the style of Piet Mondrian as part of an assignment on Recursion.
 &nbsp;
+
 ##### Azis Toktobaev - Berea College
+
 ![Mondrian Art Example 1](https://i.imgur.com/PoMCwXn.png)
 &nbsp;
+
 ##### Bryar Frank - Berea College
+
 ![Mondrian Art Example 2](https://i.imgur.com/ixf4fUE.jpg)
 &nbsp;
+
 ##### Karina Agliullova - Berea College
+
 ![Mondrian Art Example 3](https://i.imgur.com/fsgkYfc.png)

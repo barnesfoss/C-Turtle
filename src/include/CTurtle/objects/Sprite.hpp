@@ -1,3 +1,7 @@
+// Copyright 2021 Jesse W. Walker
+//
+// Licensed under the MIT License.
+// See LICENSE for details.
 #pragma once
 #include "AbstractDrawableObject.hpp"
 namespace cturtle {
@@ -6,28 +10,28 @@ namespace cturtle {
  * corresponds to.
  */
 class Sprite : public AbstractDrawableObject {
-public:
-  int srcX, srcY, srcW, srcH;
-  int drawWidth = 0;
-  int drawHeight = 0;
+   public:
+    int srcX, srcY, srcW, srcH;
+    int drawWidth = 0;
+    int drawHeight = 0;
 
-  explicit Sprite(Image &img, int outlineWidth = 0,
-                  const Color &outlineColor = Color());
+    explicit Sprite(Image& img, int outlineWidth = 0,
+                    const Color& outlineColor = Color());
 
-  Sprite(Image &img, int srcX, int srcY, int srcW, int srcH,
-         int outlineWidth = 0, const Color &outlineColor = Color());
+    Sprite(Image& img, int srcX, int srcY, int srcW, int srcH,
+           int outlineWidth = 0, const Color& outlineColor = Color());
 
-  Sprite(const Sprite &copy) = default;
+    Sprite(const Sprite& copy) = default;
 
-  ~Sprite() override = default;
+    ~Sprite() override = default;
 
-  AbstractDrawableObject *copy() const override;
+    AbstractDrawableObject* copy() const override;
 
-  /**Draws this Sprite.
-   * Disregards the Color attribute in favor of sprites colors.*/
-  void draw(const Transform &t, Image &imgRef) const override;
+    /**Draws this Sprite.
+     * Disregards the Color attribute in favor of sprites colors.*/
+    void draw(const Transform& t, Image& imgRef) const override;
 
-protected:
-  Image &spriteImg;
+   protected:
+    Image& spriteImg;
 };
-} // namespace cturtle
+}  // namespace cturtle

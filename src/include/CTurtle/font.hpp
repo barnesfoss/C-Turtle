@@ -1,3 +1,7 @@
+// Copyright 2021 Jesse W. Walker
+//
+// Licensed under the MIT License.
+// See LICENSE for details.
 #pragma once
 #include <stdint.h>
 namespace cturtle {
@@ -186,4 +190,4 @@ const uint32_t DEFAULT_FONT_PIXELS[] = {
     0x0,        0x0,        0x0,        0x0,        0x0,        0x0,
     0x0,        0x0,        0x0,        0x0,        0x0,        0x0,
     0x0,        0x0,        0x0,        0x0};
-} // namespace cturtle
+}  // namespace cturtle

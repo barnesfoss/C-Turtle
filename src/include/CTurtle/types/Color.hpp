@@ -1,10 +1,15 @@
+// Copyright 2021 Jesse W. Walker
+//
+// Licensed under the MIT License.
+// See LICENSE for details.
 #pragma once
-#include <cstdint>
 #include <stdint.h>
+
+#include <cstdint>
 #include <string>
 #include <unordered_map>
 namespace cturtle::detail {
-typedef uint32_t color_int_t; // Alpha value is extra, serves as padding
+typedef uint32_t color_int_t;  // Alpha value is extra, serves as padding
 typedef uint64_t time_t;
 /**
  * Pack three bytes into an integer to represent a color at compile time.
@@ -15,7 +20,7 @@ typedef uint64_t time_t;
  */
 constexpr color_int_t resolveColorInt(uint8_t r, uint8_t g,
                                       uint8_t b) noexcept {
-  return ((r & 0xFF) << 16) + ((g & 0xFF) << 8) + (b & 0xFF);
+    return ((r & 0xFF) << 16) + ((g & 0xFF) << 8) + (b & 0xFF);
 }
 
 /**
@@ -24,7 +29,7 @@ constexpr color_int_t resolveColorInt(uint8_t r, uint8_t g,
  * @param pack
  * @param colorPtr
  */
-void resolveColorComp(color_int_t pack, uint8_t &r, uint8_t &g, uint8_t &b);
+void resolveColorComp(color_int_t pack, uint8_t& r, uint8_t& g, uint8_t& b);
 
 /**
  * Returns the total number of milliseconds elapsed since the UNIX epoch.
@@ -882,8 +887,8 @@ const detail::color_int_t yellow2 = detail::resolveColorInt(238, 238, 0);
 const detail::color_int_t yellow3 = detail::resolveColorInt(205, 205, 0);
 const detail::color_int_t yellow4 = detail::resolveColorInt(139, 139, 0);
 const detail::color_int_t YellowGreen = detail::resolveColorInt(154, 205, 50);
-} // namespace col
-} // namespace cturtle::detail
+}  // namespace col
+}  // namespace cturtle::detail
 
 /**
  * \brief The primary representation of Color for this library.
@@ -1650,45 +1655,46 @@ const std::unordered_map<std::string, detail::color_int_t> NAMED_COLORS = {
 
 namespace cturtle {
 class Color {
-public:
-  typedef uint8_t component_t;
+   public:
+    typedef uint8_t component_t;
 
-  union {
-    struct {
-      component_t r;
-      component_t g;
-      component_t b;
+    union {
+        struct {
+            component_t r;
+            component_t g;
+            component_t b;
+        };
+        component_t components[3];
     };
-    component_t components[3];
-  };
 
-  Color(cturtle::detail::color_int_t packedColor);
+    Color(cturtle::detail::color_int_t packedColor);
 
-  /*\brief Color constructor for unsigned 8-bit RGB values.
-    \param r Red component.
-    \param g Green component.
-    \param b Blue component.*/
-  Color(component_t r, component_t g, component_t b);
+    /*\brief Color constructor for unsigned 8-bit RGB values.
+      \param r Red component.
+      \param g Green component.
+      \param b Blue component.*/
+    Color(component_t r, component_t g, component_t b);
 
-  /*\brief Copy constructor.
-    \param other Constant reference to other instance of a color object.*/
-  Color(const Color &other);
+    /*\brief Copy constructor.
+      \param other Constant reference to other instance of a color object.*/
+    Color(const Color& other);
 
-  /*\brief Name constructor. Takes a literal color name as an input.
-    \param name The name of the color from which to derive value.
-    \sa fromName()*/
-  Color(const std::string &name);
+    /*\brief Name constructor. Takes a literal color name as an input.
+      \param name The name of the color from which to derive value.
+      \sa fromName()*/
+    Color(const std::string& name);
 
-  /*\brief Default constructor.
-                   Initializes this color to white. (all components 255)*/
-  Color();
+    /*\brief Default constructor.
+                     Initializes this color to white. (all components 255)*/
+    Color();
 
-  Color &operator=(cturtle::detail::color_int_t pack);
+    Color& operator=(cturtle::detail::color_int_t pack);
 
-  /**\brief Returns a pointer to the first component of this color.
-                   This is useful for functions which require color as an input
-    array. Returns a read-only pointer to the elements, in sequential order.*/
-  const component_t *rgbPtr() const;
+    /**\brief Returns a pointer to the first component of this color.
+                     This is useful for functions which require color as an
+      input array. Returns a read-only pointer to the elements, in sequential
+      order.*/
+    const component_t* rgbPtr() const;
 };
 
 /**
@@ -1702,6 +1708,6 @@ Color randomColor();
  * Default colors have an associated name string you can use to retrieve
  * their values. All of the names can be found here:
  * https://www.tcl.tk/man/tcl8.4/TkCmd/colors.htm */
-Color fromName(const std::string &name);
+Color fromName(const std::string& name);
 
-} // namespace cturtle
+}  // namespace cturtle

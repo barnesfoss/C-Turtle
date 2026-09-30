@@ -1,4 +1,9 @@
+// Copyright 2021 Jesse W. Walker
+//
+// Licensed under the MIT License.
+// See LICENSE for details.
 #include "CTurtle/geometry/ivec2.hpp"
+
 #include <math.h>
 namespace cturtle {
 /**\brief Represents a coordinate pair (e.g, x & y)
@@ -18,36 +23,36 @@ ivec2::ivec2(int x, int y) : x(x), y(y) {}
 /**\brief Array access operator overload. Useful for convenience.
  *\param index The index of one of the components of this ivec2 (0..1)
  *\return A reference to the index */
-int &ivec2::operator[](int index) { return data[index]; }
+int& ivec2::operator[](int index) { return data[index]; }
 
 /**\brief Array access operator overload. Useful for convenience.
  *\param index The index of one of the components of this ivec2 (0..1)
  *\return A reference to the index */
 int ivec2::operator[](int index) const { return data[index]; }
 
-ivec2 ivec2::operator+(const ivec2 &other) const {
-  return {x + other.x, y + other.y};
+ivec2 ivec2::operator+(const ivec2& other) const {
+    return {x + other.x, y + other.y};
 }
 
-ivec2 &ivec2::operator+=(const ivec2 &other) {
-  x += other.x;
-  y += other.y;
-  return *this;
+ivec2& ivec2::operator+=(const ivec2& other) {
+    x += other.x;
+    y += other.y;
+    return *this;
 }
 
-ivec2 ivec2::operator-(const ivec2 &other) const {
-  return {x - other.x, y - other.y};
+ivec2 ivec2::operator-(const ivec2& other) const {
+    return {x - other.x, y - other.y};
 }
 
-ivec2 &ivec2::operator-=(const ivec2 &other) {
-  x -= other.x;
-  y -= other.y;
-  return *this;
+ivec2& ivec2::operator-=(const ivec2& other) {
+    x -= other.x;
+    y -= other.y;
+    return *this;
 }
 
 /**\brief Comparison operator between this vector and the other specified.*/
-bool ivec2::operator==(const ivec2 &other) const {
-  return x == other.x && y == other.y;
+bool ivec2::operator==(const ivec2& other) const {
+    return x == other.x && y == other.y;
 }
 
 /**\brief Returns the distance between the two specified points.
@@ -55,17 +60,17 @@ bool ivec2::operator==(const ivec2 &other) const {
  *\param b The second point.
  *\return The distance, in nondescript units, between the first and second
  * points.*/
-int distance(const ivec2 &a, const ivec2 &b) {
-  return static_cast<int>(
-      std::sqrt(std::pow(b.x - a.x, 2) + std::pow(b.y - a.y, 2)));
+int distance(const ivec2& a, const ivec2& b) {
+    return static_cast<int>(
+        std::sqrt(std::pow(b.x - a.x, 2) + std::pow(b.y - a.y, 2)));
 }
 
 /**\brief Finds the point that lies in the middle of the two specified.
  *\param a The first point.
  *\param b The second point.
  *\return The point between the first and second points.*/
-ivec2 middle(const ivec2 &a, const ivec2 &b) {
-  return {(a.x + b.x) / 2, (a.y + b.y) / 2};
+ivec2 middle(const ivec2& a, const ivec2& b) {
+    return {(a.x + b.x) / 2, (a.y + b.y) / 2};
 }
 
 /**\brief Performs a linear interpolation between the two specified points.
@@ -74,15 +79,15 @@ ivec2 middle(const ivec2 &a, const ivec2 &b) {
  *\param progress A float between 0...1; 0 is to A, 1 is to B, 0..1 is between.
  *\return A point between A and B.
  */
-ivec2 lerp(const ivec2 &a, const ivec2 &b, float progress) {
-  if (progress <= 0)
-    return a;
-  else if (progress >= 1)
-    return b;
-  return {
-      static_cast<int>(std::round(progress * static_cast<float>(b.x - a.x))) +
-          a.x,
-      static_cast<int>(std::round(progress * static_cast<float>(b.y - a.y))) +
-          a.y};
+ivec2 lerp(const ivec2& a, const ivec2& b, float progress) {
+    if (progress <= 0)
+        return a;
+    else if (progress >= 1)
+        return b;
+    return {
+        static_cast<int>(std::round(progress * static_cast<float>(b.x - a.x))) +
+            a.x,
+        static_cast<int>(std::round(progress * static_cast<float>(b.y - a.y))) +
+            a.y};
 }
-} // namespace cturtle
+}  // namespace cturtle

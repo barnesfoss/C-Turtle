@@ -1,3 +1,7 @@
+// Copyright 2021 Jesse W. Walker
+//
+// Licensed under the MIT License.
+// See LICENSE for details.
 #pragma once
 #include "AbstractDrawableObject.hpp"
 #include "CTurtle/font/BitmapFont.hpp"
@@ -7,22 +11,22 @@ namespace cturtle {
 /**\brief The Text class represents a basic string that is drawn on the screen.
  */
 class Text : public AbstractDrawableObject {
-public:
-  /** The text to draw.*/
-  const std::string text;
-  const BitmapFont &font;
-  TextAlign alignment;
-  float scale;
+   public:
+    /** The text to draw.*/
+    const std::string text;
+    const BitmapFont& font;
+    TextAlign alignment;
+    float scale;
 
-  Text(std::string text, const BitmapFont &font, const Color &color,
-       float scale = 1.0f, TextAlign alignment = TEXT_ALIGN_LEFT);
+    Text(std::string text, const BitmapFont& font, const Color& color,
+         float scale = 1.0f, TextAlign alignment = TEXT_ALIGN_LEFT);
 
-  Text(const Text &copy) = default;
+    Text(const Text& copy) = default;
 
-  AbstractDrawableObject *copy() const override;
+    AbstractDrawableObject* copy() const override;
 
-  void draw(const Transform &t, Image &imgRef) const override;
+    void draw(const Transform& t, Image& imgRef) const override;
 
-  ~Text() override = default;
+    ~Text() override = default;
 };
-} // namespace cturtle
+}  // namespace cturtle

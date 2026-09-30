@@ -1,7 +1,12 @@
+// Copyright 2021 Jesse W. Walker
+//
+// Licensed under the MIT License.
+// See LICENSE for details.
 #pragma once
-#include "AbstractDrawableObject.hpp"
 #include <list>
 #include <memory>
+
+#include "AbstractDrawableObject.hpp"
 namespace cturtle {
 /**
  * \brief a Compound Polygon instance is composed from a number of smaller
@@ -12,38 +17,38 @@ namespace cturtle {
  * of all AbstractDrawableObject instances they contain.
  * */
 class CompoundPolygon : public AbstractDrawableObject {
-public:
-  // Compound Polygon components are pairs of transforms and unique pointers to
-  // other drawable objects..
-  typedef std::pair<Transform, std::unique_ptr<AbstractDrawableObject>>
-      component_t;
+   public:
+    // Compound Polygon components are pairs of transforms and unique pointers
+    // to other drawable objects..
+    typedef std::pair<Transform, std::unique_ptr<AbstractDrawableObject>>
+        component_t;
 
-  CompoundPolygon() = default;
+    CompoundPolygon() = default;
 
-  CompoundPolygon(const CompoundPolygon &copy);
+    CompoundPolygon(const CompoundPolygon& copy);
 
-  ~CompoundPolygon() override = default;
+    ~CompoundPolygon() override = default;
 
-  /**
-   * \brief Adds a component to this compound polygon.
-   * @param obj Object to copy and add.
-   * @param transform relative to root transform.
-   */
-  void addcomponent(const AbstractDrawableObject &obj,
-                    const Transform &transform = Transform());
+    /**
+     * \brief Adds a component to this compound polygon.
+     * @param obj Object to copy and add.
+     * @param transform relative to root transform.
+     */
+    void addcomponent(const AbstractDrawableObject& obj,
+                      const Transform& transform = Transform());
 
-  /**
-   * Creates a copy of this Compound Polygon allocated with the new keyword.
-   * This must be deleted at the responsibility of the invoker.
-   */
-  AbstractDrawableObject *copy() const override;
+    /**
+     * Creates a copy of this Compound Polygon allocated with the new keyword.
+     * This must be deleted at the responsibility of the invoker.
+     */
+    AbstractDrawableObject* copy() const override;
 
-  /**Draws this CompoundPolygon.
-   * Disregards the Color attribute in favor of the components' colors*/
-  void draw(const Transform &t, Image &imgRef) const override;
+    /**Draws this CompoundPolygon.
+     * Disregards the Color attribute in favor of the components' colors*/
+    void draw(const Transform& t, Image& imgRef) const override;
 
-protected:
-  std::list<component_t> components;
+   protected:
+    std::list<component_t> components;
 };
 
-} // namespace cturtle
+}  // namespace cturtle

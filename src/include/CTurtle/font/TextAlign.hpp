@@ -1,3 +1,7 @@
+// Copyright 2021 Jesse W. Walker
+//
+// Licensed under the MIT License.
+// See LICENSE for details.
 #pragma once
 namespace cturtle {
 /**
@@ -5,4 +9,4 @@ namespace cturtle {
  * strings when writing to screens with turtles.
  */
 enum TextAlign { TEXT_ALIGN_LEFT, TEXT_ALIGN_RIGHT, TEXT_ALIGN_CENTER };
-} // namespace cturtle
+}  // namespace cturtle
