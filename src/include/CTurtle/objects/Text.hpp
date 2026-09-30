@@ -3,10 +3,11 @@
 // Licensed under the MIT License.
 // See LICENSE for details.
 #pragma once
+#include <string>
+
 #include "AbstractDrawableObject.hpp"
 #include "CTurtle/font/BitmapFont.hpp"
 #include "CTurtle/font/TextAlign.hpp"
-
 namespace cturtle {
 /**\brief The Text class represents a basic string that is drawn on the screen.
  */

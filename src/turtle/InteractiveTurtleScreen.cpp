@@ -5,10 +5,13 @@
 #ifndef CTURTLE_HEADLESS /*NOT DEFINED CTURTLE_HEADLESS*/
 #include "CTurtle/turtle/InteractiveTurtleScreen.hpp"
 
+#include <CTurtle.hpp>
+#include <list>
+#include <memory>
 #include <mutex>
+#include <string>
 #include <thread>
 
-#include "CTurtle.hpp"
 #include "CTurtle/font.hpp"
 #include "CTurtle/util/io.hpp"
 namespace cturtle {
@@ -242,9 +245,10 @@ void InteractiveTurtleScreen::redraw(bool invalidate) {
             const int centerY =
                 (canvas.height() / 2) - (backgroundImage.height() / 2);
             canvas.draw_image(centerX, centerY, backgroundImage);
-        } else
+        } else {
             canvas.draw_rectangle(0, 0, canvas.width(), canvas.height(),
                                   backgroundColor.rgbPtr());
+        }
 
         redrawCounter = 0;  // Forced redraw due to canvas invalidation.
     } else {
@@ -255,8 +259,9 @@ void InteractiveTurtleScreen::redraw(bool invalidate) {
 
         if (redrawCounter >= redrawCounterMax)
             redrawCounter = 0;
-        else
+        else {
             return;
+        }
     }
 
     // get the iterator pointing to the oldest scene object that hasn't been
@@ -514,8 +519,9 @@ void InteractiveTurtleScreen::initEventThread() {
                     // Key up.
                     state = 1;
                     mKeys.remove(key);
-                } else
+                } else {
                     continue;  // skip on case where it was down and is down
+                }
 
                 try {
                     // will throw if no bindings available for key,

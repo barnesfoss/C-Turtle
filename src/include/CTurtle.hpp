@@ -18,8 +18,10 @@
 #else
 #include "CTurtle/turtle/InteractiveTurtleScreen.hpp"
 #endif
-#include "CTurtle/turtle/PenState.hpp"
+#include <list>
+#include <string>
 
+#include "CTurtle/turtle/PenState.hpp"
 namespace cturtle {
 /**
  * \brief The Turtle Class
@@ -487,7 +489,7 @@ class Turtle {
 
     /**Returns the speed, of any applicable animation
       in milliseconds, based off of this turtle's speed setting.*/
-    long int getAnimMS();
+    uint32_t getAnimMS();
 
     /**Conditionally calls the parent screen's update function.*/
     void updateParent(bool invalidate = false, bool input = true);

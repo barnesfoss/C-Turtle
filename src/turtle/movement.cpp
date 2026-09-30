@@ -5,7 +5,8 @@
 // File: movement.cpp
 // Definitions for the `Turtle` class's movement methods
 
-#include "CTurtle.hpp"
+#include <CTurtle.hpp>
+
 namespace cturtle {
 
 void Turtle::forward(int pixels) {
@@ -125,11 +126,11 @@ void Turtle::travelBetween(Transform src, const Transform& dest,
     const auto duration = static_cast<float>(getAnimMS());
     if ((screen ? !screen->isclosed() : false) &&
         duration > 0) {  // no point in animating with no screen
-        const unsigned long startTime = detail::epochTime();
+        const uint32_t startTime = detail::epochTime();
 
         float progress = 0;
         while (progress < 1.0f) {
-            const unsigned long curTime = detail::epochTime();
+            const uint32_t curTime = detail::epochTime();
 
             transform->assign(src.lerp(dest, progress));
             travelPoints[0] = src.getTranslation();

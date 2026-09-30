@@ -34,7 +34,7 @@
 typedef struct {
     FILE* fp;
     unsigned char palette[0x300];
-    short width, height, repeat;
+    int16_t width, height, repeat;
     int numColors, palSize;
     int frame;
 } jo_gif_t;
@@ -42,15 +42,15 @@ typedef struct {
 // width/height	| the same for every frame
 // repeat       | 0 = loop forever, 1 = loop once, etc...
 // palSize		| must be power of 2 - 1. so, 255 not 256.
-inline jo_gif_t jo_gif_start(const char* filename, short width, short height,
-                             short repeat, int palSize);
+inline jo_gif_t jo_gif_start(const char* filename, int16_t width,
+                             int16_t height, int16_t repeat, int palSize);
 
 // gif			| the state (returned from jo_gif_start)
 // rgba         | the pixels
 // delayCsec    | amount of time in between frames (in centiseconds)
 // localPalette | true if you want a unique palette generated for this frame
 // (does not effect future frames)
-inline void jo_gif_frame(jo_gif_t* gif, unsigned char* rgba, short delayCsec,
+inline void jo_gif_frame(jo_gif_t* gif, unsigned char* rgba, int16_t delayCsec,
                          bool localPalette);
 
 // gif          | the state (returned from jo_gif_start)
@@ -69,7 +69,7 @@ inline void jo_gif_quantize(unsigned char* rgba, int rgbaSize, int sample,
                             unsigned char* map, int numColors) {
     // defs for freq and bias
     const int intbiasshift = 16; /* bias for fractions */
-    const int intbias = (((int)1) << intbiasshift);
+    const int intbias = static_cast<int>(1) << intbiasshift;
     const int gammashift = 10; /* gamma = 1024 */
     const int betashift = 10;
     const int beta = (intbias >> betashift); /* beta = 1/1024 */
@@ -77,18 +77,18 @@ inline void jo_gif_quantize(unsigned char* rgba, int rgbaSize, int sample,
 
     // defs for decreasing radius factor
     const int radiusbiasshift = 6; /* at 32.0 biased by 6 bits */
-    const int radiusbias = (((int)1) << radiusbiasshift);
+    const int radiusbias = static_cast<int>(1) << radiusbiasshift;
     const int radiusdec = 30; /* factor of 1/30 each cycle */
 
     // defs for decreasing alpha factor
     const int alphabiasshift = 10; /* alpha starts at 1.0 */
-    const int initalpha = (((int)1) << alphabiasshift);
+    const int initalpha = static_cast < int > 1 << alphabiasshift;
 
     // radbias and alpharadbias used for radpower calculation
     const int radbiasshift = 8;
-    const int radbias = (((int)1) << radbiasshift);
+    const int radbias = static_cast<int>(1) << radbiasshift;
     const int alpharadbshift = (alphabiasshift + radbiasshift);
-    const int alpharadbias = (((int)1) << alpharadbshift);
+    const int alpharadbias = static_cast<int>(1) << alpharadbshift;
 
     sample = sample < 1 ? 1 : sample > 30 ? 30 : sample;
     int network[256][3];
@@ -104,7 +104,8 @@ inline void jo_gif_quantize(unsigned char* rgba, int rgbaSize, int sample,
         int step = 4;
         for (int i = 0; i < 4; ++i) {
             if (rgbaSize > primes[i] * 4 &&
-                (rgbaSize % primes[i])) {  // TODO/Error? primes[i]*4?
+                (rgbaSize %
+                 primes[i])) {  // TODO(walkerje): /Error? primes[i]*4?
                 step = primes[i] * 4;
             }
         }
@@ -239,7 +240,7 @@ inline void jo_gif_lzw_encode(unsigned char* in, int len, FILE* fp) {
 
     // Note: 30k stack space for dictionary =|
     const int hashSize = 5003;
-    short codetab[hashSize];
+    int16_t codetab[hashSize];
     int hashTbl[hashSize];
     memset(hashTbl, 0xFF, sizeof(hashTbl));
 
@@ -294,8 +295,8 @@ inline int jo_gif_clamp(int a, int b, int c) {
     return a < b ? b : a > c ? c : a;
 }
 
-jo_gif_t jo_gif_start(const char* filename, short width, short height,
-                      short repeat, int numColors) {
+jo_gif_t jo_gif_start(const char* filename, int16_t width, int16_t height,
+                      int16_t repeat, int numColors) {
     numColors = numColors > 255 ? 255 : numColors < 2 ? 2 : numColors;
     jo_gif_t gif = {};
     gif.width = width;
@@ -319,13 +320,13 @@ jo_gif_t jo_gif_start(const char* filename, short width, short height,
     return gif;
 }
 
-inline void jo_gif_frame(jo_gif_t* gif, unsigned char* rgba, short delayCsec,
+inline void jo_gif_frame(jo_gif_t* gif, unsigned char* rgba, int16_t delayCsec,
                          bool localPalette) {
     if (!gif->fp) {
         return;
     }
-    short width = gif->width;
-    short height = gif->height;
+    int16_t width = gif->width;
+    int16_t height = gif->height;
     int size = width * height;
 
     unsigned char localPalTbl[0x300];
@@ -343,7 +344,7 @@ inline void jo_gif_frame(jo_gif_t* gif, unsigned char* rgba, short delayCsec,
             int rgb[3] = {ditheredPixels[k + 0], ditheredPixels[k + 1],
                           ditheredPixels[k + 2]};
             int bestd = 0x7FFFFFFF, best = -1;
-            // TODO: exhaustive search. do something better.
+            // TODO(walkerje): exhaustive search. do something better.
             for (int i = 0; i < gif->numColors; ++i) {
                 int bb = palette[i * 3 + 0] - rgb[0];
                 int gg = palette[i * 3 + 1] - rgb[1];
@@ -360,7 +361,7 @@ inline void jo_gif_frame(jo_gif_t* gif, unsigned char* rgba, short delayCsec,
                 ditheredPixels[k + 1] - palette[indexedPixels[k / 4] * 3 + 1],
                 ditheredPixels[k + 2] - palette[indexedPixels[k / 4] * 3 + 2]};
             // Floyd-Steinberg Error Diffusion
-            // TODO: Use something better --
+            // TODO(walkerje): Use something better --
             // http://caca.zoy.org/study/part3.html
             if (k + 4 < size * 4) {
                 ditheredPixels[k + 4 + 0] = (unsigned char)jo_gif_clamp(

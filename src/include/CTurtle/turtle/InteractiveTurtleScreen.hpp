@@ -4,10 +4,10 @@
 // See LICENSE for details.
 #pragma once
 #ifndef CTURTLE_HEADLESS
+#include <CTurtle.hpp>
 #include <mutex>
 #include <thread>
 
-#include "CTurtle.hpp"
 #include "CTurtle/util/io.hpp"
 namespace cturtle {
 constexpr int SCREEN_DEFAULT_WIDTH = 800;
@@ -257,7 +257,7 @@ class InteractiveTurtleScreen : public AbstractTurtleScreen {
     ScreenMode curMode = SM_STANDARD;
 
     /**Redraw delay, in milliseconds.*/
-    long int delayMS = 10;
+    uint32_t delayMS = 10;
 
     /** These variables are used specifically in tracer settings.**/
     /**Redraw Counter.*/

@@ -5,12 +5,11 @@
 // Graph code is derived from the following book:
 // https://github.com/pearcej/cppds, sections 9.11-9.14
 
+#include <CTurtle.hpp>
 #include <algorithm>
 #include <list>
 #include <map>
 #include <utility>
-
-#include "CTurtle.hpp"
 
 namespace ct = cturtle;
 

@@ -5,7 +5,10 @@
 // File : draw.cpp
 // Definitions for the `Turtle` class drawing methods
 
-#include "CTurtle.hpp"
+#include <CTurtle.hpp>
+#include <list>
+#include <string>
+
 #include "CTurtle/font.hpp"
 #include "CTurtle/objects/Circle.hpp"
 #include "CTurtle/objects/Text.hpp"
@@ -123,7 +126,7 @@ void Turtle::clearstamps(int stampid) {
 
 bool Turtle::undo(bool try_redraw) {
     // total objects on the state stack prior to
-    const unsigned long int totalBefore = state->objectsBefore;
+    const uint32_t totalBefore = state->objectsBefore;
 
     if (stateStack.size() >= 2) travelBack();  // Travel back if stack size >= 2
 

@@ -6,7 +6,7 @@
 // Derived from the work of Dr. Jan Pearce of Berea College (see
 // https://github.com/pearcej)
 
-#include "CTurtle.hpp"
+#include <CTurtle.hpp>
 
 namespace ct = cturtle;
 

@@ -19,8 +19,8 @@ void Circle::draw(const Transform& t, Image& imgRef) const {
 
     for (int i = 0; i < steps; i++) {
         Point p;
-        p.x = int(radius * std::cos(i * (2 * M_PI) / steps));
-        p.y = int(radius * std::sin(i * (2 * M_PI) / steps));
+        p.x = static_cast<int>(radius * std::cos(i * (2 * M_PI) / steps));
+        p.y = static_cast<int>(radius * std::sin(i * (2 * M_PI) / steps));
         Point tPoint = t(p);
         passPts(i, 0) = tPoint.x;
         passPts(i, 1) = tPoint.y;

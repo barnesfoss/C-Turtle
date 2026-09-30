@@ -3,8 +3,8 @@
 // Licensed under the MIT License.
 // See LICENSE for details.
 #pragma once
-#include <string>  //Strings...
-#include <vector>  //For Polygon point storage
+#include <string>  // Strings...
+#include <vector>  // For Polygon point storage
 // See https://github.com/mvorbrodt/blog/blob/master/src/base64.hpp for original
 // source. The below has been modified to use unsigned characters to avoid
 // signed->unsigned->signed fiddling.

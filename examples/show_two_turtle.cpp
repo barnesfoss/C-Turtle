@@ -4,7 +4,7 @@
 // See LICENSE for details.
 // File:   show_two_turtle.cpp
 
-#include "CTurtle.hpp"
+#include <CTurtle.hpp>
 
 namespace ct = cturtle;
 

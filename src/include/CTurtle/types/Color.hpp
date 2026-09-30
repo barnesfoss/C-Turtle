@@ -39,7 +39,7 @@ time_t epochTime();
 
 /**\brief Sleeps the calling thread the specified amount of milliseconds.
  *\param ms The total number of milliseconds to sleep.*/
-void sleep(long ms);
+void sleep(uint32_t ms);
 namespace col {
 const detail::color_int_t alice_blue = detail::resolveColorInt(240, 248, 255);
 const detail::color_int_t AliceBlue = detail::resolveColorInt(240, 248, 255);

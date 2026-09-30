@@ -5,7 +5,7 @@
 // File: pen.cpp
 // Definitions for the `Turtle` class pen methods
 
-#include "CTurtle.hpp"
+#include <CTurtle.hpp>
 namespace cturtle {
 
 const PenState& Turtle::penstate() const { return *state; }

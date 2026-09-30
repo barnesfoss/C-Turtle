@@ -5,7 +5,7 @@
 // File:   koch_class.cpp
 // Derived from http://cs.berea.edu/courses/csc226/tasks/koch.py
 
-#include "CTurtle.hpp"
+#include <CTurtle.hpp>
 
 namespace ct = cturtle;
 

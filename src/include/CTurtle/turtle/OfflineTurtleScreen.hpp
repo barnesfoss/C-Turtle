@@ -106,7 +106,7 @@ class OfflineTurtleScreen : public AbstractTurtleScreen {
     ScreenMode curMode = SM_STANDARD;
 
     /**Redraw delay, in milliseconds.*/
-    long int delayMS = 10;
+    uint32_t delayMS = 10;
 
     /** These variables are used specifically in tracer settings.**/
     /**Redraw Counter.*/

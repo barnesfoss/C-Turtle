@@ -5,10 +5,10 @@
 #ifdef CTURTLE_HEADLESS
 #include "CTurtle/turtle/OfflineTurtleScreen.hpp"
 
+#include <CTurtle.hpp>
 #include <fstream>
 #include <iostream>
 
-#include "CTurtle.hpp"
 #include "CTurtle/util/base64.hpp"
 #include "CTurtle/util/headless.hpp"
 // Automatic linking when operating under MSVC
@@ -45,7 +45,7 @@ std::string encodeFileBase64(const std::string& path) {
     file.seekg(0, std::ios::beg);
 
     std::vector<unsigned char> buffer(size, 0);
-    file.read((char*)buffer.data(), size);
+    file.read(reinterpret_cast<char*>(buffer.data()), size);
     return base64::encode(buffer);
 }
 

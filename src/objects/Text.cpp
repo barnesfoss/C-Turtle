@@ -9,7 +9,8 @@
 #include <cstdint>
 #include <list>
 #include <sstream>
-
+#include <string>
+#include <utility>
 namespace cturtle {
 Text::Text(std::string text, const BitmapFont& font, const Color& color,
            float scale, TextAlign alignment)
@@ -87,7 +88,7 @@ void Text::draw(const Transform& t, Image& imgRef) const {
                     for (int c = 0; c < 3; c++)
                         textImage(x, y, c) *=
                             (static_cast<float>(fillColor.components[c]) /
-                             float(UINT8_MAX));
+                             static_cast<float>(UINT8_MAX));
         }
 
         lineIter++;

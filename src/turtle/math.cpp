@@ -5,9 +5,8 @@
 // File: math.cpp
 // Definitions for the `Turtle` class arithmetic functions
 
+#include <CTurtle.hpp>
 #include <cmath>
-
-#include "CTurtle.hpp"
 namespace cturtle {
 int Turtle::distance(int x, int y) {
     return cturtle::distance(transform->getTranslation(), {x, y});

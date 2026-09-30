@@ -43,8 +43,8 @@ void Polygon::draw(const Transform& t, Image& imgRef) const {
                      passPts(i, 0), passPts(i, 1), outlineColor, outlineWidth);
         }
         // draw last line between first and last
-        drawLine(imgRef, passPts(int(points.size()) - 1, 0),
-                 passPts(int(points.size()) - 1, 1), passPts(0, 0),
+        drawLine(imgRef, passPts(static_cast<int>(points.size()) - 1, 0),
+                 passPts(static_cast<int>(points.size()) - 1, 1), passPts(0, 0),
                  passPts(0, 1), outlineColor, outlineWidth);
     }
 }

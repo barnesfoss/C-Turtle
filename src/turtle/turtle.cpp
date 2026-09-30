@@ -4,8 +4,9 @@
 // See LICENSE for details.
 // File: turtle.cpp
 // Unclassified method definitions for the `Turtle` class
+#include <CTurtle.hpp>
+#include <string>
 
-#include "CTurtle.hpp"
 namespace cturtle {
 Turtle::Turtle(AbstractTurtleScreen& scr) {
     screen = &scr;
@@ -79,7 +80,7 @@ Turtle::~Turtle() {
     if (screen != nullptr) screen->remove(*this);
 }
 
-long int Turtle::getAnimMS() {
+uint32_t Turtle::getAnimMS() {
     if (screen == nullptr) return 0;
 
     // 300 is the "scale" animations adhere to.
@@ -88,7 +89,7 @@ long int Turtle::getAnimMS() {
     // implementation.
     if (!screen->supports_live_animation() || state->moveSpeed < 0)
         return 0;  // no animation means no time spent animating...
-    return long((state->moveSpeed / 10.0f) * 300);  //<----
+    return uint32_t((state->moveSpeed / 10.0f) * 300);  //<----
 }
 
 void Turtle::updateParent(bool invalidate, bool input) {

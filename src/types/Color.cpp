@@ -6,6 +6,7 @@
 
 #include <chrono>
 #include <random>
+#include <string>
 #include <thread>
 namespace cturtle {
 namespace detail {
@@ -20,21 +21,22 @@ time_t epochTime() {
            std::chrono::milliseconds(1);
 }
 
-void sleep(long ms) {
+void sleep(int32_t ms) {
     if (ms <= 0) return;
     std::this_thread::sleep_for(std::chrono::milliseconds(ms));
 }
+
 }  // namespace detail
 
 Color::Color(cturtle::detail::color_int_t packedColor) {
     cturtle::detail::resolveColorComp(packedColor, r, g, b);
 }
 
-Color::Color(component_t r, component_t g, component_t b) : r(r), g(g), b(b) {};
+Color::Color(component_t r, component_t g, component_t b) : r(r), g(g), b(b) {}
 
-Color::Color(const Color& other) : r(other.r), g(other.g), b(other.b) {};
+Color::Color(const Color& other) : r(other.r), g(other.g), b(other.b) {}
 
-Color::Color() { r = g = b = 255; };
+Color::Color() { r = g = b = 255; }
 
 Color& Color::operator=(cturtle::detail::color_int_t pack) {
     cturtle::detail::resolveColorComp(pack, r, g, b);
@@ -64,4 +66,5 @@ Color::Color(const std::string& name) {
     g = c.g;
     b = c.b;
 }
+
 }  // namespace cturtle
