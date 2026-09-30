@@ -54,7 +54,7 @@ cturtle_sources = files(
 cturtle_args = []
 
 if get_option('headless').enabled()
-  cturtle_args += '-DCTURTLE_HEADLESS'
+  cturtle_args += ['-DCTURTLE_HEADLESS']
 endif
 
 cturtle_lib = static_library(
