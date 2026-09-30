@@ -9,7 +9,7 @@
 #include "ScreenMode.hpp"
 #include <list>
 namespace cturtle {
-
+class Turtle;
 /**
  * \brief The AbstractTurtleScreen class is the abstract type for most turtle
  * functionality. It intentionally excludes all input/output functionality,
