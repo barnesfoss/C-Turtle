@@ -2,7 +2,9 @@
 // Definitions for the `Turtle` class drawing methods
 
 #include "CTurtle.hpp"
+#include "CTurtle/font.hpp"
 #include "CTurtle/objects/Circle.hpp"
+#include "CTurtle/objects/Text.hpp"
 namespace cturtle {
 void Turtle::circle(int radius, int steps, const Color &color) {
   pushGeometry(*transform, new Circle(radius, steps, color));
