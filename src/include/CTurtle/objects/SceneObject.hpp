@@ -1,5 +1,6 @@
 #pragma once
 #include "AbstractDrawableObject.hpp"
+#include <memory>
 namespace cturtle {
 /**\brief Turtles append Scene Objects to a list to keep
  *              track of what it has drawn (a history).
@@ -34,8 +35,7 @@ struct SceneObject {
    *\param t The transform at which to draw the geometry.
    *\param stampid The ID of the stamp this object is related to.*/
   SceneObject(AbstractDrawableObject *geom, const Transform &t,
-              int stampid = -1)
-      : geom(geom), transform(t), stamp(stampid > -1), stampid(stampid) {}
+              int stampid = -1);
 };
 
 } // namespace cturtle

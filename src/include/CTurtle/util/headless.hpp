@@ -422,13 +422,11 @@ inline void jo_gif_end(jo_gif_t *gif) {
 }
 
 #endif /*JO_INCLUDE_GIF_H*/
-#endif /*CTURTLE_HEADLESS*/
 
 // When using headless, simply pre-define CTURTLE_CONFIG_HEADLESS.
 // This disables the InteractiveTurtleScreen.
 // GIF utility is included at the top of the file when under headless mode.
 
-#ifdef CTURTLE_HEADLESS
 // Optional define to disable HTML Base64 Image output
 // #define CTURTLE_HEADLESS_NO_HTML
 

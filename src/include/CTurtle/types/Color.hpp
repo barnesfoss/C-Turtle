@@ -1,11 +1,7 @@
 #pragma once
-#include <chrono>
 #include <cstdint>
-#include <random>
-#include <stdexcept>
 #include <stdint.h>
 #include <string>
-#include <thread>
 #include <unordered_map>
 namespace cturtle::detail {
 typedef uint32_t color_int_t; // Alpha value is extra, serves as padding
@@ -28,30 +24,17 @@ inline constexpr color_int_t resolveColorInt(uint8_t r, uint8_t g,
  * @param pack
  * @param colorPtr
  */
-inline void resolveColorComp(color_int_t pack, uint8_t &r, uint8_t &g,
-                             uint8_t &b) {
-  r = (pack & 0x00FF0000) >> 16; // Red
-  g = (pack & 0x0000FF00) >> 8;  // Green
-  b = (pack & 0x000000FF);       // >> 0;  //Blue
-}
+void resolveColorComp(color_int_t pack, uint8_t &r, uint8_t &g, uint8_t &b);
 
 /**
  * Returns the total number of milliseconds elapsed since the UNIX epoch.
  * @return
  */
-inline time_t epochTime() {
-  return std::chrono::system_clock::now().time_since_epoch() /
-         std::chrono::milliseconds(1);
-}
+time_t epochTime();
 
 /**\brief Sleeps the calling thread the specified amount of milliseconds.
  *\param ms The total number of milliseconds to sleep.*/
-inline void sleep(long ms) {
-  if (ms <= 0)
-    return;
-  std::this_thread::sleep_for(std::chrono::milliseconds(ms));
-}
-
+void sleep(long ms);
 namespace col {
 const detail::color_int_t alice_blue = detail::resolveColorInt(240, 248, 255);
 const detail::color_int_t AliceBlue = detail::resolveColorInt(240, 248, 255);
@@ -1679,19 +1662,17 @@ public:
     component_t components[3];
   };
 
-  Color(cturtle::detail::color_int_t packedColor) {
-    cturtle::detail::resolveColorComp(packedColor, r, g, b);
-  }
+  Color(cturtle::detail::color_int_t packedColor);
 
   /*\brief Color constructor for unsigned 8-bit RGB values.
     \param r Red component.
     \param g Green component.
     \param b Blue component.*/
-  Color(component_t r, component_t g, component_t b) : r(r), g(g), b(b) {};
+  Color(component_t r, component_t g, component_t b);
 
   /*\brief Copy constructor.
     \param other Constant reference to other instance of a color object.*/
-  Color(const Color &other) : r(other.r), g(other.g), b(other.b) {}
+  Color(const Color &other);
 
   /*\brief Name constructor. Takes a literal color name as an input.
     \param name The name of the color from which to derive value.
@@ -1700,56 +1681,27 @@ public:
 
   /*\brief Default constructor.
                    Initializes this color to white. (all components 255)*/
-  Color() { r = g = b = 255; }
+  Color();
 
-  Color &operator=(cturtle::detail::color_int_t pack) {
-    cturtle::detail::resolveColorComp(pack, r, g, b);
-    return *this;
-  }
+  Color &operator=(cturtle::detail::color_int_t pack);
 
   /**\brief Returns a pointer to the first component of this color.
                    This is useful for functions which require color as an input
     array. Returns a read-only pointer to the elements, in sequential order.*/
-  const component_t *rgbPtr() const { return &components[0]; }
+  const component_t *rgbPtr() const;
 };
 
 /**
  * Generates and returns a random color.
  * @return
  */
-inline Color randomColor() {
-  static std::default_random_engine rng(detail::epochTime());
-  static std::uniform_int_distribution<int> rng_dist(0, 255);
-  return Color((uint8_t)rng_dist(rng), (uint8_t)rng_dist(rng),
-               (uint8_t)rng_dist(rng));
-}
+Color randomColor();
 
 /**\brief Retrieves a read-only reference to a color
  *         associated with the specified input name string.
  * Default colors have an associated name string you can use to retrieve
  * their values. All of the names can be found here:
  * https://www.tcl.tk/man/tcl8.4/TkCmd/colors.htm */
-inline Color fromName(const std::string &name) {
-  if (name == "random")
-    return randomColor();
-
-  if (NAMED_COLORS.count(name))
-    return NAMED_COLORS.at(name);
-
-  throw std::runtime_error("No color by the name \"" + name + "\" exists.");
-}
-
-// Define named color constructor after the definition of the named color map.
-
-/*\brief Name constructor.
-                 Takes a literal color name as an input.
-  \param name The name of the color from which to derive value.
-  \sa fromName()*/
-inline Color::Color(const std::string &name) {
-  const Color c = fromName(name);
-  r = c.r;
-  g = c.g;
-  b = c.b;
-}
+Color fromName(const std::string &name);
 
 } // namespace cturtle

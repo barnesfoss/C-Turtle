@@ -22,10 +22,7 @@ public:
    *        merely assigns value of pointA and pointB to respective A and B.
    *\param a The "From" point.
    *\param b The "To" point.*/
-  Line(Point a, Point b, const Color &color, int width = 1)
-      : pointA(a), pointB(b), width(width) {
-    fillColor = color;
-  }
+  Line(Point a, Point b, const Color &color, int width = 1);
 
   /**\brief Copy constructor.
    *        Merely assigns the "to" and "from" points.
@@ -37,10 +34,6 @@ public:
   /**\brief Empty de-constructor.*/
   ~Line() override = default;
 
-  void draw(const Transform &t, Image &imgRef) const override {
-    const Point a = t(pointA);
-    const Point b = t(pointB);
-    drawLine(imgRef, a.x, a.y, b.x, b.y, fillColor, width);
-  }
+  void draw(const Transform &t, Image &imgRef) const override;
 };
 } // namespace cturtle

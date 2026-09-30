@@ -19,7 +19,7 @@ if host_machine.system() == 'linux'
   cturtle_deps += dependency('x11')
 endif
 
-cturtle_inc = include_directories('src')
+cturtle_inc = include_directories('src/include')
 
 cturtle_dep = declare_dependency(
   dependencies: cturtle_deps,
@@ -27,3 +27,6 @@ cturtle_dep = declare_dependency(
 )
 
 meson.override_dependency('cturtle', cturtle_dep)
+
+e = executable('main','main.cpp',dependencies: dependency('cturtle'))
+test('draw',e)
