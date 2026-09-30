@@ -1,5 +1,4 @@
 #pragma once
-#define CTURTLE_HEADLESS
 #ifdef CTURTLE_HEADLESS
 #include "CTurtle/font.hpp"
 #include "CTurtle/turtle/AbstractTurtleScreen.hpp"

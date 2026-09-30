@@ -1,4 +1,3 @@
-#define CTURTLE_HEADLESS
 #ifdef CTURTLE_HEADLESS
 #include "CTurtle/turtle/OfflineTurtleScreen.hpp"
 #include "CTurtle.hpp"
