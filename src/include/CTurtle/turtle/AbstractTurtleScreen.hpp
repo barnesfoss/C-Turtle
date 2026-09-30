@@ -9,9 +9,6 @@
 #include "ScreenMode.hpp"
 #include <list>
 namespace cturtle {
-// Turtle class prototype so we can go ahead and define abstract turtle screen
-// type.
-class Turtle;
 
 /**
  * \brief The AbstractTurtleScreen class is the abstract type for most turtle
