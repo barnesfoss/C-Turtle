@@ -62,6 +62,7 @@ cturtle_lib = static_library(
     cturtle_sources,
     dependencies: cturtle_deps,
     include_directories: cturtle_inc,
+    cpp_args: cturtle_args
 )
 
 cturtle_dep = declare_dependency(
