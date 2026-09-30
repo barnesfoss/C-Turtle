@@ -216,7 +216,7 @@ bool Turtle::pushStamp(const Transform &t, AbstractDrawableObject *geom) {
     geom->outlineColor = state->penColor;
 
     screen->getScene().emplace_back(geom, trans, state->curStamp++);
-    SceneObject &obj = screen->getScene().back();
+    SceneObject &_ = screen->getScene().back();
 
     objects.push_back(std::prev(screen->getScene().end()));
     return true;
