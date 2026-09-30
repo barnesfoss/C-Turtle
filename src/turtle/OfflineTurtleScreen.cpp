@@ -143,6 +143,11 @@ void OfflineTurtleScreen::tracer(int countmax, unsigned int delayMS) {
     redraw();
 }
 
+void OfflineTurtleScreen::update(bool invalidateDraw, bool processInput) {
+    redraw(invalidateDraw);
+    // processInput is ignored. OfflineTurtleScreen does NOT support input.
+}
+
 int OfflineTurtleScreen::window_width() const { return canvas.width(); }
 
 int OfflineTurtleScreen::window_height() const { return canvas.height(); }
