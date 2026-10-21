@@ -17,3 +17,4 @@
 !docs/*
 !.clang-format
 !meson_options.txt
+!cturtle.example.wrap

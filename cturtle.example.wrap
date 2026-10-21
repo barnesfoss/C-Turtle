@@ -1,0 +1,7 @@
+[wrap-git]
+directory = C-Turtle
+url = https://github.com/barnesfoss/C-Turtle
+revision = main
+depth = 1
+[provide]
+cturtle = cturtle_dep
