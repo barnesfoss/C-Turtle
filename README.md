@@ -17,31 +17,19 @@ This package heavily uses [CImg](http://cimg.eu/) for its display and drawing fu
 
 ## Usage
 
-To use this branch of C-Turtle include it in your project as a subproject :
-
-```ini
-[wrap-git]
-directory = C-Turtle
-url = https://github.com/barnesfoss/C-Turtle
-revision = master
-depth = 1
-[provide]
-dependency_names = cturtle
-```
+To use this branch of C-Turtle include it in your project as a subproject, you can find an example in cturtle.example.wrap
 
 Then include it :
 
 ```meson
 project('cturtle-test','cpp')
-subproject('cturtle')
 executable('main','main.cpp',dependencies: dependency('cturtle'))
 ```
 
 Or headless
 ```meson
 project('cturtle-test','cpp')
-subproject('cturtle', default_options: 'headless=enabled')
-executable('main','main.cpp',dependencies: dependency('cturtle'))
+executable('main','main.cpp',dependencies: dependency('cturtle', default_options: 'headless=enabled'))
 ```
 
 That's it, Meson handles the rest!
