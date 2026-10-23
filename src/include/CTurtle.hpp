@@ -14,7 +14,7 @@
 #include "CTurtle/objects/Line.hpp"
 #include "CTurtle/turtle/AbstractTurtleScreen.hpp"
 #ifdef CTURTLE_HEADLESS
-#include "CTurtle/turtle/OfflineTurtleScreen.hpp"
+#include "CTurtle/turtle/HeadlessTurtleScreen.hpp"
 #else
 #include "CTurtle/turtle/InteractiveTurtleScreen.hpp"
 #endif
