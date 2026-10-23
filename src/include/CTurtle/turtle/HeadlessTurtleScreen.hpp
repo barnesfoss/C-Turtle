@@ -10,12 +10,12 @@
 #include "CTurtle/util/headless.hpp"
 namespace cturtle {
 std::string encodeFileBase64(const std::string& path);
-class OfflineTurtleScreen : public AbstractTurtleScreen {
+class HeadlessTurtleScreen : public AbstractTurtleScreen {
    public:
-    OfflineTurtleScreen(size_t width = 400, size_t height = 300,
-                        const std::string saveDir = "./cturtle.gif");
+    HeadlessTurtleScreen(size_t width = 400, size_t height = 300,
+                         const std::string saveDir = "./cturtle.gif");
 
-    ~OfflineTurtleScreen();
+    ~HeadlessTurtleScreen();
     ;
 
     void tracer(int countmax, unsigned int delayMS = 10);
@@ -73,7 +73,7 @@ class OfflineTurtleScreen : public AbstractTurtleScreen {
 
     /**
      * Returns a read-only reference to the bitmap font with the specified name.
-     * For the case of OfflineTurtleScreen instances, this ALWAYS returns a
+     * For the case of HeadlessTurtleScreen instances, this ALWAYS returns a
      * reference to the default font.
      * @param name to be given to the font. Irrelevant for the offline turtle
      * screen.
@@ -109,7 +109,7 @@ class OfflineTurtleScreen : public AbstractTurtleScreen {
     /**The background color of this TurtleScreen.*/
     Color backgroundColor = Color("white");
 
-    // OfflineTurtleScreen has no background image.
+    // HeadlessTurtleScreen has no background image.
 
     /**The current screen mode.
      *\sa mode(m)*/

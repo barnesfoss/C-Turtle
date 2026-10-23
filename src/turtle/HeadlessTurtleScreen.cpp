@@ -2,7 +2,7 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#include "CTurtle/turtle/OfflineTurtleScreen.hpp"
+#include "CTurtle/turtle/HeadlessTurtleScreen.hpp"
 
 #include <fstream>
 #include <iostream>
@@ -37,7 +37,7 @@
 #endif
 
 namespace cturtle {
-/*Used to output Base-64 GIF and HTML source for OfflineTurtleScreen.*/
+/*Used to output Base-64 GIF and HTML source for HeadlessTurtleScreen.*/
 std::string encodeFileBase64(const std::string& path) {
     std::ifstream file(path, std::ios::binary | std::ios::ate);
     std::streamsize size = file.tellg();
@@ -52,7 +52,7 @@ std::string encodeFileBase64(const std::string& path) {
     return base64::encode(buffer);
 }
 
-void OfflineTurtleScreen::redraw(bool invalidate) {
+void HeadlessTurtleScreen::redraw(bool invalidate) {
     if (isclosed()) return;
     int fromBack = 0;
     bool hasInvalidated = invalidate;
@@ -127,8 +127,8 @@ void OfflineTurtleScreen::redraw(bool invalidate) {
     jo_gif_frame(&gif, gifWriteBuffer, delayMS / 10, true);
 }
 
-OfflineTurtleScreen::OfflineTurtleScreen(size_t width, size_t height,
-                                         const std::string saveDir)
+HeadlessTurtleScreen::HeadlessTurtleScreen(size_t width, size_t height,
+                                           const std::string saveDir)
     : width(width), height(height), saveDir(saveDir.c_str()) {
     gifWriteBuffer = new uint8_t[width * height * 4];
     canvas.assign(width, height, 1, 3);
@@ -138,34 +138,34 @@ OfflineTurtleScreen::OfflineTurtleScreen(size_t width, size_t height,
     redraw(true);
 }
 
-OfflineTurtleScreen::~OfflineTurtleScreen() {
+HeadlessTurtleScreen::~HeadlessTurtleScreen() {
     delete gifWriteBuffer;
     bye();
 }
 
-void OfflineTurtleScreen::tracer(int countmax, unsigned int delayMS) {
+void HeadlessTurtleScreen::tracer(int countmax, unsigned int delayMS) {
     redrawCounterMax = countmax;
     delay(delayMS);
     redraw();
 }
 
-void OfflineTurtleScreen::update(bool invalidateDraw, bool processInput) {
+void HeadlessTurtleScreen::update(bool invalidateDraw, bool processInput) {
     redraw(invalidateDraw);
-    // processInput is ignored. OfflineTurtleScreen does NOT support input.
+    // processInput is ignored. HeadlessTurtleScreen does NOT support input.
 }
 
-int OfflineTurtleScreen::window_width() const { return canvas.width(); }
+int HeadlessTurtleScreen::window_width() const { return canvas.width(); }
 
-int OfflineTurtleScreen::window_height() const { return canvas.height(); }
+int HeadlessTurtleScreen::window_height() const { return canvas.height(); }
 
-Color OfflineTurtleScreen::bgcolor() const { return backgroundColor; }
+Color HeadlessTurtleScreen::bgcolor() const { return backgroundColor; }
 
-void OfflineTurtleScreen::bgcolor(const Color& c) {
+void HeadlessTurtleScreen::bgcolor(const Color& c) {
     backgroundColor = c;
     redraw(true);
 }
 
-void OfflineTurtleScreen::mode(ScreenMode mode) {
+void HeadlessTurtleScreen::mode(ScreenMode mode) {
     // Resets & re-orients all turtles.
 
     curMode = mode;
@@ -174,9 +174,9 @@ void OfflineTurtleScreen::mode(ScreenMode mode) {
     }
 }
 
-ScreenMode OfflineTurtleScreen::mode() const { return curMode; }
+ScreenMode HeadlessTurtleScreen::mode() const { return curMode; }
 
-void OfflineTurtleScreen::clearscreen() {
+void HeadlessTurtleScreen::clearscreen() {
     // 1) Delete all drawings and turtles
     // 2) White background
 
@@ -189,31 +189,31 @@ void OfflineTurtleScreen::clearscreen() {
     curMode = SM_STANDARD;
 }
 
-void OfflineTurtleScreen::resetscreen() {
+void HeadlessTurtleScreen::resetscreen() {
     for (Turtle* turtle : turtles) turtle->reset();
 }
 
-ivec2 OfflineTurtleScreen::screensize(Color& bg) {
+ivec2 HeadlessTurtleScreen::screensize(Color& bg) {
     bg = backgroundColor;
     return {canvas.width(), canvas.height()};
 };
 // code-smell from python->c++, considering separation of functionality
 
-ivec2 OfflineTurtleScreen::screensize() {
+ivec2 HeadlessTurtleScreen::screensize() {
     return {canvas.width(), canvas.height()};
 }
 
-Image& OfflineTurtleScreen::getcanvas() { return canvas; }
+Image& HeadlessTurtleScreen::getcanvas() { return canvas; }
 
-bool OfflineTurtleScreen::isclosed() { return isClosed; }
+bool HeadlessTurtleScreen::isclosed() { return isClosed; }
 
-bool OfflineTurtleScreen::supports_live_animation() const { return false; }
+bool HeadlessTurtleScreen::supports_live_animation() const { return false; }
 
-void OfflineTurtleScreen::delay(unsigned int ms) { delayMS = ms; }
+void HeadlessTurtleScreen::delay(unsigned int ms) { delayMS = ms; }
 
-unsigned int OfflineTurtleScreen::delay() const { return delayMS; }
+unsigned int HeadlessTurtleScreen::delay() const { return delayMS; }
 
-void OfflineTurtleScreen::bye(bool printHtml) {
+void HeadlessTurtleScreen::bye(bool printHtml) {
     if (isClosed) return;
 
     /*finish up drawing if redraw counter hasn't been met*/
@@ -238,37 +238,37 @@ void OfflineTurtleScreen::bye(bool printHtml) {
     isClosed = true;
 }
 
-void OfflineTurtleScreen::bye() { bye(true); }
+void HeadlessTurtleScreen::bye() { bye(true); }
 
-Transform OfflineTurtleScreen::screentransform() const {
+Transform HeadlessTurtleScreen::screentransform() const {
     return Transform()
         .translate(canvas.width() / 2, canvas.height() / 2)
         .scale(1, -1.0f);
 }
 
-void OfflineTurtleScreen::add(Turtle& turtle) { turtles.push_back(&turtle); }
+void HeadlessTurtleScreen::add(Turtle& turtle) { turtles.push_back(&turtle); }
 
-void OfflineTurtleScreen::remove(Turtle& turtle) {
+void HeadlessTurtleScreen::remove(Turtle& turtle) {
     turtle.reset();
     turtle.setScreen(nullptr);
     turtles.remove(&turtle);
 }
 
-std::list<SceneObject>& OfflineTurtleScreen::getScene() { return objects; }
+std::list<SceneObject>& HeadlessTurtleScreen::getScene() { return objects; }
 
-AbstractDrawableObject& OfflineTurtleScreen::shape(const std::string& name) {
+AbstractDrawableObject& HeadlessTurtleScreen::shape(const std::string& name) {
     return shapes[name];
 }
 
 /**
  * Returns a read-only reference to the bitmap font with the specified name.
- * For the case of OfflineTurtleScreen instances, this ALWAYS returns a
+ * For the case of HeadlessTurtleScreen instances, this ALWAYS returns a
  * reference to the default font.
  * @param name to be given to the font. Irrelevant for the offline turtle
  * screen.
  * @return read-only BitmapFont reference to the default font.
  */
-const BitmapFont& OfflineTurtleScreen::font(const std::string& name) const {
+const BitmapFont& HeadlessTurtleScreen::font(const std::string& name) const {
     return *defaultFont;
 }
 

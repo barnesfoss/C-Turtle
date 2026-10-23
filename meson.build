@@ -38,7 +38,7 @@ cturtle_sources = files(
     # Turtle
     'src/turtle/AbstractTurtleScreen.cpp',
     'src/turtle/InteractiveTurtleScreen.cpp',
-    'src/turtle/OfflineTurtleScreen.cpp',
+    'src/turtle/HeadlessTurtleScreen.cpp',
     'src/turtle/PenState.cpp',
     'src/turtle/draw.cpp',
     'src/turtle/math.cpp',
