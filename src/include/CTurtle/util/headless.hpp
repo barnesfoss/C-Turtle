@@ -3,8 +3,6 @@
 // Licensed under the MIT License.
 // See LICENSE for details.
 #pragma once
-/*Include GIF utility when compiling headless mode.*/
-
 /* public domain, Simple, Minimalistic GIF writer - http://jonolick.com
  *
  * Quick Notes:
@@ -434,10 +432,3 @@ inline void jo_gif_end(jo_gif_t* gif) {
 }
 
 #endif /*JO_INCLUDE_GIF_H*/
-
-// When using headless, simply pre-define CTURTLE_CONFIG_HEADLESS.
-// This disables the InteractiveTurtleScreen.
-// GIF utility is included at the top of the file when under headless mode.
-
-// Optional define to disable HTML Base64 Image output
-// #define CTURTLE_HEADLESS_NO_HTML

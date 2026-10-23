@@ -3,7 +3,6 @@
 // Licensed under the MIT License.
 // See LICENSE for details.
 #pragma once
-#ifndef CTURTLE_HEADLESS
 #include <mutex>
 #include <thread>
 
@@ -296,8 +295,5 @@ class InteractiveTurtleScreen : public AbstractTurtleScreen {
     // map of fonts. only "default" is initially populated.
     std::unordered_map<std::string, std::unique_ptr<BitmapFont>> fonts;
 };
-#ifndef CTURTLE_HEADLESS
 typedef InteractiveTurtleScreen TurtleScreen;
-#endif
 }  // namespace cturtle
-#endif
