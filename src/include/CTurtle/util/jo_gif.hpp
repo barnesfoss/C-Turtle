@@ -1,9 +1,7 @@
-// Copyright 2021 Jesse W. Walker
-//
-// Licensed under the MIT License.
-// See LICENSE for details.
 #pragma once
 /* public domain, Simple, Minimalistic GIF writer - http://jonolick.com
+ *
+ * Modified by Jesse W. Walker
  *
  * Quick Notes:
  * 	Supports only 4 component input, alpha is currently ignored. (RGBX)

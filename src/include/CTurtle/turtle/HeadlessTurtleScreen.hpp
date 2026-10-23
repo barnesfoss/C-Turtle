@@ -7,7 +7,7 @@
 
 #include "CTurtle/font.hpp"
 #include "CTurtle/turtle/AbstractTurtleScreen.hpp"
-#include "CTurtle/util/headless.hpp"
+#include "CTurtle/util/jo_gif.hpp"
 namespace cturtle {
 std::string encodeFileBase64(const std::string& path);
 class HeadlessTurtleScreen : public AbstractTurtleScreen {

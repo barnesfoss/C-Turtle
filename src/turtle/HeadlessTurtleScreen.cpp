@@ -9,7 +9,7 @@
 
 #include "CTurtle.hpp"
 #include "CTurtle/util/base64.hpp"
-#include "CTurtle/util/headless.hpp"
+#include "CTurtle/util/jo_gif.hpp"
 // Automatic linking when operating under MSVC
 // If linking errors occur when compiling on Non-MSVC,
 // Make sure you link X11 and PThread when using Unix-Like environments, when
