@@ -18,10 +18,7 @@ typedef uint64_t time_t;
  * @param b
  * @return
  */
-constexpr color_int_t resolveColorInt(uint8_t r, uint8_t g,
-                                      uint8_t b) noexcept {
-    return ((r & 0xFF) << 16) + ((g & 0xFF) << 8) + (b & 0xFF);
-}
+color_int_t resolveColorInt(uint8_t r, uint8_t g, uint8_t b) noexcept;
 
 /**
  * Unpacks R, G, and B bytes to the specified pointer (assumes sequential

@@ -11,6 +11,10 @@
 namespace cturtle {
 namespace detail {
 
+color_int_t resolveColorInt(uint8_t r, uint8_t g, uint8_t b) noexcept {
+    return ((r & 0xFF) << 16) + ((g & 0xFF) << 8) + (b & 0xFF);
+}
+
 void resolveColorComp(color_int_t pack, uint8_t& r, uint8_t& g, uint8_t& b) {
     r = (pack & 0x00FF0000) >> 16;  // Red
     g = (pack & 0x0000FF00) >> 8;   // Green
