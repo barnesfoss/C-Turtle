@@ -53,7 +53,7 @@ cturtle_sources = files(
 )
 cturtle_args = []
 
-cturtle_lib = static_library(
+cturtle_lib = library(
     'cturtle',
     cturtle_sources,
     dependencies: cturtle_deps,
