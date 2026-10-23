@@ -1687,6 +1687,8 @@ class Color {
 
     Color& operator=(cturtle::detail::color_int_t pack);
 
+    Color& operator=(const Color& other) = default;
+
     /**\brief Returns a pointer to the first component of this color.
                      This is useful for functions which require color as an
       input array. Returns a read-only pointer to the elements, in sequential

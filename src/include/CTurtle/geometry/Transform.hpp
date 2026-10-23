@@ -27,6 +27,8 @@ class Transform {
      *\param other The other transform from which to derive value.*/
     Transform(const Transform& other);
 
+    Transform& operator=(const Transform& other) = default;
+
     /**\brief Point and rotattypesconstructor.
      * Initializes a transform with the specified rotation, a translation
      * matching the specified point.
