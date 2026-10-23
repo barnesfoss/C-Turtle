@@ -132,4 +132,7 @@ class HeadlessTurtleScreen : public AbstractTurtleScreen {
     size_t width, height;
     const std::string saveDir;
 };
+#ifdef CTURTLE_HEADLESS
+typedef HeadlessTurtleScreen TurtleScreen;
+#endif
 }  // namespace cturtle

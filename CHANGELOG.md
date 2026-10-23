@@ -15,7 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/2.0.0/),
     - Completely refactored, no longer a single header, should be easier to maintain.
     - Moved to Meson build system!
     - Changed constructor of TurtleScreen
-    - Removed use of CTURTLE_HEADLESS_WIDTH, CTURTLE_HEADLESS_HEIGHT, CTURTLE_HEADLESS_NO_HTML and CTURTLE_HEADLESS_SAVEDIR, CTURTLE_HEADLESS
+    - Removed use of CTURTLE_HEADLESS_WIDTH, CTURTLE_HEADLESS_HEIGHT, CTURTLE_HEADLESS_NO_HTML and CTURTLE_HEADLESS_SAVEDIR
 
 ## [1.0.5] - 2025-02-06
 
