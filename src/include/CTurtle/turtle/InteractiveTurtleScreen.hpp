@@ -10,9 +10,6 @@
 #include "CTurtle.hpp"
 #include "CTurtle/util/io.hpp"
 namespace cturtle {
-constexpr int SCREEN_DEFAULT_WIDTH = 800;
-constexpr int SCREEN_DEFAULT_HEIGHT = 600;
-constexpr char SCREEN_DEFAULT_TITLE[] = "CTurtle " CTURTLE_VERSION;
 /**
  * \brief The InteractiveTurtleScreen class holds and maintains facilities in
  * relation to displaying \ turtles and consuming input events from users
@@ -23,10 +20,6 @@ constexpr char SCREEN_DEFAULT_TITLE[] = "CTurtle " CTURTLE_VERSION;
  */
 class InteractiveTurtleScreen : public AbstractTurtleScreen {
    public:
-    /**Empty constructor.
-     * Assigns an 800 x 600 pixel display with a title of "CTurtle".*/
-    InteractiveTurtleScreen();
-
     /**Title constructor.
      * Assigns an 800 x 600 pixel display with a specified title.
      *\param title The title to assign the display with.*/
@@ -38,8 +31,9 @@ class InteractiveTurtleScreen : public AbstractTurtleScreen {
      *\param width The width of the display, in pixels.
      *\param height The height of the display, in pixels.
      *\param title The title of the display.*/
-    InteractiveTurtleScreen(int width, int height,
-                            const std::string& title = SCREEN_DEFAULT_TITLE);
+    InteractiveTurtleScreen(
+        int width = 800, int height = 600,
+        const std::string& title = "CTurtle " CTURTLE_VERSION);
 
     /**Destructor. Calls "bye" function.*/
     ~InteractiveTurtleScreen();
@@ -302,8 +296,8 @@ class InteractiveTurtleScreen : public AbstractTurtleScreen {
     // map of fonts. only "default" is initially populated.
     std::unordered_map<std::string, std::unique_ptr<BitmapFont>> fonts;
 };
-
+#ifndef CTURTLE_HEADLESS
 typedef InteractiveTurtleScreen TurtleScreen;
-
+#endif
 }  // namespace cturtle
 #endif

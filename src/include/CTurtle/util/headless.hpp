@@ -3,7 +3,6 @@
 // Licensed under the MIT License.
 // See LICENSE for details.
 #pragma once
-#ifdef CTURTLE_HEADLESS
 /*Include GIF utility when compiling headless mode.*/
 
 /* public domain, Simple, Minimalistic GIF writer - http://jonolick.com
@@ -442,23 +441,3 @@ inline void jo_gif_end(jo_gif_t* gif) {
 
 // Optional define to disable HTML Base64 Image output
 // #define CTURTLE_HEADLESS_NO_HTML
-
-// Disable CImg Display
-#ifdef cimg_display
-#undef cimg_display
-#endif
-#define cimg_display 0
-
-// Define default width and height.
-#ifndef CTURTLE_HEADLESS_WIDTH
-#define CTURTLE_HEADLESS_WIDTH 400
-#endif
-
-#ifndef CTURTLE_HEADLESS_HEIGHT
-#define CTURTLE_HEADLESS_HEIGHT 300
-#endif
-
-#ifndef CTURTLE_HEADLESS_SAVEDIR
-#define CTURTLE_HEADLESS_SAVEDIR "./cturtle.gif"
-#endif
-#endif

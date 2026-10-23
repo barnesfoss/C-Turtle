@@ -2,7 +2,6 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#ifndef CTURTLE_HEADLESS /*NOT DEFINED CTURTLE_HEADLESS*/
 #include "CTurtle/turtle/InteractiveTurtleScreen.hpp"
 
 #include <list>
@@ -16,32 +15,12 @@
 #include "CTurtle/types/Color.hpp"
 #include "CTurtle/util/io.hpp"
 namespace cturtle {
-InteractiveTurtleScreen::InteractiveTurtleScreen()
-    : display(SCREEN_DEFAULT_WIDTH, SCREEN_DEFAULT_HEIGHT, SCREEN_DEFAULT_TITLE,
-              0) {
-    canvas.assign(display);
-    initEventThread();
-    redraw(true);
-    fonts[DEFAULT_FONT] = std::unique_ptr<BitmapFont>(
-        new BitmapFont(decodeDefaultFont(), DEFAULT_FONT_ASCII_OFFSET,
-                       DEFAULT_FONT_GLYPH_WIDTH, DEFAULT_FONT_GLYPH_HEIGHT,
-                       DEFAULT_FONT_GLYPHS_X, DEFAULT_FONT_GLYPHS_Y));
-}
 InteractiveTurtleScreen::InteractiveTurtleScreen(const std::string& title)
-    : display(SCREEN_DEFAULT_WIDTH, SCREEN_DEFAULT_HEIGHT, title.c_str(), 0) {
-    canvas.assign(display);
-    initEventThread();
-    redraw(true);
-
-    fonts[DEFAULT_FONT] = std::unique_ptr<BitmapFont>(
-        new BitmapFont(decodeDefaultFont(), DEFAULT_FONT_ASCII_OFFSET,
-                       DEFAULT_FONT_GLYPH_WIDTH, DEFAULT_FONT_GLYPH_HEIGHT,
-                       DEFAULT_FONT_GLYPHS_X, DEFAULT_FONT_GLYPHS_Y));
-}
+    : InteractiveTurtleScreen(600, 800, title) {}
 
 InteractiveTurtleScreen::InteractiveTurtleScreen(int width, int height,
                                                  const std::string& title)
-    : display(width, height) {
+    : display(width, height, title.c_str(), 0) {
     display.set_title(title.c_str());
     display.set_normalization(0);
     canvas.assign(display);
@@ -544,4 +523,3 @@ void InteractiveTurtleScreen::initEventThread() {
 }
 
 }  // namespace cturtle
-#endif /*CTURTLE_HEADLESS*/

@@ -2,7 +2,6 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#ifdef CTURTLE_HEADLESS
 #include "CTurtle/turtle/OfflineTurtleScreen.hpp"
 
 #include <fstream>
@@ -109,10 +108,9 @@ void OfflineTurtleScreen::redraw(bool invalidate) {
 
     // This copy is NOT efficient.
     // We should be able to take advantage of loop unrolling here
-    for (int x = 0; x < CTURTLE_HEADLESS_WIDTH; x++) {
-        for (int y = 0; y < CTURTLE_HEADLESS_HEIGHT; y++) {
-            uint8_t* pixel =
-                (&gifWriteBuffer[(y * CTURTLE_HEADLESS_WIDTH + x) * 4]);
+    for (size_t x = 0; x < width; x++) {
+        for (size_t y = 0; y < height; y++) {
+            uint8_t* pixel = (&gifWriteBuffer[(y * width + x) * 4]);
 
             pixel[0] = turtleComposite(x, y, 0);
             pixel[1] = turtleComposite(x, y, 1);
@@ -125,17 +123,21 @@ void OfflineTurtleScreen::redraw(bool invalidate) {
     jo_gif_frame(&gif, gifWriteBuffer, delayMS / 10, true);
 }
 
-OfflineTurtleScreen::OfflineTurtleScreen() {
-    const int width = CTURTLE_HEADLESS_WIDTH;
-    const int height = CTURTLE_HEADLESS_HEIGHT;
+OfflineTurtleScreen::OfflineTurtleScreen(size_t width, size_t height,
+                                         const std::string saveDir)
+    : width(width), height(height), saveDir(saveDir.c_str()) {
+    gifWriteBuffer = new uint8_t[width * height * 4];
     canvas.assign(width, height, 1, 3);
     canvas.fill(255);
     isClosed = false;
-    gif = jo_gif_start(CTURTLE_HEADLESS_SAVEDIR, width, height, 1, 31);
+    gif = jo_gif_start(saveDir.c_str(), width, height, 1, 31);
     redraw(true);
 }
 
-OfflineTurtleScreen::~OfflineTurtleScreen() { bye(); }
+OfflineTurtleScreen::~OfflineTurtleScreen() {
+    delete gifWriteBuffer;
+    bye();
+}
 
 void OfflineTurtleScreen::tracer(int countmax, unsigned int delayMS) {
     redrawCounterMax = countmax;
@@ -207,7 +209,7 @@ void OfflineTurtleScreen::delay(unsigned int ms) { delayMS = ms; }
 
 unsigned int OfflineTurtleScreen::delay() const { return delayMS; }
 
-void OfflineTurtleScreen::bye() {
+void OfflineTurtleScreen::bye(bool printHtml) {
     if (isClosed) return;
 
     /*finish up drawing if redraw counter hasn't been met*/
@@ -217,21 +219,23 @@ void OfflineTurtleScreen::bye() {
 
     jo_gif_end(&gif);
 
-#ifndef CTURTLE_HEADLESS_NO_HTML
-    /*print base-64 encoding + HTML source*/
-    std::string imgCode = encodeFileBase64(CTURTLE_HEADLESS_SAVEDIR);
+    if (printHtml) {
+        /*print base-64 encoding + HTML source*/
+        std::string imgCode = encodeFileBase64(saveDir);
 
-    // See the following to understand why this was done:
-    // https://github.com/ericsonga/APCSAReview/blob/master/_sources/TurtleGraphics/turtleBasics.rst
-    // HTML can be captured for later output.
-    std::cout << "<img src=\'data:image/gif;base64,";
-    std::cout << imgCode;
-    std::cout << "\'/>";
-#endif
-
+        // See the following to understand why this was done:
+        // https://github.com/ericsonga/APCSAReview/blob/master/_sources/TurtleGraphics/turtleBasics.rst
+        // HTML can be captured for later output.
+        std::cout << "<img src=\'data:image/gif;base64,";
+        std::cout << imgCode;
+        std::cout << "\'/>";
+    }
     clearscreen();
     isClosed = true;
 }
+
+void OfflineTurtleScreen::bye() { bye(true); }
+
 Transform OfflineTurtleScreen::screentransform() const {
     return Transform()
         .translate(canvas.width() / 2, canvas.height() / 2)
@@ -265,4 +269,3 @@ const BitmapFont& OfflineTurtleScreen::font(const std::string& name) const {
 }
 
 }  // namespace cturtle
-#endif

@@ -3,7 +3,6 @@
 // Licensed under the MIT License.
 // See LICENSE for details.
 #pragma once
-#ifdef CTURTLE_HEADLESS
 #include <string>
 
 #include "CTurtle/font.hpp"
@@ -13,9 +12,11 @@ namespace cturtle {
 std::string encodeFileBase64(const std::string& path);
 class OfflineTurtleScreen : public AbstractTurtleScreen {
    public:
-    OfflineTurtleScreen();
+    OfflineTurtleScreen(size_t width = 400, size_t height = 300,
+                        const std::string saveDir = "./cturtle.gif");
 
     ~OfflineTurtleScreen();
+    ;
 
     void tracer(int countmax, unsigned int delayMS = 10);
 
@@ -54,6 +55,10 @@ class OfflineTurtleScreen : public AbstractTurtleScreen {
 
     unsigned int delay() const;
 
+    // Kind of a bad way of doing this but because bye() is a virtual function
+    // we have to do this
+    void bye(bool printHtml);
+
     void bye();
 
     Transform screentransform() const;
@@ -78,8 +83,7 @@ class OfflineTurtleScreen : public AbstractTurtleScreen {
 
    private:
     /*this can be a constant allocated buffer.*/
-    uint8_t
-        gifWriteBuffer[CTURTLE_HEADLESS_WIDTH * CTURTLE_HEADLESS_HEIGHT * 4];
+    uint8_t* gifWriteBuffer;
     // allocate enough to hold width*height*4 (4 because RGBA).
     // this fits into uint32_t type quite nicely. (8+8+8+8 bits, r+g+b+a) = 32
 
@@ -124,9 +128,11 @@ class OfflineTurtleScreen : public AbstractTurtleScreen {
         new BitmapFont(decodeDefaultFont(), DEFAULT_FONT_ASCII_OFFSET,
                        DEFAULT_FONT_GLYPH_WIDTH, DEFAULT_FONT_GLYPH_HEIGHT,
                        DEFAULT_FONT_GLYPHS_X, DEFAULT_FONT_GLYPHS_Y));
+
+    size_t width, height;
+    const char* saveDir;
 };
-
+#ifdef CTURTLE_HEADLESS
 typedef OfflineTurtleScreen TurtleScreen;
-
-}  // namespace cturtle
 #endif
+}  // namespace cturtle
