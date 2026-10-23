@@ -43,6 +43,10 @@ std::string encodeFileBase64(const std::string& path) {
     std::streamsize size = file.tellg();
     file.seekg(0, std::ios::beg);
 
+    if (!file.is_open()) {
+        throw std::runtime_error("Failed to open file: " + path);
+    }
+
     std::vector<unsigned char> buffer(size, 0);
     file.read(reinterpret_cast<char*>(buffer.data()), size);
     return base64::encode(buffer);
