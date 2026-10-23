@@ -130,7 +130,7 @@ class OfflineTurtleScreen : public AbstractTurtleScreen {
                        DEFAULT_FONT_GLYPHS_X, DEFAULT_FONT_GLYPHS_Y));
 
     size_t width, height;
-    const char* saveDir;
+    const std::string saveDir;
 };
 #ifdef CTURTLE_HEADLESS
 typedef OfflineTurtleScreen TurtleScreen;
