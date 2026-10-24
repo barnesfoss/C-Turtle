@@ -213,7 +213,7 @@ std::list<int> warnsdorf(Graph &graph, std::list<int> neighbors) {
 }
 
 bool tour(Graph &g, Vertex &start, std::list<int> &path) {
-  const int limit = g.vertices.size();
+  const size_t limit = g.vertices.size();
 
   if (start.visited)
     return false;
@@ -240,7 +240,7 @@ bool tour(Graph &g, Vertex &start, std::list<int> &path) {
 }
 
 std::list<int> tourIterative(Graph &g, Vertex &start) {
-  const int limit = g.vertices.size();
+  const size_t limit = g.vertices.size();
   std::list<std::pair<int, std::list<int>>> frames; // stack frames
 
   // prepare first frame
