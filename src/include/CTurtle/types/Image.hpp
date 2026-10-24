@@ -4,7 +4,7 @@
 // See LICENSE for details.
 #ifndef CTURTLE_TYPES_IMAGE_HPP
 #define CTURTLE_TYPES_IMAGE_HPP
-#include "CImg.h"
+#include "CTurtle/cimg_pch.hpp"
 
 #include <stdint.h>
 

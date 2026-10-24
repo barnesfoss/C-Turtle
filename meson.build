@@ -60,7 +60,8 @@ cturtle_lib = library(
     cturtle_sources,
     dependencies: cturtle_deps,
     include_directories: cturtle_inc,
-    cpp_args: cturtle_args
+    cpp_args: cturtle_args,
+    cpp_pch: 'src/include/CTurtle/cimg_pch.hpp'
 )
 
 cturtle_dep = declare_dependency(
