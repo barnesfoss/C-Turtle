@@ -27,12 +27,12 @@ InteractiveTurtleScreen::InteractiveTurtleScreen(int width, int height, const st
   initEventThread();
   redraw(true);
 
-  fonts[DEFAULT_FONT] = std::unique_ptr<BitmapFont>(new BitmapFont(decodeDefaultFont(),
-                                                                   DEFAULT_FONT_ASCII_OFFSET,
-                                                                   DEFAULT_FONT_GLYPH_WIDTH,
-                                                                   DEFAULT_FONT_GLYPH_HEIGHT,
-                                                                   DEFAULT_FONT_GLYPHS_X,
-                                                                   DEFAULT_FONT_GLYPHS_Y));
+  fonts[DEFAULT_FONT] = std::unique_ptr<AbstractFont>(new BitmapFont(decodeDefaultFont(),
+                                                                     DEFAULT_FONT_ASCII_OFFSET,
+                                                                     DEFAULT_FONT_GLYPH_WIDTH,
+                                                                     DEFAULT_FONT_GLYPH_HEIGHT,
+                                                                     DEFAULT_FONT_GLYPHS_X,
+                                                                     DEFAULT_FONT_GLYPHS_Y));
 }
 
 InteractiveTurtleScreen::~InteractiveTurtleScreen() {

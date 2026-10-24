@@ -250,7 +250,7 @@ bool Turtle::pushStamp(const Transform &t, AbstractDrawableObject *geom) {
 
 bool Turtle::pushText(const Transform &t,
                       const Color &color,
-                      const BitmapFont &font,
+                      const AbstractFont &font,
                       const std::string &text,
                       float scale,
                       TextAlign alignment) {

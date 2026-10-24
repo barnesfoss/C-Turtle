@@ -13,8 +13,11 @@
 #include <utility>
 
 namespace cturtle {
-Text::Text(
-    std::string text, const BitmapFont &font, const Color &color, float scale, TextAlign alignment)
+Text::Text(std::string text,
+           const AbstractFont &font,
+           const Color &color,
+           float scale,
+           TextAlign alignment)
     : text(std::move(text)), font(font), alignment(alignment), scale(scale) {
   fillColor = color;
 }

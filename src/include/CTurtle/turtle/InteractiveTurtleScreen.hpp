@@ -219,7 +219,7 @@ public:
   /**
    * Returns a read-only reference to the bitmap font with the specified name.
    * @param name to be given to the font.
-   * @return read-only BitmapFont reference.
+   * @return read-only Font reference.
    */
   const BitmapFont &font(const std::string &name) const override;
 
@@ -292,7 +292,7 @@ protected:
   std::list<std::tuple<TimerFunc, uint64_t, uint64_t>> timerBindings;
 
   // map of fonts. only "default" is initially populated.
-  std::unordered_map<std::string, std::unique_ptr<BitmapFont>> fonts;
+  std::unordered_map<std::string, std::unique_ptr<AbstractFont>> fonts;
 };
 #ifndef CTURTLE_HEADLESS
 typedef InteractiveTurtleScreen TurtleScreen;

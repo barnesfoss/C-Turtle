@@ -4,7 +4,7 @@
 // See LICENSE for details.
 #pragma once
 #include "AbstractDrawableObject.hpp"
-#include "CTurtle/font/BitmapFont.hpp"
+#include "CTurtle/font/AbstractFont.hpp"
 #include "CTurtle/font/TextAlign.hpp"
 
 #include <string>
@@ -16,12 +16,12 @@ class Text : public AbstractDrawableObject {
 public:
   /** The text to draw.*/
   const std::string text;
-  const BitmapFont &font;
+  const AbstractFont &font;
   TextAlign alignment;
   float scale;
 
   Text(std::string text,
-       const BitmapFont &font,
+       const AbstractFont &font,
        const Color &color,
        float scale = 1.0f,
        TextAlign alignment = TEXT_ALIGN_LEFT);
