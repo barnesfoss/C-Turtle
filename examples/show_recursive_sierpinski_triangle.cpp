@@ -34,7 +34,7 @@ void sierpinski(ct::Point a, ct::Point b, ct::Point c, int degree, ct::Turtle &m
   }
 }
 
-int main(int argc, char **argv) {
+int main() {
   ct::TurtleScreen scr;
   ct::Turtle rt(scr);
 

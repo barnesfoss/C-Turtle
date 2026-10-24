@@ -21,7 +21,7 @@ void koch(ct::Turtle &turtle, int order, float size) {
   }
 }
 
-int main(int argc, char **argv) {
+int main() {
   ct::TurtleScreen scr;
   scr.delay(0);
 

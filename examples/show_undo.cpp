@@ -23,7 +23,7 @@ void draw_star(ct::Turtle &t) {
     t.undo();
 }
 
-int main(int argc, char **argv) {
+int main() {
   ct::TurtleScreen scr;
   scr.tracer(0, 0);
   ct::Turtle turtle(scr);

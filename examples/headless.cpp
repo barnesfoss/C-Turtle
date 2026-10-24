@@ -8,7 +8,7 @@
 
 namespace ct = cturtle;
 
-int main(int argc, char **argv) {
+int main() {
   ct::TurtleScreen scr(800, 600, "./test.gif");
   ct::Turtle rt(scr);
 

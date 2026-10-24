@@ -299,7 +299,7 @@ std::list<int> tourTheKnight(ChessBoard &board, int startX = 1, int startY = 1) 
   return path;
 }
 
-int main(int argc, char **argv) {
+int main() {
   ChessBoard board(8, 50);
   Graph g;
   board.genKnightGraph(g);

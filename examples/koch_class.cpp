@@ -70,7 +70,7 @@ private:
   ct::Turtle &turtleRef;
 };
 
-int main(int argc, char **argv) {
+int main() {
   ct::TurtleScreen scr;
   ct::Turtle turtle(scr);
 

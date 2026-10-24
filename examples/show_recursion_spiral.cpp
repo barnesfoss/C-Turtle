@@ -16,7 +16,7 @@ void spiral(ct::Turtle &rt, int len) {
   }
 }
 
-int main(int argc, char **argv) {
+int main() {
   ct::TurtleScreen scr;
   ct::Turtle rt(scr);
 
