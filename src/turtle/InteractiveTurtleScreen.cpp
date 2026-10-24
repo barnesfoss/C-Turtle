@@ -438,7 +438,7 @@ void InteractiveTurtleScreen::addfont(const std::string &name, const BitmapFont 
  * @param name to be given to the font.
  * @return read-only BitmapFont reference.
  */
-const BitmapFont &InteractiveTurtleScreen::font(const std::string &name) const {
+const AbstractFont &InteractiveTurtleScreen::font(const std::string &name) const {
   return *fonts.at(name);
 }
 

@@ -3,7 +3,7 @@
 // Licensed under the MIT License.
 // See LICENSE for details.
 #pragma once
-#include "CTurtle/font/BitmapFont.hpp"
+#include "CTurtle/font/AbstractFont.hpp"
 #include "CTurtle/geometry/Transform.hpp"
 #include "CTurtle/geometry/ivec2.hpp"
 #include "CTurtle/objects/Polygon.hpp"
@@ -140,7 +140,7 @@ public:
    * @brief Returns a read-only reference to a previously loaded bitmap font.
    * @return a previously loaded font by its specified name.
    */
-  virtual const BitmapFont &font(const std::string &name) const = 0;
+  virtual const AbstractFont &font(const std::string &name) const = 0;
 
 protected:
   /**

@@ -4,6 +4,7 @@
 // See LICENSE for details.
 #pragma once
 #include "CTurtle.hpp"
+#include "CTurtle/font/BitmapFont.hpp"
 #include "CTurtle/util/io.hpp"
 
 #include <mutex>
@@ -221,7 +222,7 @@ public:
    * @param name to be given to the font.
    * @return read-only Font reference.
    */
-  const BitmapFont &font(const std::string &name) const override;
+  const AbstractFont &font(const std::string &name) const override;
 
 protected:
   /**The underlying display mechanism for a TurtleScreen.*/

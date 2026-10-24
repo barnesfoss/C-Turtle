@@ -291,7 +291,7 @@ AbstractDrawableObject &HeadlessTurtleScreen::shape(const std::string &name) {
  * screen.
  * @return read-only BitmapFont reference to the default font.
  */
-const BitmapFont &HeadlessTurtleScreen::font(const std::string &name) const {
+const AbstractFont &HeadlessTurtleScreen::font(const std::string &name) const {
   return *defaultFont;
 }
 } // namespace cturtle

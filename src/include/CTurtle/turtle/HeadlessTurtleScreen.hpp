@@ -4,6 +4,7 @@
 // See LICENSE for details.
 #pragma once
 #include "CTurtle/font.hpp"
+#include "CTurtle/font/BitmapFont.hpp"
 #include "CTurtle/turtle/AbstractTurtleScreen.hpp"
 #include "CTurtle/util/jo_gif.hpp"
 
@@ -80,9 +81,9 @@ public:
    * reference to the default font.
    * @param name to be given to the font. Irrelevant for the offline turtle
    * screen.
-   * @return read-only BitmapFont reference to the default font.
+   * @return read-only AbstractFont reference to the default font.
    */
-  const BitmapFont &font(const std::string &name) const;
+  const AbstractFont &font(const std::string &name) const;
 
 private:
   /*this can be a constant allocated buffer.*/
@@ -127,13 +128,13 @@ private:
   /**Redraw counter max.*/
   int redrawCounterMax = 1;
 
-  std::unique_ptr<BitmapFont> defaultFont =
-      std::unique_ptr<BitmapFont>(new BitmapFont(decodeDefaultFont(),
-                                                 DEFAULT_FONT_ASCII_OFFSET,
-                                                 DEFAULT_FONT_GLYPH_WIDTH,
-                                                 DEFAULT_FONT_GLYPH_HEIGHT,
-                                                 DEFAULT_FONT_GLYPHS_X,
-                                                 DEFAULT_FONT_GLYPHS_Y));
+  std::unique_ptr<AbstractFont> defaultFont =
+      std::unique_ptr<AbstractFont>(new BitmapFont(decodeDefaultFont(),
+                                                   DEFAULT_FONT_ASCII_OFFSET,
+                                                   DEFAULT_FONT_GLYPH_WIDTH,
+                                                   DEFAULT_FONT_GLYPH_HEIGHT,
+                                                   DEFAULT_FONT_GLYPHS_X,
+                                                   DEFAULT_FONT_GLYPHS_Y));
 
   size_t width, height;
   const std::string saveDir;
