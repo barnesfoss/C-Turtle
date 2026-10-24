@@ -19,7 +19,7 @@ void draw_star(ct::Turtle &t) {
 
   unsigned int endStackSz = t.undobufferentries() - startStackSz;
 
-  for (int i = 0; i < endStackSz; i++)
+  for (unsigned int i = 0; i < endStackSz; i++)
     t.undo();
 }
 
