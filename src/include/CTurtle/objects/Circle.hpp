@@ -2,7 +2,8 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
+#ifndef CTURTLE_OBJECTS_CIRCLE_HPP
+#define CTURTLE_OBJECTS_CIRCLE_HPP
 #include "AbstractDrawableObject.hpp"
 
 namespace cturtle {
@@ -38,3 +39,4 @@ public:
   void draw(const Transform &t, Image &imgRef) const override;
 };
 } // namespace cturtle
+#endif

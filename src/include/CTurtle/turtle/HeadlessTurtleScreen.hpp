@@ -2,7 +2,8 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
+#ifndef CTURTLE_TURTLE_HEADLESSTURTLESCREEN_HPP
+#define CTURTLE_TURTLE_HEADLESSTURTLESCREEN_HPP
 #include "CTurtle/font.hpp"
 #include "CTurtle/turtle/AbstractTurtleScreen.hpp"
 #include "CTurtle/util/jo_gif.hpp"
@@ -142,3 +143,4 @@ private:
 typedef HeadlessTurtleScreen TurtleScreen;
 #endif
 } // namespace cturtle
+#endif

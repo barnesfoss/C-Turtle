@@ -2,7 +2,8 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
+#ifndef CTURTLE_FONT_BITMAPFONT_HPP
+#define CTURTLE_FONT_BITMAPFONT_HPP
 #include "CTurtle/geometry/ivec2.hpp"
 #include "CTurtle/types/Image.hpp"
 
@@ -76,3 +77,4 @@ private:
   int asciiOffset, glyphWidth, glyphHeight, glyphsX, glyphsY;
 };
 } // namespace cturtle
+#endif

@@ -2,7 +2,8 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
+#ifndef CTURTLE_UTIL_IO_HPP
+#define CTURTLE_UTIL_IO_HPP
 #include "CImg.h"
 
 #include <functional>
@@ -233,3 +234,4 @@ struct InputEvent {
  */
 KeyboardKey keyFromName(const std::string &name);
 } // namespace cturtle
+#endif

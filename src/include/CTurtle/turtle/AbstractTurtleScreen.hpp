@@ -2,7 +2,8 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
+#ifndef CTURTLE_TURTLE_ABSTRACTTURTLESCREEN_HPP
+#define CTURTLE_TURTLE_ABSTRACTTURTLESCREEN_HPP
 #include "CTurtle/font/BitmapFont.hpp"
 #include "CTurtle/geometry/Transform.hpp"
 #include "CTurtle/geometry/ivec2.hpp"
@@ -175,3 +176,4 @@ protected:
   AbstractTurtleScreen() = default;
 };
 } // namespace cturtle
+#endif

@@ -2,7 +2,8 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
+#ifndef CTURTLE_OBJECTS_SPRITE_HPP
+#define CTURTLE_OBJECTS_SPRITE_HPP
 #include "AbstractDrawableObject.hpp"
 
 namespace cturtle {
@@ -40,3 +41,4 @@ protected:
   Image &spriteImg;
 };
 } // namespace cturtle
+#endif

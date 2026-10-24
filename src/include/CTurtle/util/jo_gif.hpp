@@ -1,4 +1,3 @@
-#pragma once
 /* public domain, Simple, Minimalistic GIF writer - http://jonolick.com
  *
  * Modified by Jesse W. Walker

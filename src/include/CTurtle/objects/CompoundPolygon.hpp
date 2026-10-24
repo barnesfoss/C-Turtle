@@ -2,7 +2,8 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
+#ifndef CTURTLE_OBJECTS_COMPOUNDPOLYGON_HPP
+#define CTURTLE_OBJECTS_COMPOUNDPOLYGON_HPP
 #include "AbstractDrawableObject.hpp"
 
 #include <list>
@@ -51,3 +52,4 @@ protected:
   std::list<component_t> components;
 };
 } // namespace cturtle
+#endif

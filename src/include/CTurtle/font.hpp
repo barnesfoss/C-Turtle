@@ -2,7 +2,8 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
+#ifndef CTURTLE_DEFAULTFONT_HPP
+#define CTURTLE_DEFAULTFONT_HPP
 #include <stdint.h>
 
 namespace cturtle {
@@ -149,3 +150,5 @@ const uint32_t DEFAULT_FONT_PIXELS[] = {
     0x0,        0x0,        0x0,        0x0,        0x0,        0x0,        0x0,        0x0,
     0x0,        0x0,        0x0,        0x0,        0x0,        0x0,        0x0,        0x0};
 } // namespace cturtle
+
+#endif

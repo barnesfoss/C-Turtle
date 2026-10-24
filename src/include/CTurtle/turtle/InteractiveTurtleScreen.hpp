@@ -2,9 +2,11 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
-#include "CTurtle.hpp"
+#ifndef CTURTLE_TURTLE_INTERACTIVETURTLESCREEN_HPP
+#define CTURTLE_TURTLE_INTERACTIVETURTLESCREEN_HPP
+#include "AbstractTurtleScreen.hpp"
 #include "CTurtle/util/io.hpp"
+#include "CTurtle/version.h"
 
 #include <mutex>
 #include <thread>
@@ -298,3 +300,4 @@ protected:
 typedef InteractiveTurtleScreen TurtleScreen;
 #endif
 } // namespace cturtle
+#endif

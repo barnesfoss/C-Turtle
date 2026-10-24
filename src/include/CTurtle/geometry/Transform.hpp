@@ -2,7 +2,8 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
+#ifndef CTURTLE_GEOMETRY_TRANSFORM_HPP
+#define CTURTLE_GEOMETRY_TRANSFORM_HPP
 #include "CTurtle/geometry/ivec2.hpp"
 #include "CTurtle/types/Color.hpp"
 #include "CTurtle/types/Image.hpp"
@@ -221,3 +222,4 @@ template <typename T> T toDegrees(T val) {
  *\param width The width of the line.*/
 void drawLine(Image &imgRef, int x1, int y1, int x2, int y2, const Color &c, int width = 1);
 } // namespace cturtle
+#endif

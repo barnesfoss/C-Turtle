@@ -2,7 +2,8 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
+#ifndef CTURTLE_OBJECTS_SCENEOBJECT_HPP
+#define CTURTLE_OBJECTS_SCENEOBJECT_HPP
 #include "AbstractDrawableObject.hpp"
 
 #include <memory>
@@ -43,3 +44,4 @@ struct SceneObject {
   SceneObject(AbstractDrawableObject *geom, const Transform &t, int stampid = -1);
 };
 } // namespace cturtle
+#endif

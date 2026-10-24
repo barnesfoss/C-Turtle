@@ -2,7 +2,8 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
+#ifndef CTURTLE_GEOMETRY_IVEC2_HPP
+#define CTURTLE_GEOMETRY_IVEC2_HPP
 #include <math.h>
 
 namespace cturtle {
@@ -74,3 +75,4 @@ ivec2 lerp(const ivec2 &a, const ivec2 &b, float progress);
 /**\brief An alias for ivec2. Strictly for convenience and clarity.*/
 typedef ivec2 Point;
 } // namespace cturtle
+#endif

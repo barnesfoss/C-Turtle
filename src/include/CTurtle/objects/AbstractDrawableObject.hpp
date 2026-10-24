@@ -2,7 +2,8 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
+#ifndef CTURTLE_OBJECTS_ABSTRACTDRAWABLEOBJECT_HPP
+#define CTURTLE_OBJECTS_ABSTRACTDRAWABLEOBJECT_HPP
 #include "CTurtle/geometry/Transform.hpp"
 #include "CTurtle/types/Color.hpp"
 
@@ -46,3 +47,4 @@ protected:
   AbstractDrawableObject() = default;
 };
 } // namespace cturtle
+#endif

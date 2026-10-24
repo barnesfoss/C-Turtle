@@ -2,7 +2,8 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
+#ifndef CTURTLE_TURTLE_PENSTATE_HPP
+#define CTURTLE_TURTLE_PENSTATE_HPP
 #include "CTurtle/geometry/Transform.hpp"
 #include "CTurtle/objects/AbstractDrawableObject.hpp"
 #include "TurtleSpeed.hpp"
@@ -50,3 +51,4 @@ struct PenState {
   PenState &operator=(const PenState &copy);
 };
 } // namespace cturtle
+#endif
