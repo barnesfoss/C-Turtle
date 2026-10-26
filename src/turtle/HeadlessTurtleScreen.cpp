@@ -2,11 +2,11 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#include "CTurtle/turtle/HeadlessTurtleScreen.hpp"
+#include "turtle/HeadlessTurtleScreen.hpp"
 
-#include "CTurtle.hpp"
-#include "CTurtle/util/base64.hpp"
-#include "CTurtle/util/jo_gif.hpp"
+#include "turtle/Turtle.hpp"
+#include "util/base64.hpp"
+#include "util/jo_gif.hpp"
 
 #include <fstream>
 #include <iostream>

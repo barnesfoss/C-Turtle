@@ -2,7 +2,7 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#include "CTurtle/objects/Line.hpp"
+#include "objects/Line.hpp"
 
 namespace cturtle {
 Line::Line(Point a, Point b, const Color &color, int width) : pointA(a), pointB(b), width(width) {

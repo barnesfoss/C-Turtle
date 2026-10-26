@@ -2,9 +2,9 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#include "CTurtle/objects/SceneObject.hpp"
+#include "objects/SceneObject.hpp"
 
-#include "CTurtle/geometry/Transform.hpp"
+#include "geometry/Transform.hpp"
 
 namespace cturtle {
 SceneObject::SceneObject(AbstractDrawableObject *geom, const Transform &t, int stampid)

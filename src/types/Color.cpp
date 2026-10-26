@@ -2,7 +2,7 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#include "CTurtle/types/Color.hpp"
+#include "types/Color.hpp"
 
 #include <chrono>
 #include <random>

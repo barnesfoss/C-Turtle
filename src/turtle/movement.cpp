@@ -5,7 +5,7 @@
 // File: movement.cpp
 // Definitions for the `Turtle` class's movement methods
 
-#include "CTurtle.hpp"
+#include "turtle/Turtle.hpp"
 
 namespace cturtle {
 void Turtle::forward(int pixels) {

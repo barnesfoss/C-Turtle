@@ -4,7 +4,7 @@
 // See LICENSE for details.
 // File: turtle.cpp
 // Unclassified method definitions for the `Turtle` class
-#include "CTurtle.hpp"
+#include "turtle/Turtle.hpp"
 
 #include <string>
 

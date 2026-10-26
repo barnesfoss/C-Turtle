@@ -2,7 +2,7 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#include "CTurtle/objects/Sprite.hpp"
+#include "objects/Sprite.hpp"
 
 namespace cturtle {
 Sprite::Sprite(Image &img, int outlineWidth, const Color &outlineColor) : spriteImg(img) {

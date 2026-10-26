@@ -6,6 +6,8 @@
 #include "CTurtle/font/TextAlign.hpp"
 #include "CTurtle/objects/Line.hpp"
 #include "PenState.hpp"
+#ifndef CTURTLE_TURTLE_TURTLE_HPP
+#define CTURTLE_TURTLE_TURTLE_HPP
 
 namespace cturtle {
 /**
@@ -507,3 +509,4 @@ protected:
   Turtle() = default;
 };
 } // namespace cturtle
+#endif

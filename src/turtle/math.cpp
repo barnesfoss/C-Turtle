@@ -5,7 +5,7 @@
 // File: math.cpp
 // Definitions for the `Turtle` class arithmetic functions
 
-#include "CTurtle.hpp"
+#include "turtle/Turtle.hpp"
 
 #include <cmath>
 

@@ -2,7 +2,7 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#include "CTurtle/objects/Polygon.hpp"
+#include "objects/Polygon.hpp"
 
 namespace cturtle {
 Polygon::Polygon(const std::initializer_list<Point> &init) : points(init) {

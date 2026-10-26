@@ -2,7 +2,7 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#include "CTurtle/objects/Text.hpp"
+#include "objects/Text.hpp"
 
 #include <algorithm>
 #include <cmath>

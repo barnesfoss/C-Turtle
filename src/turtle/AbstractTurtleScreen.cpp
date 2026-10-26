@@ -2,9 +2,9 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#include "CTurtle/turtle/AbstractTurtleScreen.hpp"
+#include "turtle/AbstractTurtleScreen.hpp"
 
-#include "CTurtle/font.hpp"
+#include "font.hpp"
 
 namespace cturtle {
 void AbstractTurtleScreen::clear() {

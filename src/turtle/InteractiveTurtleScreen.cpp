@@ -2,12 +2,12 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#include "CTurtle/turtle/InteractiveTurtleScreen.hpp"
+#include "turtle/InteractiveTurtleScreen.hpp"
 
-#include "CTurtle.hpp"
-#include "CTurtle/font.hpp"
-#include "CTurtle/types/Color.hpp"
-#include "CTurtle/util/io.hpp"
+#include "font.hpp"
+#include "turtle/Turtle.hpp"
+#include "types/Color.hpp"
+#include "util/io.hpp"
 
 #include <list>
 #include <memory>

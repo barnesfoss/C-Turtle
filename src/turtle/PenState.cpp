@@ -2,7 +2,7 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#include "CTurtle/turtle/PenState.hpp"
+#include "turtle/PenState.hpp"
 
 namespace cturtle {
 PenState::PenState(const PenState &copy) {

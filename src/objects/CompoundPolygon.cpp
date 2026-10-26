@@ -2,9 +2,9 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#include "CTurtle/objects/CompoundPolygon.hpp"
+#include "objects/CompoundPolygon.hpp"
 
-#include "CTurtle/objects/AbstractDrawableObject.hpp"
+#include "objects/AbstractDrawableObject.hpp"
 
 namespace cturtle {
 CompoundPolygon::CompoundPolygon(const CompoundPolygon &copy) : AbstractDrawableObject(copy) {
