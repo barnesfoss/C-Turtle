@@ -2,14 +2,15 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
-#include <stdint.h>
-
+#ifndef CTURTLE_TYPES_COLOR_HPP
+#define CTURTLE_TYPES_COLOR_HPP
 #include <cstdint>
+#include <stdint.h>
 #include <string>
 #include <unordered_map>
+
 namespace cturtle::detail {
-typedef uint32_t color_int_t;  // Alpha value is extra, serves as padding
+typedef uint32_t color_int_t; // Alpha value is extra, serves as padding
 typedef uint64_t time_t;
 /**
  * Pack three bytes into an integer to represent a color at compile time.
@@ -18,10 +19,7 @@ typedef uint64_t time_t;
  * @param b
  * @return
  */
-constexpr color_int_t resolveColorInt(uint8_t r, uint8_t g,
-                                      uint8_t b) noexcept {
-    return ((r & 0xFF) << 16) + ((g & 0xFF) << 8) + (b & 0xFF);
-}
+color_int_t resolveColorInt(uint8_t r, uint8_t g, uint8_t b) noexcept;
 
 /**
  * Unpacks R, G, and B bytes to the specified pointer (assumes sequential
@@ -29,7 +27,7 @@ constexpr color_int_t resolveColorInt(uint8_t r, uint8_t g,
  * @param pack
  * @param colorPtr
  */
-void resolveColorComp(color_int_t pack, uint8_t& r, uint8_t& g, uint8_t& b);
+void resolveColorComp(color_int_t pack, uint8_t &r, uint8_t &g, uint8_t &b);
 
 /**
  * Returns the total number of milliseconds elapsed since the UNIX epoch.
@@ -40,20 +38,16 @@ time_t epochTime();
 /**\brief Sleeps the calling thread the specified amount of milliseconds.
  *\param ms The total number of milliseconds to sleep.*/
 void sleep(uint32_t ms);
+
 namespace col {
 const detail::color_int_t alice_blue = detail::resolveColorInt(240, 248, 255);
 const detail::color_int_t AliceBlue = detail::resolveColorInt(240, 248, 255);
-const detail::color_int_t antique_white =
-    detail::resolveColorInt(250, 235, 215);
+const detail::color_int_t antique_white = detail::resolveColorInt(250, 235, 215);
 const detail::color_int_t AntiqueWhite = detail::resolveColorInt(250, 235, 215);
-const detail::color_int_t AntiqueWhite1 =
-    detail::resolveColorInt(255, 239, 219);
-const detail::color_int_t AntiqueWhite2 =
-    detail::resolveColorInt(238, 223, 204);
-const detail::color_int_t AntiqueWhite3 =
-    detail::resolveColorInt(205, 192, 176);
-const detail::color_int_t AntiqueWhite4 =
-    detail::resolveColorInt(139, 131, 120);
+const detail::color_int_t AntiqueWhite1 = detail::resolveColorInt(255, 239, 219);
+const detail::color_int_t AntiqueWhite2 = detail::resolveColorInt(238, 223, 204);
+const detail::color_int_t AntiqueWhite3 = detail::resolveColorInt(205, 192, 176);
+const detail::color_int_t AntiqueWhite4 = detail::resolveColorInt(139, 131, 120);
 const detail::color_int_t aquamarine = detail::resolveColorInt(127, 255, 212);
 const detail::color_int_t aquamarine1 = detail::resolveColorInt(127, 255, 212);
 const detail::color_int_t aquamarine2 = detail::resolveColorInt(118, 238, 198);
@@ -71,10 +65,8 @@ const detail::color_int_t bisque2 = detail::resolveColorInt(238, 213, 183);
 const detail::color_int_t bisque3 = detail::resolveColorInt(205, 183, 158);
 const detail::color_int_t bisque4 = detail::resolveColorInt(139, 125, 107);
 const detail::color_int_t black = detail::resolveColorInt(0, 0, 0);
-const detail::color_int_t blanched_almond =
-    detail::resolveColorInt(255, 235, 205);
-const detail::color_int_t BlanchedAlmond =
-    detail::resolveColorInt(255, 235, 205);
+const detail::color_int_t blanched_almond = detail::resolveColorInt(255, 235, 205);
+const detail::color_int_t BlanchedAlmond = detail::resolveColorInt(255, 235, 205);
 const detail::color_int_t blue = detail::resolveColorInt(0, 0, 255);
 const detail::color_int_t blue_violet = detail::resolveColorInt(138, 43, 226);
 const detail::color_int_t blue1 = detail::resolveColorInt(0, 0, 255);
@@ -113,10 +105,8 @@ const detail::color_int_t coral1 = detail::resolveColorInt(255, 114, 86);
 const detail::color_int_t coral2 = detail::resolveColorInt(238, 106, 80);
 const detail::color_int_t coral3 = detail::resolveColorInt(205, 91, 69);
 const detail::color_int_t coral4 = detail::resolveColorInt(139, 62, 47);
-const detail::color_int_t cornflower_blue =
-    detail::resolveColorInt(100, 149, 237);
-const detail::color_int_t CornflowerBlue =
-    detail::resolveColorInt(100, 149, 237);
+const detail::color_int_t cornflower_blue = detail::resolveColorInt(100, 149, 237);
+const detail::color_int_t CornflowerBlue = detail::resolveColorInt(100, 149, 237);
 const detail::color_int_t cornsilk = detail::resolveColorInt(255, 248, 220);
 const detail::color_int_t cornsilk1 = detail::resolveColorInt(255, 248, 220);
 const detail::color_int_t cornsilk2 = detail::resolveColorInt(238, 232, 205);
@@ -129,23 +119,19 @@ const detail::color_int_t cyan3 = detail::resolveColorInt(0, 205, 205);
 const detail::color_int_t cyan4 = detail::resolveColorInt(0, 139, 139);
 const detail::color_int_t dark_blue = detail::resolveColorInt(0, 0, 139);
 const detail::color_int_t dark_cyan = detail::resolveColorInt(0, 139, 139);
-const detail::color_int_t dark_goldenrod =
-    detail::resolveColorInt(184, 134, 11);
+const detail::color_int_t dark_goldenrod = detail::resolveColorInt(184, 134, 11);
 const detail::color_int_t dark_gray = detail::resolveColorInt(169, 169, 169);
 const detail::color_int_t dark_green = detail::resolveColorInt(0, 100, 0);
 const detail::color_int_t dark_grey = detail::resolveColorInt(169, 169, 169);
 const detail::color_int_t dark_khaki = detail::resolveColorInt(189, 183, 107);
 const detail::color_int_t dark_magenta = detail::resolveColorInt(139, 0, 139);
-const detail::color_int_t dark_olive_green =
-    detail::resolveColorInt(85, 107, 47);
+const detail::color_int_t dark_olive_green = detail::resolveColorInt(85, 107, 47);
 const detail::color_int_t dark_orange = detail::resolveColorInt(255, 140, 0);
 const detail::color_int_t dark_orchid = detail::resolveColorInt(153, 50, 204);
 const detail::color_int_t dark_red = detail::resolveColorInt(139, 0, 0);
 const detail::color_int_t dark_salmon = detail::resolveColorInt(233, 150, 122);
-const detail::color_int_t dark_sea_green =
-    detail::resolveColorInt(143, 188, 143);
-const detail::color_int_t dark_slate_blue =
-    detail::resolveColorInt(72, 61, 139);
+const detail::color_int_t dark_sea_green = detail::resolveColorInt(143, 188, 143);
+const detail::color_int_t dark_slate_blue = detail::resolveColorInt(72, 61, 139);
 const detail::color_int_t dark_slate_gray = detail::resolveColorInt(47, 79, 79);
 const detail::color_int_t dark_slate_grey = detail::resolveColorInt(47, 79, 79);
 const detail::color_int_t dark_turquoise = detail::resolveColorInt(0, 206, 209);
@@ -153,12 +139,9 @@ const detail::color_int_t dark_violet = detail::resolveColorInt(148, 0, 211);
 const detail::color_int_t DarkBlue = detail::resolveColorInt(0, 0, 139);
 const detail::color_int_t DarkCyan = detail::resolveColorInt(0, 139, 139);
 const detail::color_int_t DarkGoldenrod = detail::resolveColorInt(184, 134, 11);
-const detail::color_int_t DarkGoldenrod1 =
-    detail::resolveColorInt(255, 185, 15);
-const detail::color_int_t DarkGoldenrod2 =
-    detail::resolveColorInt(238, 173, 14);
-const detail::color_int_t DarkGoldenrod3 =
-    detail::resolveColorInt(205, 149, 12);
+const detail::color_int_t DarkGoldenrod1 = detail::resolveColorInt(255, 185, 15);
+const detail::color_int_t DarkGoldenrod2 = detail::resolveColorInt(238, 173, 14);
+const detail::color_int_t DarkGoldenrod3 = detail::resolveColorInt(205, 149, 12);
 const detail::color_int_t DarkGoldenrod4 = detail::resolveColorInt(139, 101, 8);
 const detail::color_int_t DarkGray = detail::resolveColorInt(169, 169, 169);
 const detail::color_int_t DarkGreen = detail::resolveColorInt(0, 100, 0);
@@ -166,14 +149,10 @@ const detail::color_int_t DarkGrey = detail::resolveColorInt(169, 169, 169);
 const detail::color_int_t DarkKhaki = detail::resolveColorInt(189, 183, 107);
 const detail::color_int_t DarkMagenta = detail::resolveColorInt(139, 0, 139);
 const detail::color_int_t DarkOliveGreen = detail::resolveColorInt(85, 107, 47);
-const detail::color_int_t DarkOliveGreen1 =
-    detail::resolveColorInt(202, 255, 112);
-const detail::color_int_t DarkOliveGreen2 =
-    detail::resolveColorInt(188, 238, 104);
-const detail::color_int_t DarkOliveGreen3 =
-    detail::resolveColorInt(162, 205, 90);
-const detail::color_int_t DarkOliveGreen4 =
-    detail::resolveColorInt(110, 139, 61);
+const detail::color_int_t DarkOliveGreen1 = detail::resolveColorInt(202, 255, 112);
+const detail::color_int_t DarkOliveGreen2 = detail::resolveColorInt(188, 238, 104);
+const detail::color_int_t DarkOliveGreen3 = detail::resolveColorInt(162, 205, 90);
+const detail::color_int_t DarkOliveGreen4 = detail::resolveColorInt(110, 139, 61);
 const detail::color_int_t DarkOrange = detail::resolveColorInt(255, 140, 0);
 const detail::color_int_t DarkOrange1 = detail::resolveColorInt(255, 127, 0);
 const detail::color_int_t DarkOrange2 = detail::resolveColorInt(238, 118, 0);
@@ -187,24 +166,16 @@ const detail::color_int_t DarkOrchid4 = detail::resolveColorInt(104, 34, 139);
 const detail::color_int_t DarkRed = detail::resolveColorInt(139, 0, 0);
 const detail::color_int_t DarkSalmon = detail::resolveColorInt(233, 150, 122);
 const detail::color_int_t DarkSeaGreen = detail::resolveColorInt(143, 188, 143);
-const detail::color_int_t DarkSeaGreen1 =
-    detail::resolveColorInt(193, 255, 193);
-const detail::color_int_t DarkSeaGreen2 =
-    detail::resolveColorInt(180, 238, 180);
-const detail::color_int_t DarkSeaGreen3 =
-    detail::resolveColorInt(155, 205, 155);
-const detail::color_int_t DarkSeaGreen4 =
-    detail::resolveColorInt(105, 139, 105);
+const detail::color_int_t DarkSeaGreen1 = detail::resolveColorInt(193, 255, 193);
+const detail::color_int_t DarkSeaGreen2 = detail::resolveColorInt(180, 238, 180);
+const detail::color_int_t DarkSeaGreen3 = detail::resolveColorInt(155, 205, 155);
+const detail::color_int_t DarkSeaGreen4 = detail::resolveColorInt(105, 139, 105);
 const detail::color_int_t DarkSlateBlue = detail::resolveColorInt(72, 61, 139);
 const detail::color_int_t DarkSlateGray = detail::resolveColorInt(47, 79, 79);
-const detail::color_int_t DarkSlateGray1 =
-    detail::resolveColorInt(151, 255, 255);
-const detail::color_int_t DarkSlateGray2 =
-    detail::resolveColorInt(141, 238, 238);
-const detail::color_int_t DarkSlateGray3 =
-    detail::resolveColorInt(121, 205, 205);
-const detail::color_int_t DarkSlateGray4 =
-    detail::resolveColorInt(82, 139, 139);
+const detail::color_int_t DarkSlateGray1 = detail::resolveColorInt(151, 255, 255);
+const detail::color_int_t DarkSlateGray2 = detail::resolveColorInt(141, 238, 238);
+const detail::color_int_t DarkSlateGray3 = detail::resolveColorInt(121, 205, 205);
+const detail::color_int_t DarkSlateGray4 = detail::resolveColorInt(82, 139, 139);
 const detail::color_int_t DarkSlateGrey = detail::resolveColorInt(47, 79, 79);
 const detail::color_int_t DarkTurquoise = detail::resolveColorInt(0, 206, 209);
 const detail::color_int_t DarkViolet = detail::resolveColorInt(148, 0, 211);
@@ -491,55 +462,36 @@ const detail::color_int_t khaki2 = detail::resolveColorInt(238, 230, 133);
 const detail::color_int_t khaki3 = detail::resolveColorInt(205, 198, 115);
 const detail::color_int_t khaki4 = detail::resolveColorInt(139, 134, 78);
 const detail::color_int_t lavender = detail::resolveColorInt(230, 230, 250);
-const detail::color_int_t lavender_blush =
-    detail::resolveColorInt(255, 240, 245);
-const detail::color_int_t LavenderBlush =
-    detail::resolveColorInt(255, 240, 245);
-const detail::color_int_t LavenderBlush1 =
-    detail::resolveColorInt(255, 240, 245);
-const detail::color_int_t LavenderBlush2 =
-    detail::resolveColorInt(238, 224, 229);
-const detail::color_int_t LavenderBlush3 =
-    detail::resolveColorInt(205, 193, 197);
-const detail::color_int_t LavenderBlush4 =
-    detail::resolveColorInt(139, 131, 134);
+const detail::color_int_t lavender_blush = detail::resolveColorInt(255, 240, 245);
+const detail::color_int_t LavenderBlush = detail::resolveColorInt(255, 240, 245);
+const detail::color_int_t LavenderBlush1 = detail::resolveColorInt(255, 240, 245);
+const detail::color_int_t LavenderBlush2 = detail::resolveColorInt(238, 224, 229);
+const detail::color_int_t LavenderBlush3 = detail::resolveColorInt(205, 193, 197);
+const detail::color_int_t LavenderBlush4 = detail::resolveColorInt(139, 131, 134);
 const detail::color_int_t lawn_green = detail::resolveColorInt(124, 252, 0);
 const detail::color_int_t LawnGreen = detail::resolveColorInt(124, 252, 0);
-const detail::color_int_t lemon_chiffon =
-    detail::resolveColorInt(255, 250, 205);
+const detail::color_int_t lemon_chiffon = detail::resolveColorInt(255, 250, 205);
 const detail::color_int_t LemonChiffon = detail::resolveColorInt(255, 250, 205);
-const detail::color_int_t LemonChiffon1 =
-    detail::resolveColorInt(255, 250, 205);
-const detail::color_int_t LemonChiffon2 =
-    detail::resolveColorInt(238, 233, 191);
-const detail::color_int_t LemonChiffon3 =
-    detail::resolveColorInt(205, 201, 165);
-const detail::color_int_t LemonChiffon4 =
-    detail::resolveColorInt(139, 137, 112);
+const detail::color_int_t LemonChiffon1 = detail::resolveColorInt(255, 250, 205);
+const detail::color_int_t LemonChiffon2 = detail::resolveColorInt(238, 233, 191);
+const detail::color_int_t LemonChiffon3 = detail::resolveColorInt(205, 201, 165);
+const detail::color_int_t LemonChiffon4 = detail::resolveColorInt(139, 137, 112);
 const detail::color_int_t light_blue = detail::resolveColorInt(173, 216, 230);
 const detail::color_int_t light_coral = detail::resolveColorInt(240, 128, 128);
 const detail::color_int_t light_cyan = detail::resolveColorInt(224, 255, 255);
-const detail::color_int_t light_goldenrod =
-    detail::resolveColorInt(238, 221, 130);
-const detail::color_int_t light_goldenrod_yellow =
-    detail::resolveColorInt(250, 250, 210);
+const detail::color_int_t light_goldenrod = detail::resolveColorInt(238, 221, 130);
+const detail::color_int_t light_goldenrod_yellow = detail::resolveColorInt(250, 250, 210);
 const detail::color_int_t light_gray = detail::resolveColorInt(211, 211, 211);
 const detail::color_int_t light_green = detail::resolveColorInt(144, 238, 144);
 const detail::color_int_t light_grey = detail::resolveColorInt(211, 211, 211);
 const detail::color_int_t light_pink = detail::resolveColorInt(255, 182, 193);
 const detail::color_int_t light_salmon = detail::resolveColorInt(255, 160, 122);
-const detail::color_int_t light_sea_green =
-    detail::resolveColorInt(32, 178, 170);
-const detail::color_int_t light_sky_blue =
-    detail::resolveColorInt(135, 206, 250);
-const detail::color_int_t light_slate_blue =
-    detail::resolveColorInt(132, 112, 255);
-const detail::color_int_t light_slate_gray =
-    detail::resolveColorInt(119, 136, 153);
-const detail::color_int_t light_slate_grey =
-    detail::resolveColorInt(119, 136, 153);
-const detail::color_int_t light_steel_blue =
-    detail::resolveColorInt(176, 196, 222);
+const detail::color_int_t light_sea_green = detail::resolveColorInt(32, 178, 170);
+const detail::color_int_t light_sky_blue = detail::resolveColorInt(135, 206, 250);
+const detail::color_int_t light_slate_blue = detail::resolveColorInt(132, 112, 255);
+const detail::color_int_t light_slate_gray = detail::resolveColorInt(119, 136, 153);
+const detail::color_int_t light_slate_grey = detail::resolveColorInt(119, 136, 153);
+const detail::color_int_t light_steel_blue = detail::resolveColorInt(176, 196, 222);
 const detail::color_int_t light_yellow = detail::resolveColorInt(255, 255, 224);
 const detail::color_int_t LightBlue = detail::resolveColorInt(173, 216, 230);
 const detail::color_int_t LightBlue1 = detail::resolveColorInt(191, 239, 255);
@@ -552,18 +504,12 @@ const detail::color_int_t LightCyan1 = detail::resolveColorInt(224, 255, 255);
 const detail::color_int_t LightCyan2 = detail::resolveColorInt(209, 238, 238);
 const detail::color_int_t LightCyan3 = detail::resolveColorInt(180, 205, 205);
 const detail::color_int_t LightCyan4 = detail::resolveColorInt(122, 139, 139);
-const detail::color_int_t LightGoldenrod =
-    detail::resolveColorInt(238, 221, 130);
-const detail::color_int_t LightGoldenrod1 =
-    detail::resolveColorInt(255, 236, 139);
-const detail::color_int_t LightGoldenrod2 =
-    detail::resolveColorInt(238, 220, 130);
-const detail::color_int_t LightGoldenrod3 =
-    detail::resolveColorInt(205, 190, 112);
-const detail::color_int_t LightGoldenrod4 =
-    detail::resolveColorInt(139, 129, 76);
-const detail::color_int_t LightGoldenrodYellow =
-    detail::resolveColorInt(250, 250, 210);
+const detail::color_int_t LightGoldenrod = detail::resolveColorInt(238, 221, 130);
+const detail::color_int_t LightGoldenrod1 = detail::resolveColorInt(255, 236, 139);
+const detail::color_int_t LightGoldenrod2 = detail::resolveColorInt(238, 220, 130);
+const detail::color_int_t LightGoldenrod3 = detail::resolveColorInt(205, 190, 112);
+const detail::color_int_t LightGoldenrod4 = detail::resolveColorInt(139, 129, 76);
+const detail::color_int_t LightGoldenrodYellow = detail::resolveColorInt(250, 250, 210);
 const detail::color_int_t LightGray = detail::resolveColorInt(211, 211, 211);
 const detail::color_int_t LightGreen = detail::resolveColorInt(144, 238, 144);
 const detail::color_int_t LightGrey = detail::resolveColorInt(211, 211, 211);
@@ -579,29 +525,18 @@ const detail::color_int_t LightSalmon3 = detail::resolveColorInt(205, 129, 98);
 const detail::color_int_t LightSalmon4 = detail::resolveColorInt(139, 87, 66);
 const detail::color_int_t LightSeaGreen = detail::resolveColorInt(32, 178, 170);
 const detail::color_int_t LightSkyBlue = detail::resolveColorInt(135, 206, 250);
-const detail::color_int_t LightSkyBlue1 =
-    detail::resolveColorInt(176, 226, 255);
-const detail::color_int_t LightSkyBlue2 =
-    detail::resolveColorInt(164, 211, 238);
-const detail::color_int_t LightSkyBlue3 =
-    detail::resolveColorInt(141, 182, 205);
+const detail::color_int_t LightSkyBlue1 = detail::resolveColorInt(176, 226, 255);
+const detail::color_int_t LightSkyBlue2 = detail::resolveColorInt(164, 211, 238);
+const detail::color_int_t LightSkyBlue3 = detail::resolveColorInt(141, 182, 205);
 const detail::color_int_t LightSkyBlue4 = detail::resolveColorInt(96, 123, 139);
-const detail::color_int_t LightSlateBlue =
-    detail::resolveColorInt(132, 112, 255);
-const detail::color_int_t LightSlateGray =
-    detail::resolveColorInt(119, 136, 153);
-const detail::color_int_t LightSlateGrey =
-    detail::resolveColorInt(119, 136, 153);
-const detail::color_int_t LightSteelBlue =
-    detail::resolveColorInt(176, 196, 222);
-const detail::color_int_t LightSteelBlue1 =
-    detail::resolveColorInt(202, 225, 255);
-const detail::color_int_t LightSteelBlue2 =
-    detail::resolveColorInt(188, 210, 238);
-const detail::color_int_t LightSteelBlue3 =
-    detail::resolveColorInt(162, 181, 205);
-const detail::color_int_t LightSteelBlue4 =
-    detail::resolveColorInt(110, 123, 139);
+const detail::color_int_t LightSlateBlue = detail::resolveColorInt(132, 112, 255);
+const detail::color_int_t LightSlateGray = detail::resolveColorInt(119, 136, 153);
+const detail::color_int_t LightSlateGrey = detail::resolveColorInt(119, 136, 153);
+const detail::color_int_t LightSteelBlue = detail::resolveColorInt(176, 196, 222);
+const detail::color_int_t LightSteelBlue1 = detail::resolveColorInt(202, 225, 255);
+const detail::color_int_t LightSteelBlue2 = detail::resolveColorInt(188, 210, 238);
+const detail::color_int_t LightSteelBlue3 = detail::resolveColorInt(162, 181, 205);
+const detail::color_int_t LightSteelBlue4 = detail::resolveColorInt(110, 123, 139);
 const detail::color_int_t LightYellow = detail::resolveColorInt(255, 255, 224);
 const detail::color_int_t LightYellow1 = detail::resolveColorInt(255, 255, 224);
 const detail::color_int_t LightYellow2 = detail::resolveColorInt(238, 238, 209);
@@ -620,49 +555,32 @@ const detail::color_int_t maroon1 = detail::resolveColorInt(255, 52, 179);
 const detail::color_int_t maroon2 = detail::resolveColorInt(238, 48, 167);
 const detail::color_int_t maroon3 = detail::resolveColorInt(205, 41, 144);
 const detail::color_int_t maroon4 = detail::resolveColorInt(139, 28, 98);
-const detail::color_int_t medium_aquamarine =
-    detail::resolveColorInt(102, 205, 170);
+const detail::color_int_t medium_aquamarine = detail::resolveColorInt(102, 205, 170);
 const detail::color_int_t medium_blue = detail::resolveColorInt(0, 0, 205);
 const detail::color_int_t medium_orchid = detail::resolveColorInt(186, 85, 211);
-const detail::color_int_t medium_purple =
-    detail::resolveColorInt(147, 112, 219);
-const detail::color_int_t medium_sea_green =
-    detail::resolveColorInt(60, 179, 113);
-const detail::color_int_t medium_slate_blue =
-    detail::resolveColorInt(123, 104, 238);
-const detail::color_int_t medium_spring_green =
-    detail::resolveColorInt(0, 250, 154);
-const detail::color_int_t medium_turquoise =
-    detail::resolveColorInt(72, 209, 204);
-const detail::color_int_t medium_violet_red =
-    detail::resolveColorInt(199, 21, 133);
-const detail::color_int_t MediumAquamarine =
-    detail::resolveColorInt(102, 205, 170);
+const detail::color_int_t medium_purple = detail::resolveColorInt(147, 112, 219);
+const detail::color_int_t medium_sea_green = detail::resolveColorInt(60, 179, 113);
+const detail::color_int_t medium_slate_blue = detail::resolveColorInt(123, 104, 238);
+const detail::color_int_t medium_spring_green = detail::resolveColorInt(0, 250, 154);
+const detail::color_int_t medium_turquoise = detail::resolveColorInt(72, 209, 204);
+const detail::color_int_t medium_violet_red = detail::resolveColorInt(199, 21, 133);
+const detail::color_int_t MediumAquamarine = detail::resolveColorInt(102, 205, 170);
 const detail::color_int_t MediumBlue = detail::resolveColorInt(0, 0, 205);
 const detail::color_int_t MediumOrchid = detail::resolveColorInt(186, 85, 211);
-const detail::color_int_t MediumOrchid1 =
-    detail::resolveColorInt(224, 102, 255);
+const detail::color_int_t MediumOrchid1 = detail::resolveColorInt(224, 102, 255);
 const detail::color_int_t MediumOrchid2 = detail::resolveColorInt(209, 95, 238);
 const detail::color_int_t MediumOrchid3 = detail::resolveColorInt(180, 82, 205);
 const detail::color_int_t MediumOrchid4 = detail::resolveColorInt(122, 55, 139);
 const detail::color_int_t MediumPurple = detail::resolveColorInt(147, 112, 219);
-const detail::color_int_t MediumPurple1 =
-    detail::resolveColorInt(171, 130, 255);
-const detail::color_int_t MediumPurple2 =
-    detail::resolveColorInt(159, 121, 238);
-const detail::color_int_t MediumPurple3 =
-    detail::resolveColorInt(137, 104, 205);
+const detail::color_int_t MediumPurple1 = detail::resolveColorInt(171, 130, 255);
+const detail::color_int_t MediumPurple2 = detail::resolveColorInt(159, 121, 238);
+const detail::color_int_t MediumPurple3 = detail::resolveColorInt(137, 104, 205);
 const detail::color_int_t MediumPurple4 = detail::resolveColorInt(93, 71, 139);
-const detail::color_int_t MediumSeaGreen =
-    detail::resolveColorInt(60, 179, 113);
-const detail::color_int_t MediumSlateBlue =
-    detail::resolveColorInt(123, 104, 238);
-const detail::color_int_t MediumSpringGreen =
-    detail::resolveColorInt(0, 250, 154);
-const detail::color_int_t MediumTurquoise =
-    detail::resolveColorInt(72, 209, 204);
-const detail::color_int_t MediumVioletRed =
-    detail::resolveColorInt(199, 21, 133);
+const detail::color_int_t MediumSeaGreen = detail::resolveColorInt(60, 179, 113);
+const detail::color_int_t MediumSlateBlue = detail::resolveColorInt(123, 104, 238);
+const detail::color_int_t MediumSpringGreen = detail::resolveColorInt(0, 250, 154);
+const detail::color_int_t MediumTurquoise = detail::resolveColorInt(72, 209, 204);
+const detail::color_int_t MediumVioletRed = detail::resolveColorInt(199, 21, 133);
 const detail::color_int_t midnight_blue = detail::resolveColorInt(25, 25, 112);
 const detail::color_int_t MidnightBlue = detail::resolveColorInt(25, 25, 112);
 const detail::color_int_t mint_cream = detail::resolveColorInt(245, 255, 250);
@@ -707,38 +625,25 @@ const detail::color_int_t orchid1 = detail::resolveColorInt(255, 131, 250);
 const detail::color_int_t orchid2 = detail::resolveColorInt(238, 122, 233);
 const detail::color_int_t orchid3 = detail::resolveColorInt(205, 105, 201);
 const detail::color_int_t orchid4 = detail::resolveColorInt(139, 71, 137);
-const detail::color_int_t pale_goldenrod =
-    detail::resolveColorInt(238, 232, 170);
+const detail::color_int_t pale_goldenrod = detail::resolveColorInt(238, 232, 170);
 const detail::color_int_t pale_green = detail::resolveColorInt(152, 251, 152);
-const detail::color_int_t pale_turquoise =
-    detail::resolveColorInt(175, 238, 238);
-const detail::color_int_t pale_violet_red =
-    detail::resolveColorInt(219, 112, 147);
-const detail::color_int_t PaleGoldenrod =
-    detail::resolveColorInt(238, 232, 170);
+const detail::color_int_t pale_turquoise = detail::resolveColorInt(175, 238, 238);
+const detail::color_int_t pale_violet_red = detail::resolveColorInt(219, 112, 147);
+const detail::color_int_t PaleGoldenrod = detail::resolveColorInt(238, 232, 170);
 const detail::color_int_t PaleGreen = detail::resolveColorInt(152, 251, 152);
 const detail::color_int_t PaleGreen1 = detail::resolveColorInt(154, 255, 154);
 const detail::color_int_t PaleGreen2 = detail::resolveColorInt(144, 238, 144);
 const detail::color_int_t PaleGreen3 = detail::resolveColorInt(124, 205, 124);
 const detail::color_int_t PaleGreen4 = detail::resolveColorInt(84, 139, 84);
-const detail::color_int_t PaleTurquoise =
-    detail::resolveColorInt(175, 238, 238);
-const detail::color_int_t PaleTurquoise1 =
-    detail::resolveColorInt(187, 255, 255);
-const detail::color_int_t PaleTurquoise2 =
-    detail::resolveColorInt(174, 238, 238);
-const detail::color_int_t PaleTurquoise3 =
-    detail::resolveColorInt(150, 205, 205);
-const detail::color_int_t PaleTurquoise4 =
-    detail::resolveColorInt(102, 139, 139);
-const detail::color_int_t PaleVioletRed =
-    detail::resolveColorInt(219, 112, 147);
-const detail::color_int_t PaleVioletRed1 =
-    detail::resolveColorInt(255, 130, 171);
-const detail::color_int_t PaleVioletRed2 =
-    detail::resolveColorInt(238, 121, 159);
-const detail::color_int_t PaleVioletRed3 =
-    detail::resolveColorInt(205, 104, 127);
+const detail::color_int_t PaleTurquoise = detail::resolveColorInt(175, 238, 238);
+const detail::color_int_t PaleTurquoise1 = detail::resolveColorInt(187, 255, 255);
+const detail::color_int_t PaleTurquoise2 = detail::resolveColorInt(174, 238, 238);
+const detail::color_int_t PaleTurquoise3 = detail::resolveColorInt(150, 205, 205);
+const detail::color_int_t PaleTurquoise4 = detail::resolveColorInt(102, 139, 139);
+const detail::color_int_t PaleVioletRed = detail::resolveColorInt(219, 112, 147);
+const detail::color_int_t PaleVioletRed1 = detail::resolveColorInt(255, 130, 171);
+const detail::color_int_t PaleVioletRed2 = detail::resolveColorInt(238, 121, 159);
+const detail::color_int_t PaleVioletRed3 = detail::resolveColorInt(205, 104, 127);
 const detail::color_int_t PaleVioletRed4 = detail::resolveColorInt(139, 71, 93);
 const detail::color_int_t papaya_whip = detail::resolveColorInt(255, 239, 213);
 const detail::color_int_t PapayaWhip = detail::resolveColorInt(255, 239, 213);
@@ -887,8 +792,8 @@ const detail::color_int_t yellow2 = detail::resolveColorInt(238, 238, 0);
 const detail::color_int_t yellow3 = detail::resolveColorInt(205, 205, 0);
 const detail::color_int_t yellow4 = detail::resolveColorInt(139, 139, 0);
 const detail::color_int_t YellowGreen = detail::resolveColorInt(154, 205, 50);
-}  // namespace col
-}  // namespace cturtle::detail
+} // namespace col
+} // namespace cturtle::detail
 
 /**
  * \brief The primary representation of Color for this library.
@@ -1655,46 +1560,49 @@ const std::unordered_map<std::string, detail::color_int_t> NAMED_COLORS = {
 
 namespace cturtle {
 class Color {
-   public:
-    typedef uint8_t component_t;
+public:
+  typedef uint8_t component_t;
 
-    union {
-        struct {
-            component_t r;
-            component_t g;
-            component_t b;
-        };
-        component_t components[3];
+  union {
+    struct {
+      component_t r;
+      component_t g;
+      component_t b;
     };
 
-    Color(cturtle::detail::color_int_t packedColor);
+    component_t components[3];
+  };
 
-    /*\brief Color constructor for unsigned 8-bit RGB values.
-      \param r Red component.
-      \param g Green component.
-      \param b Blue component.*/
-    Color(component_t r, component_t g, component_t b);
+  Color(cturtle::detail::color_int_t packedColor);
 
-    /*\brief Copy constructor.
-      \param other Constant reference to other instance of a color object.*/
-    Color(const Color& other);
+  /*\brief Color constructor for unsigned 8-bit RGB values.
+    \param r Red component.
+    \param g Green component.
+    \param b Blue component.*/
+  Color(component_t r, component_t g, component_t b);
 
-    /*\brief Name constructor. Takes a literal color name as an input.
-      \param name The name of the color from which to derive value.
-      \sa fromName()*/
-    Color(const std::string& name);
+  /*\brief Copy constructor.
+    \param other Constant reference to other instance of a color object.*/
+  Color(const Color &other);
 
-    /*\brief Default constructor.
-                     Initializes this color to white. (all components 255)*/
-    Color();
+  /*\brief Name constructor. Takes a literal color name as an input.
+    \param name The name of the color from which to derive value.
+    \sa fromName()*/
+  Color(const std::string &name);
 
-    Color& operator=(cturtle::detail::color_int_t pack);
+  /*\brief Default constructor.
+                   Initializes this color to white. (all components 255)*/
+  Color();
 
-    /**\brief Returns a pointer to the first component of this color.
-                     This is useful for functions which require color as an
-      input array. Returns a read-only pointer to the elements, in sequential
-      order.*/
-    const component_t* rgbPtr() const;
+  Color &operator=(cturtle::detail::color_int_t pack);
+
+  Color &operator=(const Color &other) = default;
+
+  /**\brief Returns a pointer to the first component of this color.
+                   This is useful for functions which require color as an
+    input array. Returns a read-only pointer to the elements, in sequential
+    order.*/
+  const component_t *rgbPtr() const;
 };
 
 /**
@@ -1708,6 +1616,6 @@ Color randomColor();
  * Default colors have an associated name string you can use to retrieve
  * their values. All of the names can be found here:
  * https://www.tcl.tk/man/tcl8.4/TkCmd/colors.htm */
-Color fromName(const std::string& name);
-
-}  // namespace cturtle
+Color fromName(const std::string &name);
+} // namespace cturtle
+#endif

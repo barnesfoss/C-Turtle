@@ -2,16 +2,20 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
+#ifndef CTURTLE_TURTLE_SCREENMODE_HPP
+#define CTURTLE_TURTLE_SCREENMODE_HPP
+
 namespace cturtle {
 /**\brief ScreenMode Enumeration, used to decide orientation of the drawing
  * calls on TurtleScreens.
  *\sa TurtleScreen::mode(ScreenMode)*/
 enum ScreenMode {
-    SM_STANDARD,
-    SM_LOGO  //,
-             //        SM_WORLD
+  SM_STANDARD,
+  SM_LOGO //,
+          //        SM_WORLD
 };
-}  // namespace cturtle
+} // namespace cturtle
+
 // I'm leaving out SM_WORLD. Adding it would really require more work than I
-// have time for./ namespace cturtle
+// have time for.
+#endif

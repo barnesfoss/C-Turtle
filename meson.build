@@ -5,6 +5,8 @@ project(
     meson_version: '>=1.1.0',
     default_options: [
         'cpp_std=c++17',
+        'unity=on',
+        'unity_size=8'
     ],
     license: 'MIT',
     license_files: 'LICENSE.txt',
@@ -17,8 +19,6 @@ cturtle_deps = [dependency('CImg')]
 if host_machine.system() == 'linux'
     cturtle_deps += dependency('x11')
 endif
-
-cturtle_inc = include_directories('src/include')
 
 cturtle_sources = files(
     
@@ -38,37 +38,34 @@ cturtle_sources = files(
     # Turtle
     'src/turtle/AbstractTurtleScreen.cpp',
     'src/turtle/InteractiveTurtleScreen.cpp',
-    'src/turtle/OfflineTurtleScreen.cpp',
+    'src/turtle/HeadlessTurtleScreen.cpp',
     'src/turtle/PenState.cpp',
     'src/turtle/draw.cpp',
     'src/turtle/math.cpp',
     'src/turtle/movement.cpp',
     'src/turtle/pen.cpp',
-    'src/turtle/turtle.cpp',
+    'src/turtle/Turtle.cpp',
     # Types
     'src/types/Color.cpp',
     # Utilities
     'src/util/base64.cpp',
     'src/util/io.cpp',
+    'src/util/CImgimpl.cpp',
 )
 cturtle_args = []
 
-if get_option('headless').enabled()
-  cturtle_args += ['-DCTURTLE_HEADLESS']
-endif
-
-cturtle_lib = static_library(
+cturtle_lib = library(
     'cturtle',
     cturtle_sources,
     dependencies: cturtle_deps,
-    include_directories: cturtle_inc,
-    cpp_args: cturtle_args
+    include_directories: ['src/include','src/include/CTurtle'],
+    cpp_args: cturtle_args,
 )
 
 cturtle_dep = declare_dependency(
     link_with: cturtle_lib,
     dependencies: cturtle_deps,
-    include_directories: cturtle_inc,
+    include_directories: 'src/include',
     compile_args: cturtle_args,
 )
 

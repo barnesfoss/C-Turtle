@@ -14,6 +14,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/2.0.0/),
     - Removed changelog from CTurtle.hpp and moved it to its own file `CHANGELOG.md`.
     - Completely refactored, no longer a single header, should be easier to maintain.
     - Moved to Meson build system!
+    - Changed constructor of TurtleScreen
+    - Removed use of CTURTLE_HEADLESS_WIDTH, CTURTLE_HEADLESS_HEIGHT, CTURTLE_HEADLESS_NO_HTML and CTURTLE_HEADLESS_SAVEDIR
+    - Renamed inaccurate `OfflineTurtleScreen` to `HeadlessTurtleScreen` 
+    - No longer exposes CImg and puts it in one implementation file leading to much faster build times
 
 ## [1.0.5] - 2025-02-06
 
@@ -45,7 +49,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/2.0.0/),
 ### Added
 
     - Deconstruction behavior is now well-defined for turtle screens and turtles within the same scope.
-    - bye() and exitonclick() are no longer necessary to close an InterativeTurtleScreen
+    - bye() and exitonclick() are no longer necessary to close an InteractiveTurtleScreen
     - Added xcor() and ycor() functions to the Turtle class (returns x coordinate and y coordinate of the related turtle)
 
 ### Changed

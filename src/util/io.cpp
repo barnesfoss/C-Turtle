@@ -2,7 +2,10 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#include "CTurtle/util/io.hpp"
+#include "util/io.hpp"
+
 namespace cturtle {
-KeyboardKey keyFromName(const std::string& name) { return NAMED_KEYS.at(name); }
-}  // namespace cturtle
+KeyboardKey keyFromName(const std::string &name) {
+  return NAMED_KEYS.at(name);
+}
+} // namespace cturtle
