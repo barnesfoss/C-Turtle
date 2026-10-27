@@ -32,7 +32,7 @@ void Polygon::draw(const Transform &t, Image &imgRef) const {
     the image object. Therefore, we can specify an "int" image with
     a width of 2 (x,y) and height of the total number of
     elements in the point vector.*/
-  cimg_library::CImg<int> passPts(static_cast<int>(points.size()), 2);
+  Image passPts(static_cast<int>(points.size()), 2);
 
   for (size_t i = 0; i < points.size(); i++) {
     const Point pt = t(points[i]);

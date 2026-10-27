@@ -230,7 +230,7 @@ void InteractiveTurtleScreen::redraw(bool invalidate) {
 
   // Handle resizes.
   if (display.window_width() != canvas.width() || display.window_height() != canvas.height()) {
-    canvas.resize(*display.internal());
+    canvas.resize(display);
     hasInvalidated = true;
   }
   int objectSize = static_cast<int>(objects.size());

@@ -226,7 +226,7 @@ void drawLine(Image &imgRef, int x1, int y1, int x2, int y2, const Color &c, int
   }
 
   const int radius = width / 2; // integer division, be careful here...
-  cimg_library::CImg<int> lineGeom(4, 2);
+  Image lineGeom(4, 2);
 
   // convert line (p1, p2) to polygon (p1,p2,p3,p4)... huzzah, O(1)
   // implementation! start with two transforms (one for each coordinate pair),

@@ -16,7 +16,7 @@ Circle::Circle(
 void Circle::draw(const Transform &t, Image &imgRef) const {
   if (steps <= 0)
     return; // no step check
-  cimg_library::CImg<int> passPts(steps, 2);
+  Image passPts(steps, 2);
 
   for (int i = 0; i < steps; i++) {
     Point p;
