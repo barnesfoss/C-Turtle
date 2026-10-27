@@ -10,14 +10,30 @@
 
 #include <string>
 
+#ifndef CTURTLE_HEADLESS_WIDTH
+#define CTURTLE_HEADLESS_WIDTH 400
+#endif
+#ifndef CTURTLE_HEADLESS_HEIGHT
+#define CTURTLE_HEADLESS_HEIGHT 300
+#endif
+#ifdef CTURTLE_HEADLESS_NO_HTML
+#undef CTURTLE_HEADLESS_NO_HTML
+#define CTURTLE_HEADLESS_HTML true
+#else
+#define CTURTLE_HEADLESS_HTML false
+#endif
+#ifndef CTURTLE_HEADLESS_SAVEDIR
+#define CTURTLE_HEADLESS_SAVEDIR "./cturtle.gif"
+#endif
+
 namespace cturtle {
 std::string encodeFileBase64(const std::string &path);
 
 class HeadlessTurtleScreen : public AbstractTurtleScreen {
 public:
-  HeadlessTurtleScreen(size_t width = 400,
-                       size_t height = 300,
-                       const std::string saveDir = "./cturtle.gif");
+  HeadlessTurtleScreen(size_t width = CTURTLE_HEADLESS_WIDTH,
+                       size_t height = CTURTLE_HEADLESS_HEIGHT,
+                       const std::string saveDir = CTURTLE_HEADLESS_SAVEDIR);
 
   ~HeadlessTurtleScreen();
   ;
@@ -61,7 +77,7 @@ public:
 
   // Kind of a bad way of doing this but because bye() is a virtual function
   // we have to do this
-  void bye(bool printHtml);
+  void bye(bool printHtml = CTURTLE_HEADLESS_HTML);
 
   void bye();
 
