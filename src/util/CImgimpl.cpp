@@ -2,6 +2,7 @@
 #include "types/AbstractDisplay.hpp"
 #include "types/DisplayCImg.hpp"
 #include "types/Image.hpp"
+#include "util/io.hpp"
 
 namespace cturtle {
 Display::Display(int x, int y, const std::string &name, int normalization) {
@@ -170,6 +171,11 @@ Image &Image::fill(uint8_t value) {
   return *this;
 }
 
+Image &Image::assign(const Display &disp) {
+  impl_->assign(*disp.internal());
+  return *this;
+}
+
 Image Image::get_crop(int x0, int y0, int x1, int y1) const {
   return Image(impl_->get_crop(x0, y0, x1, y1));
 }
@@ -266,5 +272,190 @@ Image &Image::save(const char *filename) const {
 
 Image &Image::save(const std::string &filename) const {
   return save(filename.c_str());
+}
+
+unsigned int toCImgKey(KeyboardKey key) {
+  using namespace cimg_library::cimg;
+
+  switch (key) {
+  case KEY_ESC:
+    return keyESC;
+  case KEY_F1:
+    return keyF1;
+  case KEY_F2:
+    return keyF2;
+  case KEY_F3:
+    return keyF3;
+  case KEY_F4:
+    return keyF4;
+  case KEY_F5:
+    return keyF5;
+  case KEY_F6:
+    return keyF6;
+  case KEY_F7:
+    return keyF7;
+  case KEY_F8:
+    return keyF8;
+  case KEY_F9:
+    return keyF9;
+  case KEY_F10:
+    return keyF10;
+  case KEY_F11:
+    return keyF11;
+  case KEY_F12:
+    return keyF12;
+  case KEY_PAUSE:
+    return keyPAUSE;
+  case KEY_1:
+    return key1;
+  case KEY_2:
+    return key2;
+  case KEY_3:
+    return key3;
+  case KEY_4:
+    return key4;
+  case KEY_5:
+    return key5;
+  case KEY_6:
+    return key6;
+  case KEY_7:
+    return key7;
+  case KEY_8:
+    return key8;
+  case KEY_9:
+    return key9;
+  case KEY_0:
+    return key0;
+  case KEY_BACKSPACE:
+    return keyBACKSPACE;
+  case KEY_INSERT:
+    return keyINSERT;
+  case KEY_HOME:
+    return keyHOME;
+  case KEY_PAGEUP:
+    return keyPAGEUP;
+  case KEY_TAB:
+    return keyTAB;
+  case KEY_Q:
+    return keyQ;
+  case KEY_W:
+    return keyW;
+  case KEY_E:
+    return keyE;
+  case KEY_R:
+    return keyR;
+  case KEY_T:
+    return keyT;
+  case KEY_Y:
+    return keyY;
+  case KEY_U:
+    return keyU;
+  case KEY_I:
+    return keyI;
+  case KEY_O:
+    return keyO;
+  case KEY_P:
+    return keyP;
+  case KEY_DELETE:
+    return keyDELETE;
+  case KEY_END:
+    return keyEND;
+  case KEY_PAGEDOWN:
+    return keyPAGEDOWN;
+  case KEY_CAPSLOCK:
+    return keyCAPSLOCK;
+  case KEY_A:
+    return keyA;
+  case KEY_S:
+    return keyS;
+  case KEY_D:
+    return keyD;
+  case KEY_F:
+    return keyF;
+  case KEY_G:
+    return keyG;
+  case KEY_H:
+    return keyH;
+  case KEY_J:
+    return keyJ;
+  case KEY_K:
+    return keyK;
+  case KEY_L:
+    return keyL;
+  case KEY_ENTER:
+    return keyENTER;
+  case KEY_SHIFTLEFT:
+    return keySHIFTLEFT;
+  case KEY_Z:
+    return keyZ;
+  case KEY_X:
+    return keyX;
+  case KEY_C:
+    return keyC;
+  case KEY_V:
+    return keyV;
+  case KEY_B:
+    return keyB;
+  case KEY_N:
+    return keyN;
+  case KEY_M:
+    return keyM;
+  case KEY_SHIFTRIGHT:
+    return keySHIFTRIGHT;
+  case KEY_ARROWUP:
+    return keyARROWUP;
+  case KEY_CTRLLEFT:
+    return keyCTRLLEFT;
+  case KEY_APPLEFT:
+    return keyAPPLEFT;
+  case KEY_ALT:
+    return keyALT;
+  case KEY_SPACE:
+    return keySPACE;
+  case KEY_ALTGR:
+    return keyALTGR;
+  case KEY_APPRIGHT:
+    return keyAPPRIGHT;
+  case KEY_MENU:
+    return keyMENU;
+  case KEY_CTRLRIGHT:
+    return keyCTRLRIGHT;
+  case KEY_ARROWLEFT:
+    return keyARROWLEFT;
+  case KEY_ARROWDOWN:
+    return keyARROWDOWN;
+  case KEY_ARROWRIGHT:
+    return keyARROWRIGHT;
+  case KEY_PAD0:
+    return keyPAD0;
+  case KEY_PAD1:
+    return keyPAD1;
+  case KEY_PAD2:
+    return keyPAD2;
+  case KEY_PAD3:
+    return keyPAD3;
+  case KEY_PAD4:
+    return keyPAD4;
+  case KEY_PAD5:
+    return keyPAD5;
+  case KEY_PAD6:
+    return keyPAD6;
+  case KEY_PAD7:
+    return keyPAD7;
+  case KEY_PAD8:
+    return keyPAD8;
+  case KEY_PAD9:
+    return keyPAD9;
+  case KEY_PADADD:
+    return keyPADADD;
+  case KEY_PADSUB:
+    return keyPADSUB;
+  case KEY_PADMUL:
+    return keyPADMUL;
+  case KEY_PADDIV:
+    return keyPADDIV;
+  }
+
+  return 0;
 }
 } // namespace cturtle

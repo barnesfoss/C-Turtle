@@ -23,7 +23,7 @@ InteractiveTurtleScreen::InteractiveTurtleScreen(int width, int height, const st
     : display(width, height, title, 0) {
   display.set_title(title);
   display.set_normalization(0);
-  canvas.assign(*display.internal());
+  canvas.assign(display);
   initEventThread();
   redraw(true);
 
@@ -495,7 +495,7 @@ void InteractiveTurtleScreen::initEventThread() {
       for (const auto &keyPair : keys) {
         KeyboardKey key = keyPair.second;
         const bool lastDown = std::find(mKeys.begin(), mKeys.end(), key) != mKeys.end();
-        const bool curDown = display.is_key((unsigned int)key);
+        const bool curDown = display.is_key(toCImgKey(key));
 
         int state = -1;
         if (!lastDown && curDown) {

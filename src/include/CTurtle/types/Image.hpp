@@ -62,6 +62,8 @@ public:
 
   Image &assign(const CImg<uint8_t> &img);
 
+  Image &assign(const Display &disp);
+
   Image &fill(uint8_t value);
 
   Image get_crop(int x0, int y0, int x1, int y1) const;
