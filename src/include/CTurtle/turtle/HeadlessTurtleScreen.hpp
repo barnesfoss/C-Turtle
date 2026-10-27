@@ -6,7 +6,7 @@
 #define CTURTLE_TURTLE_HEADLESSTURTLESCREEN_HPP
 #include "CTurtle/font.hpp"
 #include "CTurtle/turtle/AbstractTurtleScreen.hpp"
-#include "CTurtle/util/jo_gif.hpp"
+#include "CTurtle/turtle/Turtle.hpp"
 
 #include <string>
 
@@ -25,6 +25,8 @@
 #ifndef CTURTLE_HEADLESS_SAVEDIR
 #define CTURTLE_HEADLESS_SAVEDIR "./cturtle.gif"
 #endif
+
+struct GifFileType;
 
 namespace cturtle {
 std::string encodeFileBase64(const std::string &path);
@@ -106,7 +108,8 @@ private:
   // this fits into uint32_t type quite nicely. (8+8+8+8 bits, r+g+b+a) = 32
 
   // This struct controls the writing of resulting GIFs.
-  jo_gif_t gif;
+  int gifError;
+  GifFileType *gif;
 
   std::list<SceneObject> objects;
   std::list<Turtle *> turtles;

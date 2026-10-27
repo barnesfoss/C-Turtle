@@ -86,7 +86,7 @@ The following table contains examples, which do the exact same thing, between C-
 
 C-Turtle also supports drawing to an animated GIF instead of a display (e.g, "headless").
 This is configurable through the "headless" macro, or by using a `HeadlessTurtleScreen`.
-To write GIFs, C-Turtle uses [jo_gif](https://www.jonolick.com/home/gif-writer), a wonderful public domain GIF library created by Jon Olick.
+To write GIFs, C-Turtle uses [giflib](https://giflib.sourceforge.net/), an amazing open-source MIT license library written in 1989 and used for gifs almost everywhere!
 This avoids having ImageMagick as a dependency, which is what CImg uses by default to save animated GIFs.
 
 In "headless" mode, TurtleScreen has all functionality relating to input and background images removed.

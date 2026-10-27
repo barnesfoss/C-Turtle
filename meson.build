@@ -12,9 +12,10 @@ project(
     license_files: 'LICENSE.txt',
 )
 
-CImg = subproject('CImg')
-
-cturtle_deps = [dependency('CImg')]
+cturtle_deps = [
+  dependency('CImg'),
+  dependency('giflib', default_options: ['tests=disabled','progs=disabled'])
+]
 
 if host_machine.system() == 'linux'
     cturtle_deps += dependency('x11')

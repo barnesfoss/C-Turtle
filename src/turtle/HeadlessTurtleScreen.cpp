@@ -4,10 +4,14 @@
 // See LICENSE for details.
 #include "turtle/HeadlessTurtleScreen.hpp"
 
+extern "C" {
+#include "getarg.h"
+#include "gif_lib.h"
+}
 #include "turtle/Turtle.hpp"
 #include "util/base64.hpp"
-#include "util/jo_gif.hpp"
 
+#include <algorithm>
 #include <fstream>
 #include <iostream>
 // Automatic linking when operating under MSVC
@@ -121,8 +125,78 @@ void HeadlessTurtleScreen::redraw(bool invalidate) {
     }
   }
 
-  // GIF frames are measured in centiseconds, thus the /10 on the delayMS...
-  jo_gif_frame(&gif, gifWriteBuffer, delayMS / 10, true);
+  // Generate a color pallete for the frame using quantization
+  const size_t pixelCount = width * height;
+
+  std::vector<GifByteType> red(pixelCount);
+  std::vector<GifByteType> green(pixelCount);
+  std::vector<GifByteType> blue(pixelCount);
+  std::vector<GifPixelType> indexed(pixelCount);
+
+  // Write colors to the GifByteType vectors so we can quantize them using GifQuantizeBuffer
+  for (size_t i = 0; i < pixelCount; ++i) {
+    const uint8_t *pixel = &gifWriteBuffer[i * 4];
+    red[i] = pixel[0];
+    green[i] = pixel[1];
+    blue[i] = pixel[2];
+  }
+  GifColorType palette[256];
+
+  // Maybe add an argument for this in the future, need to ensure it's a power of two,
+  // could possibly take an integer between 1-9 and to get a colorCount number
+  int colorCount = 256;
+
+  // Quantize image pixels into a 256 color color palette
+  if (GifQuantizeBuffer(width,
+                        height,
+                        &colorCount,
+                        red.data(),
+                        green.data(),
+                        blue.data(),
+                        indexed.data(),
+                        palette) == GIF_ERROR) {
+    throw std::runtime_error("GifQuantizeBuffer failed");
+  }
+
+  // Calculate the mapSize, giflib requires this to be a power of 2
+  int mapSize = 2;
+  while (mapSize < colorCount) {
+    mapSize *= 2;
+  }
+
+  ColorMapObject *localMap = GifMakeMapObject(mapSize, palette);
+  if (!localMap) {
+    throw std::runtime_error("GifMakeMapObject failed");
+  }
+
+  // GIF frames are measured in centiseconds, thus the /10 on the delayMS
+  const int delayCS = delayMS / 10;
+
+  // Write the Graphics extension for GIF frame delay
+  // Label 21 F9
+  // ArgSize 04
+  // Bitflags 00
+  // DelayTime delayLower, delayUpper
+  // Transparent 0
+  GifByteType ext[] = {
+      0, static_cast<uint8_t>(delayCS & 0xFF), static_cast<uint8_t>((delayCS >> 8) & 0xFF), 0};
+  if (EGifPutExtension(gif, GRAPHICS_EXT_FUNC_CODE, 4, ext) == GIF_ERROR) {
+    GifFreeMapObject(localMap);
+    throw std::runtime_error("Failed to write GIF extension");
+  }
+
+  if (EGifPutImageDesc(gif, 0, 0, width, height, false, localMap) == GIF_ERROR) {
+    GifFreeMapObject(localMap);
+    throw std::runtime_error("Failed to write GIF image descriptor");
+  }
+
+  GifFreeMapObject(localMap);
+
+  for (size_t y = 0; y < height; ++y) {
+    if (EGifPutLine(gif, indexed.data() + y * width, width) == GIF_ERROR) {
+      throw std::runtime_error("Failed to write GIF pixels");
+    }
+  }
 }
 
 HeadlessTurtleScreen::HeadlessTurtleScreen(size_t width, size_t height, const std::string saveDir)
@@ -131,7 +205,19 @@ HeadlessTurtleScreen::HeadlessTurtleScreen(size_t width, size_t height, const st
   canvas.assign(width, height, 1, 3);
   canvas.fill(255);
   isClosed = false;
-  gif = jo_gif_start(saveDir.c_str(), width, height, 1, 31);
+
+  // Make the initial gif object
+  gif = EGifOpenFileName(saveDir.c_str(), false, &gifError);
+
+  if (!gif) {
+    std::cout << "EGifOpenFileName() failed - " << gifError << std::endl;
+  }
+
+  // Write a descriptor for the GIF w, h, resolution, bgcolor
+  if (EGifPutScreenDesc(gif, width, height, 8, 0, nullptr) == GIF_ERROR) {
+    throw std::runtime_error("EGifPutScreenDesc failed");
+  }
+
   redraw(true);
 }
 
@@ -239,7 +325,10 @@ void HeadlessTurtleScreen::bye(bool printHtml) {
     tracer(1, delayMS);
   }
 
-  jo_gif_end(&gif);
+  // Close & Write the GIF to the output directory
+  if (EGifCloseFile(gif, &gifError) == GIF_ERROR) {
+    std::cerr << "Failed to close GIF: " << gifError << '\n';
+  }
 
   if (printHtml) {
     /*print base-64 encoding + HTML source*/
