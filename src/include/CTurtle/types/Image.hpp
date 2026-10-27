@@ -62,7 +62,7 @@ public:
 
   Image &assign(const CImg<uint8_t> &img);
 
-  Image &assign(const Display disp);
+  Image &assign(const Display &disp);
 
   Image &fill(uint8_t value);
 

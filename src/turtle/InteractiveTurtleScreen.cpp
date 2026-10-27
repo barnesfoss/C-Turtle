@@ -9,6 +9,7 @@
 #include "types/Color.hpp"
 #include "util/io.hpp"
 
+#include <algorithm>
 #include <list>
 #include <memory>
 #include <mutex>
