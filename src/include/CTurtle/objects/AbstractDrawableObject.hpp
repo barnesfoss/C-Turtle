@@ -40,7 +40,7 @@ public:
    * \param t The transform at which to draw the geometry.
    * \param imgRef The canvas on which to draw.
    * \param c The color with to draw the geometry.*/
-  virtual void draw(const Transform &t, Image &imgRef) const = 0;
+  virtual void draw(const Transform &t, Image<> &imgRef) const = 0;
 
 protected:
   /**\brief Empty default constructor.*/

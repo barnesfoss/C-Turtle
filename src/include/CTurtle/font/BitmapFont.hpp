@@ -27,19 +27,19 @@ public:
    * @param glyphsY
    */
   BitmapFont(
-      const Image &img, int asciiOffs, int glyphWidth, int glyphHeight, int glyphsX, int glyphsY);
+      const Image<> &img, int asciiOffs, int glyphWidth, int glyphHeight, int glyphsX, int glyphsY);
 
   /**
    * Returns the appropriate image for the specified character.
    * \param c character to retrieve the associated image for.
    */
-  const Image &getGlyphImage(unsigned char c) const;
+  const Image<> &getGlyphImage(unsigned char c) const;
 
   /**
    * Returns the appropriate image for the specified character.
    * \param c character to retrieve the associated image for.
    */
-  const Image &operator[](unsigned char c) const;
+  const Image<> &operator[](unsigned char c) const;
 
   /**
    * \brief Returns the position of the specified character in the font image.
@@ -73,7 +73,7 @@ public:
   ivec2 getGlyphAxes() const;
 
 private:
-  std::vector<Image> glyphs;
+  std::vector<Image<>> glyphs;
   int asciiOffset, glyphWidth, glyphHeight, glyphsX, glyphsY;
 };
 } // namespace cturtle

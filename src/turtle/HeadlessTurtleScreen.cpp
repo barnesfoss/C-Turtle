@@ -210,7 +210,7 @@ ivec2 HeadlessTurtleScreen::screensize() {
   return {canvas.width(), canvas.height()};
 }
 
-Image &HeadlessTurtleScreen::getcanvas() {
+Image<> &HeadlessTurtleScreen::getcanvas() {
   return canvas;
 }
 

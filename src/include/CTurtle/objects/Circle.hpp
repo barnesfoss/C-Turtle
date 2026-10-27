@@ -36,7 +36,7 @@ public:
 
   AbstractDrawableObject *copy() const override;
 
-  void draw(const Transform &t, Image &imgRef) const override;
+  void draw(const Transform &t, Image<> &imgRef) const override;
 };
 } // namespace cturtle
 #endif

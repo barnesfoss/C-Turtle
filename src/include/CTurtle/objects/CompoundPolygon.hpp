@@ -46,7 +46,7 @@ public:
 
   /**Draws this CompoundPolygon.
    * Disregards the Color attribute in favor of the components' colors*/
-  void draw(const Transform &t, Image &imgRef) const override;
+  void draw(const Transform &t, Image<> &imgRef) const override;
 
 protected:
   std::list<component_t> components;

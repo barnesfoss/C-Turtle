@@ -98,7 +98,7 @@ public:
    */
   virtual void bye() = 0;
 
-  virtual Image &getcanvas() = 0;
+  virtual Image<> &getcanvas() = 0;
 
   virtual bool isclosed() = 0;
 
@@ -156,7 +156,7 @@ protected:
    * point while performing default initialization.
    * @return the decoded default font image.
    */
-  static Image decodeDefaultFont();
+  static Image<> decodeDefaultFont();
 
   /*The default shapes that screens initialize with.*/
   std::unordered_map<std::string, Polygon> shapes = {

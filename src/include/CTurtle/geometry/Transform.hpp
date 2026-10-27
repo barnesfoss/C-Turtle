@@ -220,6 +220,6 @@ template <typename T> T toDegrees(T val) {
  *\param the Y component of the second coordinate.
  *\param c The color with which to draw the line.
  *\param width The width of the line.*/
-void drawLine(Image &imgRef, int x1, int y1, int x2, int y2, const Color &c, int width = 1);
+void drawLine(Image<> &imgRef, int x1, int y1, int x2, int y2, const Color &c, int width = 1);
 } // namespace cturtle
 #endif

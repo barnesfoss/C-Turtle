@@ -45,7 +45,7 @@ public:
   /**\brief Empty de-constructor.*/
   ~Polygon() override = default;
 
-  void draw(const Transform &t, Image &imgRef) const override;
+  void draw(const Transform &t, Image<> &imgRef) const override;
 };
 } // namespace cturtle
 #endif

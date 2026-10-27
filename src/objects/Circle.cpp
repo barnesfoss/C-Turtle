@@ -13,10 +13,10 @@ Circle::Circle(
   this->outlineColor = outlineColor;
 }
 
-void Circle::draw(const Transform &t, Image &imgRef) const {
+void Circle::draw(const Transform &t, Image<> &imgRef) const {
   if (steps <= 0)
     return; // no step check
-  Image passPts(steps, 2);
+  Image<int> passPts(steps, 2);
 
   for (int i = 0; i < steps; i++) {
     Point p;

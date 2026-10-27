@@ -55,13 +55,13 @@ Color InteractiveTurtleScreen::bgcolor() const {
   return backgroundColor;
 };
 
-void InteractiveTurtleScreen::bgpic(const Image &img) {
+void InteractiveTurtleScreen::bgpic(const Image<> &img) {
   backgroundImage.assign(img);
   backgroundImage.resize(window_width(), window_height());
   redraw(true);
 }
 
-const Image &InteractiveTurtleScreen::bgpic() {
+const Image<> &InteractiveTurtleScreen::bgpic() {
   return backgroundImage;
 }
 
@@ -215,7 +215,7 @@ void InteractiveTurtleScreen::bye() {
     display.close();
 }
 
-Image &InteractiveTurtleScreen::getcanvas() {
+Image<> &InteractiveTurtleScreen::getcanvas() {
   return canvas;
 }
 

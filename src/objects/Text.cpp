@@ -23,7 +23,7 @@ AbstractDrawableObject *Text::copy() const {
   return new Text(*this);
 }
 
-void Text::draw(const Transform &t, Image &imgRef) const {
+void Text::draw(const Transform &t, Image<> &imgRef) const {
   // keep track of the length of the longest line of text...
   int longestLine = 0;
 
@@ -44,7 +44,7 @@ void Text::draw(const Transform &t, Image &imgRef) const {
 
   // Create the temporary image.
   // we double the temp image size to get a proper final rotation.
-  Image textImage(strPixLen * 2, (glyphSz.y * lines) * 2);
+  Image<> textImage(strPixLen * 2, (glyphSz.y * lines) * 2);
   textImage.channels(0, 3); // force RGBA on temp image
 
   int line = 0;
@@ -73,7 +73,7 @@ void Text::draw(const Transform &t, Image &imgRef) const {
       if (curChar == ' ' || !font.isValid(curChar)) // skip space or out-of-range characters...
         continue;
 
-      const Image &tempGlyph = font[curChar];
+      const Image<> &tempGlyph = font[curChar];
       const ivec2 destPosition = {strPixLen + hOffset + (i * glyphSz.x), line * glyphSz.y};
       textImage.draw_image(destPosition.x, destPosition.y, tempGlyph);
 

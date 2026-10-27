@@ -64,10 +64,10 @@ public:
    * Sets the background image. Please note that the background image
    * takes precedence over background color.
    *\param img The background image.*/
-  void bgpic(const Image &img);
+  void bgpic(const Image<> &img);
 
   /**Returns a const reference to the background image.*/
-  const Image &bgpic();
+  const Image<> &bgpic();
 
   bool supports_live_animation() const override;
 
@@ -131,7 +131,7 @@ public:
   void bye() override;
 
   /**Returns the canvas image used by this screen.*/
-  Image &getcanvas() override;
+  Image<> &getcanvas() override;
 
   /**Returns a boolean indicating if the
     screen has been closed.*/
@@ -228,13 +228,13 @@ protected:
   Display display;
 
   /**The canvas onto which scene objects are drawn to.*/
-  Image canvas;
+  Image<> canvas;
 
   // The turtle composite image.
   // This image copies the canvas and has
   // turtles drawn to it to avoid redrawing a "busy" canvas.
   // Trace lines are also drawn on this when filling.
-  Image turtleComposite;
+  Image<> turtleComposite;
 
   /**The total objects on screen the last time this screen was drawn.
    * Used to keep track of newer scene objects for a speed improvement.*/
@@ -245,7 +245,7 @@ protected:
   /**The background image of this TurtleScreen.
    * When not empty, this image takes precedence over
    * the background color when drawing.**/
-  Image backgroundImage;
+  Image<> backgroundImage;
   /**The current screen mode.
    *\sa mode(m)*/
   ScreenMode curMode = SM_STANDARD;

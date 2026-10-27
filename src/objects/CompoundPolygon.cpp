@@ -20,7 +20,7 @@ AbstractDrawableObject *CompoundPolygon::copy() const {
   return new CompoundPolygon(*this);
 }
 
-void CompoundPolygon::draw(const Transform &t, Image &imgRef) const {
+void CompoundPolygon::draw(const Transform &t, Image<> &imgRef) const {
   for (const component_t &comp : components) {
     comp.second->draw(t.copyConcatenate(comp.first), imgRef);
   }

@@ -182,7 +182,7 @@ unsigned int Turtle::undobufferentries() {
   return static_cast<unsigned int>(stateStack.size());
 }
 
-void Turtle::draw(const Transform &screenTransform, Image &canvas) {
+void Turtle::draw(const Transform &screenTransform, Image<> &canvas) {
   if (this->screen == nullptr)
     return;
 

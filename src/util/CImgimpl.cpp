@@ -85,25 +85,34 @@ bool Display::should_close() {
   return handle->is_closed();
 }
 
-Image::Image() : impl_(new CImg<uint8_t>()) {}
+template <typename T> Image<T>::Image() : impl_(new CImg<T>()) {}
 
-Image::Image(const int size_x, const int size_y, const int size_z, const int size_c)
-    : impl_(new CImg<uint8_t>(size_x, size_y, size_z, size_c)) {}
+template <typename T>
+Image<T>::Image(const int size_x, const int size_y, const int size_z, const int size_c)
+    : impl_(new CImg<T>(size_x, size_y, size_z, size_c)) {}
 
-Image::Image(const CImg<uint8_t> &img) : impl_(new CImg<uint8_t>(img)) {}
+template <typename T> Image<T>::Image(const CImg<T> &img) : impl_(new CImg<T>(img)) {}
 
-Image::Image(const Image &other) : impl_(new CImg<uint8_t>(*other.impl_)) {}
+template <typename T> Image<T>::Image(const Image<T> &other) : impl_(new CImg<T>(*other.impl_)) {}
 
-Image::Image(Image &&other) noexcept : impl_(std::exchange(other.impl_, nullptr)) {}
+template <typename T>
+Image<T>::Image(Image<T> &&other) noexcept : impl_(std::exchange(other.impl_, nullptr)) {}
 
-Image &Image::operator=(const Image &other) {
+template <typename T> Image<T> &Image<T>::operator=(const Image<T> &other) {
   if (this != &other) {
-    *impl_ = *other.impl_;
+    if (other.impl_ == nullptr) {
+      delete impl_;
+      impl_ = nullptr;
+    } else if (impl_ == nullptr) {
+      impl_ = new CImg<T>(*other.impl_);
+    } else {
+      *impl_ = *other.impl_;
+    }
   }
   return *this;
 }
 
-Image &Image::operator=(Image &&other) noexcept {
+template <typename T> Image<T> &Image<T>::operator=(Image<T> &&other) noexcept {
   if (this != &other) {
     delete impl_;
     impl_ = std::exchange(other.impl_, nullptr);
@@ -111,166 +120,212 @@ Image &Image::operator=(Image &&other) noexcept {
   return *this;
 }
 
-uint8_t &Image::operator()(int x, int y, int z, int c) {
-  return (*impl_)(x, y, z, c);
-};
-
-const uint8_t &Image::operator()(int x, int y, int z, int c) const {
-  return (*impl_)(x, y, z, c);
-};
-
-Image::~Image() {
+template <typename T> Image<T>::~Image() {
   delete impl_;
 }
 
-Image::operator CImg<uint8_t> &() {
+template <typename T> Image<T>::operator CImg<T> &() {
   return *impl_;
 }
 
-Image::operator const CImg<uint8_t> &() const {
+template <typename T> Image<T>::operator const CImg<T> &() const {
   return *impl_;
 }
 
-int Image::width() const {
-  return impl_->width();
+template <typename T> T &Image<T>::operator()(int x, int y, int z, int c) {
+  return (*impl_)(x, y, z, c);
 }
 
-int Image::height() const {
-  return impl_->height();
+template <typename T> const T &Image<T>::operator()(int x, int y, int z, int c) const {
+  return (*impl_)(x, y, z, c);
 }
 
-int Image::depth() const {
-  return impl_->depth();
+template <typename T> int Image<T>::width() const {
+  return impl_ ? impl_->width() : 0;
 }
 
-int Image::spectrum() const {
-  return impl_->spectrum();
+template <typename T> int Image<T>::height() const {
+  return impl_ ? impl_->height() : 0;
 }
 
-bool Image::is_empty() const {
-  return impl_->is_empty();
+template <typename T> int Image<T>::depth() const {
+  return impl_ ? impl_->depth() : 0;
 }
 
-Image &Image::assign() {
-  impl_->assign();
+template <typename T> int Image<T>::spectrum() const {
+  return impl_ ? impl_->spectrum() : 0;
+}
+
+template <typename T> bool Image<T>::is_empty() const {
+  return impl_ == nullptr || impl_->is_empty();
+}
+
+template <typename T> Image<T> &Image<T>::assign() {
+  if (impl_) {
+    impl_->assign();
+  }
   return *this;
 }
 
-Image &Image::assign(int x, int y, int z, int c) {
+template <typename T> Image<T> &Image<T>::assign(int x, int y, int z, int c) {
+  if (!impl_) {
+    impl_ = new CImg<T>();
+  }
   impl_->assign(x, y, z, c);
   return *this;
 }
 
-Image &Image::assign(const Image &img) {
-  *impl_ = *img.impl_;
+template <typename T> Image<T> &Image<T>::assign(const Image<T> &img) {
+  if (this != &img) {
+    if (!img.impl_) {
+      delete impl_;
+      impl_ = nullptr;
+    } else {
+      if (!impl_) {
+        impl_ = new CImg<T>(*img.impl_);
+      } else {
+        *impl_ = *img.impl_;
+      }
+    }
+  }
   return *this;
 }
 
-Image &Image::fill(uint8_t value) {
-  impl_->fill(value);
+template <typename T> Image<T> &Image<T>::assign(const CImg<T> &img) {
+  if (!impl_) {
+    impl_ = new CImg<T>(img);
+  } else {
+    impl_->assign(img);
+  }
   return *this;
 }
 
-Image &Image::assign(const Display &disp) {
+template <typename T> Image<T> &Image<T>::assign(const Display &disp) {
+  if (!impl_) {
+    impl_ = new CImg<T>();
+  }
   impl_->assign(*disp.internal());
   return *this;
 }
 
-Image Image::get_crop(int x0, int y0, int x1, int y1) const {
-  return Image(impl_->get_crop(x0, y0, x1, y1));
+template <typename T> Image<T> &Image<T>::fill(T value) {
+  if (impl_) {
+    impl_->fill(value);
+  }
+  return *this;
 }
 
-Image &Image::resize(int x, int y) {
+template <typename T> Image<T> Image<T>::get_crop(int x0, int y0, int x1, int y1) const {
+  return Image<T>(impl_->get_crop(x0, y0, x1, y1));
+}
+
+// Resizing
+
+template <typename T> Image<T> &Image<T>::resize(int x, int y) {
   impl_->resize(x, y);
   return *this;
 }
 
-Image &Image::resize(const CImg<uint8_t> &img) {
+template <typename T> Image<T> &Image<T>::resize(const CImg<T> &img) {
   impl_->resize(img);
   return *this;
 }
 
-Image &Image::resize(const Display &disp) {
+template <typename T> Image<T> &Image<T>::resize(const Display &disp) {
   impl_->resize(*disp.internal());
   return *this;
 }
 
-Image &Image::rotate(float angle, int interpolation, int boundary_conditions) {
+// Transformations
+
+template <typename T>
+Image<T> &Image<T>::rotate(float angle, int interpolation, int boundary_conditions) {
   impl_->rotate(angle, interpolation, boundary_conditions);
   return *this;
 }
 
-Image &Image::channels(int c0, int c1) {
+template <typename T> Image<T> &Image<T>::channels(int c0, int c1) {
   impl_->channels(c0, c1);
   return *this;
 }
 
-Image Image::get_shared_channel(int channel) const {
-  return Image(impl_->get_shared_channel(channel));
+template <typename T> Image<T> Image<T>::get_shared_channel(int channel) const {
+  return Image<T>(impl_->get_shared_channel(channel));
 }
 
-Image &Image::draw_line(int x0, int y0, int x1, int y1, const uint8_t *color, float opacity) {
+// Drawing
+
+template <typename T>
+Image<T> &Image<T>::draw_line(int x0, int y0, int x1, int y1, const T *color, float opacity) {
   impl_->draw_line(x0, y0, x1, y1, color, opacity);
   return *this;
 }
 
-Image &Image::draw_circle(int x, int y, int radius, const uint8_t *color, float opacity) {
+template <typename T>
+Image<T> &Image<T>::draw_circle(int x, int y, int radius, const T *color, float opacity) {
   impl_->draw_circle(x, y, radius, color, opacity);
   return *this;
 }
 
-Image &Image::draw_rectangle(int x0, int y0, int x1, int y1, const uint8_t *color, float opacity) {
+template <typename T>
+Image<T> &Image<T>::draw_rectangle(int x0, int y0, int x1, int y1, const T *color, float opacity) {
   impl_->draw_rectangle(x0, y0, x1, y1, color, opacity);
   return *this;
 }
 
-Image &Image::draw_polygon(const CImg<uint8_t> &points, const uint8_t *color, float opacity) {
+template <typename T>
+Image<T> &Image<T>::draw_polygon(const CImg<int> &points, const T *color, float opacity) {
   impl_->draw_polygon(points, color, opacity);
   return *this;
 }
 
-Image &Image::draw_image(int x, int y, const CImg<uint8_t> &img, float opacity) {
+template <typename T>
+Image<T> &Image<T>::draw_image(int x, int y, const CImg<T> &img, float opacity) {
   impl_->draw_image(x, y, img, opacity);
   return *this;
 }
 
-Image &Image::draw_image(int x, int y, const Image &img, float opacity) {
+template <typename T>
+Image<T> &Image<T>::draw_image(int x, int y, const Image<T> &img, float opacity) {
   return draw_image(x, y, *img.impl_, opacity);
 }
 
-Image &Image::draw_image(
-    int x, int y, const Image &img, const Image &mask, int channel, float opacity) {
+template <typename T>
+Image<T> &Image<T>::draw_image(
+    int x, int y, const Image<T> &img, const Image<T> &mask, int channel, float opacity) {
   impl_->draw_image(x, y, *img.impl_, *mask.impl_, channel, opacity);
-
   return *this;
 }
 
-Image &Image::draw_triangle(int x0,
-                            int y0,
-                            int x1,
-                            int y1,
-                            int x2,
-                            int y2,
-                            const CImg<uint8_t> &texture,
-                            int tx0,
-                            int ty0,
-                            int tx1,
-                            int ty1,
-                            int tx2,
-                            int ty2,
-                            float opacity,
-                            float brightness) {
+template <typename T>
+Image<T> &Image<T>::draw_triangle(int x0,
+                                  int y0,
+                                  int x1,
+                                  int y1,
+                                  int x2,
+                                  int y2,
+                                  const CImg<T> &texture,
+                                  int tx0,
+                                  int ty0,
+                                  int tx1,
+                                  int ty1,
+                                  int tx2,
+                                  int ty2,
+                                  float opacity,
+                                  float brightness) {
   impl_->draw_triangle(
       x0, y0, x1, y1, x2, y2, texture, tx0, ty0, tx1, ty1, tx2, ty2, opacity, brightness);
   return *this;
 }
 
-Image &Image::save(const char *filename) const {
+// Saving
+
+template <typename T> Image<T> &Image<T>::save(const char *filename) const {
   impl_->save(filename);
-  return const_cast<Image &>(*this);
+  return const_cast<Image<T> &>(*this);
 }
 
-Image &Image::save(const std::string &filename) const {
+template <typename T> Image<T> &Image<T>::save(const std::string &filename) const {
   return save(filename.c_str());
 }
 
@@ -458,4 +513,7 @@ unsigned int toCImgKey(KeyboardKey key) {
 
   return 0;
 }
+
+template class Image<uint8_t>;
+template class Image<int>;
 } // namespace cturtle

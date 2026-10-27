@@ -383,7 +383,7 @@ public:
    * transform.
    *\param screenTransform The transform at which to draw the turtle objects.
    *\param canvas The canvas on which to draw this turtle.*/
-  void draw(const Transform &screenTransform, Image &canvas);
+  void draw(const Transform &screenTransform, Image<> &canvas);
 
   /**Sets this turtle to use angles measured in degrees.
    *\sa radians()*/
