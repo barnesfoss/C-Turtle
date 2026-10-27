@@ -96,7 +96,7 @@ public:
   /**
    * Closes this turtle screen.
    */
-  virtual void bye() = 0;
+  virtual void bye(bool option) = 0;
 
   virtual Image<> &getcanvas() = 0;
 

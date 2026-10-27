@@ -198,7 +198,7 @@ void InteractiveTurtleScreen::mainloop() {
   }
 }
 
-void InteractiveTurtleScreen::bye() {
+void InteractiveTurtleScreen::bye(bool _) {
   if (redrawCounter > 0 || redrawCounter >= redrawCounterMax) {
     tracer(1, delayMS);
   }

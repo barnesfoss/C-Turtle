@@ -79,8 +79,6 @@ public:
   // we have to do this
   void bye(bool printHtml = CTURTLE_HEADLESS_HTML);
 
-  void bye();
-
   Transform screentransform() const;
 
   void add(Turtle &turtle);

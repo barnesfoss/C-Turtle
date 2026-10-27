@@ -128,7 +128,7 @@ public:
   void mainloop();
 
   /**Resets and closes this display.*/
-  void bye() override;
+  void bye(bool _ = false) override;
 
   /**Returns the canvas image used by this screen.*/
   Image<> &getcanvas() override;

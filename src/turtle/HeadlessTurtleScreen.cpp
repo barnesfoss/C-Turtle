@@ -256,10 +256,6 @@ void HeadlessTurtleScreen::bye(bool printHtml) {
   isClosed = true;
 }
 
-void HeadlessTurtleScreen::bye() {
-  bye(true);
-}
-
 Transform HeadlessTurtleScreen::screentransform() const {
   return Transform().translate(canvas.width() / 2, canvas.height() / 2).scale(1, -1.0f);
 }
