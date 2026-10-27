@@ -4,7 +4,7 @@
 // See LICENSE for details.
 #ifndef CTURTLE_TYPES_IMAGE_HPP
 #define CTURTLE_TYPES_IMAGE_HPP
-#include "types/DisplayCImg.hpp"
+#include "CTurtle/types/DisplayCImg.hpp"
 
 #include <cstdint>
 #include <string>
@@ -62,7 +62,7 @@ public:
 
   Image &assign(const CImg<uint8_t> &img);
 
-  Image &assign(const Display &disp);
+  Image &assign(const Display disp);
 
   Image &fill(uint8_t value);
 
