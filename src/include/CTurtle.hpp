@@ -30,6 +30,5 @@
 #include "CTurtle/types/Image.hpp"
 #include "CTurtle/util/base64.hpp"
 #include "CTurtle/util/io.hpp"
-#include "CTurtle/util/jo_gif.hpp"
 #include "CTurtle/version.h"
 #endif
