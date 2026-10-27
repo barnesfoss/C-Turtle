@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/2.0.0/),
     - Use of CTURTLE_HEADLESS_WIDTH, CTURTLE_HEADLESS_HEIGHT, CTURTLE_HEADLESS_NO_HTML and CTURTLE_HEADLESS_SAVEDIR is deprecated
     - Renamed inaccurate `OfflineTurtleScreen` to `HeadlessTurtleScreen` 
     - No longer exposes CImg and puts it in one implementation file leading to much faster build times
+    - Replaced jo_gif with giflib
 
 ## [1.0.5] - 2025-02-06
 
