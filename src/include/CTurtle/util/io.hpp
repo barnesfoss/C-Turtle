@@ -4,7 +4,7 @@
 // See LICENSE for details.
 #ifndef CTURTLE_UTIL_IO_HPP
 #define CTURTLE_UTIL_IO_HPP
-#include "CTurtle/cimg_pch.hpp"
+#include "CImg.h"
 
 #include <functional>
 #include <string>

@@ -50,6 +50,7 @@ cturtle_sources = files(
     # Utilities
     'src/util/base64.cpp',
     'src/util/io.cpp',
+    'src/util/CImgimpl.cpp',
 )
 cturtle_args = []
 
@@ -59,7 +60,6 @@ cturtle_lib = library(
     dependencies: cturtle_deps,
     include_directories: ['src/include','src/include/CTurtle'],
     cpp_args: cturtle_args,
-    cpp_pch: 'src/include/CTurtle/cimg_pch.hpp'
 )
 
 cturtle_dep = declare_dependency(

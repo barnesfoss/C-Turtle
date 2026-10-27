@@ -20,10 +20,10 @@ InteractiveTurtleScreen::InteractiveTurtleScreen(const std::string &title)
     : InteractiveTurtleScreen(600, 800, title) {}
 
 InteractiveTurtleScreen::InteractiveTurtleScreen(int width, int height, const std::string &title)
-    : display(width, height, title.c_str(), 0) {
-  display.set_title(title.c_str());
+    : display(width, height, title, 0) {
+  display.set_title(title);
   display.set_normalization(0);
-  canvas.assign(display);
+  canvas.assign(*display.internal());
   initEventThread();
   redraw(true);
 
@@ -218,12 +218,8 @@ Image &InteractiveTurtleScreen::getcanvas() {
   return canvas;
 }
 
-cimg_library::CImgDisplay &InteractiveTurtleScreen::internaldisplay() {
-  return display;
-}
-
 bool InteractiveTurtleScreen::isclosed() {
-  return internaldisplay().is_closed();
+  return display.is_closed();
 }
 
 void InteractiveTurtleScreen::redraw(bool invalidate) {
@@ -234,7 +230,7 @@ void InteractiveTurtleScreen::redraw(bool invalidate) {
 
   // Handle resizes.
   if (display.window_width() != canvas.width() || display.window_height() != canvas.height()) {
-    canvas.resize(display);
+    canvas.resize(*display.internal());
     hasInvalidated = true;
   }
   int objectSize = static_cast<int>(objects.size());

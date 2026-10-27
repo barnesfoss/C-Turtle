@@ -5,6 +5,7 @@
 #ifndef CTURTLE_TURTLE_INTERACTIVETURTLESCREEN_HPP
 #define CTURTLE_TURTLE_INTERACTIVETURTLESCREEN_HPP
 #include "AbstractTurtleScreen.hpp"
+#include "CTurtle/types/DisplayCImg.hpp"
 #include "CTurtle/util/io.hpp"
 #include "CTurtle/version.h"
 
@@ -132,9 +133,6 @@ public:
   /**Returns the canvas image used by this screen.*/
   Image &getcanvas() override;
 
-  /**Returns the internal CImg display.*/
-  cimg_library::CImgDisplay &internaldisplay();
-
   /**Returns a boolean indicating if the
     screen has been closed.*/
   bool isclosed() override;
@@ -227,7 +225,7 @@ public:
 
 protected:
   /**The underlying display mechanism for a TurtleScreen.*/
-  cimg_library::CImgDisplay display;
+  Display display;
 
   /**The canvas onto which scene objects are drawn to.*/
   Image canvas;
