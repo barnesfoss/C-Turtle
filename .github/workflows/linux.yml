@@ -8,6 +8,7 @@ on:
       - "**.c"
       - "**.h"
       - "**/meson.build"
+      - ".github/workflows/linux.yml"
 
   pull_request:
     paths: *workflow_paths
