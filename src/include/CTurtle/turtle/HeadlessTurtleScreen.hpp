@@ -4,11 +4,19 @@
 // See LICENSE for details.
 #ifndef CTURTLE_TURTLE_HEADLESSTURTLESCREEN_HPP
 #define CTURTLE_TURTLE_HEADLESSTURTLESCREEN_HPP
+#include <string>
+#include <cstddef>
+#include <cstdint>
+#include <list>
+#include <memory>
+
 #include "CTurtle/font.hpp"
 #include "CTurtle/turtle/AbstractTurtleScreen.hpp"
 #include "CTurtle/turtle/Turtle.hpp"
-
-#include <string>
+#include "font/BitmapFont.hpp"
+#include "turtle/ScreenMode.hpp"
+#include "types/Color.hpp"
+#include "types/Image.hpp"
 
 #ifndef CTURTLE_HEADLESS_WIDTH
 #define CTURTLE_HEADLESS_WIDTH 400
@@ -30,6 +38,9 @@
 struct GifFileType;
 
 namespace cturtle {
+class Turtle;
+struct SceneObject;
+
 std::string encodeFileBase64(const std::string &path);
 
 class HeadlessTurtleScreen : public AbstractTurtleScreen {

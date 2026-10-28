@@ -7,6 +7,8 @@
 #include "geometry/Transform.hpp"
 
 namespace cturtle {
+class AbstractDrawableObject;
+
 SceneObject::SceneObject(AbstractDrawableObject *geom, const Transform &t, int stampid)
     : geom(geom), transform(t), stamp(stampid > -1), stampid(stampid) {}
 } // namespace cturtle

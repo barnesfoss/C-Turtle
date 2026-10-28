@@ -4,7 +4,7 @@
 // See LICENSE for details.
 #include "geometry/ivec2.hpp"
 
-#include <math.h>
+#include <cmath> // for pow, round, sqrt
 
 namespace cturtle {
 /**\brief Represents a coordinate pair (e.g, x & y)

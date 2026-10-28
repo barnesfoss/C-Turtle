@@ -4,11 +4,12 @@
 // See LICENSE for details.
 #ifndef CTURTLE_OBJECTS_COMPOUNDPOLYGON_HPP
 #define CTURTLE_OBJECTS_COMPOUNDPOLYGON_HPP
-#include "AbstractDrawableObject.hpp"
-
 #include <list>
 #include <memory>
 #include <utility>
+
+#include "AbstractDrawableObject.hpp"
+#include "geometry/Transform.hpp"
 
 namespace cturtle {
 /**

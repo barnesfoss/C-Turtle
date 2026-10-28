@@ -12,6 +12,12 @@
 #include <string>
 #include <utility>
 
+#include "font/BitmapFont.hpp"
+#include "font/TextAlign.hpp"
+#include "geometry/Transform.hpp"
+#include "geometry/ivec2.hpp"
+#include "types/Image.hpp"
+
 namespace cturtle {
 Text::Text(
     std::string text, const BitmapFont &font, const Color &color, float scale, TextAlign alignment)

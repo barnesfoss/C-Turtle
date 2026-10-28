@@ -4,11 +4,14 @@
 // See LICENSE for details.
 #ifndef CTURTLE_TURTLE_PENSTATE_HPP
 #define CTURTLE_TURTLE_PENSTATE_HPP
+#include <memory>
+#include <cstddef>
+#include <string>
+
 #include "CTurtle/geometry/Transform.hpp"
 #include "CTurtle/objects/AbstractDrawableObject.hpp"
 #include "TurtleSpeed.hpp"
-
-#include <memory>
+#include "types/Color.hpp"
 
 namespace cturtle {
 /**\brief The Pen State structure Holds all pen attributes, which are grouped in

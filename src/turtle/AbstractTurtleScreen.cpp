@@ -4,7 +4,10 @@
 // See LICENSE for details.
 #include "turtle/AbstractTurtleScreen.hpp"
 
+#include <cstdint>
+
 #include "font.hpp"
+#include "types/Image.hpp"
 
 namespace cturtle {
 void AbstractTurtleScreen::clear() {

@@ -4,6 +4,12 @@
 // See LICENSE for details.
 #include "objects/Circle.hpp"
 
+#include "geometry/Transform.hpp" // for drawLine, Transform
+#include "geometry/ivec2.hpp"     // for Point
+#include "types/Image.hpp"        // for Imagenamespace cturtle {
+
+#include <cmath> // for M_PI, cos, sin
+
 namespace cturtle {
 Circle::Circle(
     int radius, int steps, const Color &fillColor, int outlineWidth, const Color &outlineColor)

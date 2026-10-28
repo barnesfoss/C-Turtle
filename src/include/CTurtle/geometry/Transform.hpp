@@ -4,15 +4,15 @@
 // See LICENSE for details.
 #ifndef CTURTLE_GEOMETRY_TRANSFORM_HPP
 #define CTURTLE_GEOMETRY_TRANSFORM_HPP
-#include "CTurtle/geometry/ivec2.hpp"
-#include "CTurtle/types/Color.hpp"
-#include "CTurtle/types/Image.hpp"
+#include "CTurtle/geometry/ivec2.hpp" // for Point, ivec2 (ptr only)
+#include "CTurtle/types/Color.hpp"    // for Color
+#include "CTurtle/types/Image.hpp"    // for Image
 
-#include <array>
-#include <math.h>
+#include <array> // for array
+#include <cmath> // for M_PI, round
 
 // For some reason windows does not like defining M_PI so we explicitly define it here
-#ifdef _WIN32
+#ifndef M_PI
 #define M_PI 3.14159265358979323846264338327950288
 #endif
 

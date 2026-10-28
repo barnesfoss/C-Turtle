@@ -5,6 +5,8 @@
 #ifndef CTURTLE_OBJECTS_LINE_HPP
 #define CTURTLE_OBJECTS_LINE_HPP
 #include "AbstractDrawableObject.hpp"
+#include "geometry/ivec2.hpp"
+#include "types/Color.hpp"
 
 namespace cturtle {
 /**\brief The Line class holds two points and the functionality to draw a line

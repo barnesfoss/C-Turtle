@@ -4,11 +4,13 @@
 // See LICENSE for details.
 #include "CTurtle/font/BitmapFont.hpp"
 
-#include "CTurtle/geometry/ivec2.hpp"
-#include "CTurtle/types/Image.hpp"
+#include "CTurtle/geometry/ivec2.hpp" // for ivec2
+#include "CTurtle/types/Image.hpp"    // for Image
 
-#include <cmath>
-#include <vector>
+#include <cmath>   // for floor
+#include <cstddef> // for size_t
+#include <cstdint> // for UINT8_MAX
+#include <vector>  // for vector
 
 namespace cturtle {
 BitmapFont::BitmapFont(

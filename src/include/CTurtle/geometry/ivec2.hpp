@@ -4,7 +4,6 @@
 // See LICENSE for details.
 #ifndef CTURTLE_GEOMETRY_IVEC2_HPP
 #define CTURTLE_GEOMETRY_IVEC2_HPP
-#include <math.h>
 
 namespace cturtle {
 /**\brief Represents a coordinate pair (e.g, x & y)

@@ -4,7 +4,9 @@
 // See LICENSE for details.
 #include "geometry/Transform.hpp"
 
-#include <math.h>
+#include "geometry/ivec2.hpp" // for Point, ivec2
+#include "types/Color.hpp"    // for Color
+#include "types/Image.hpp"    // for Image
 
 namespace cturtle {
 Transform::Transform() : value() {

@@ -4,6 +4,8 @@
 // See LICENSE for details.
 #include "objects/Line.hpp"
 
+#include "geometry/Transform.hpp"
+
 namespace cturtle {
 Line::Line(Point a, Point b, const Color &color, int width) : pointA(a), pointB(b), width(width) {
   fillColor = color;

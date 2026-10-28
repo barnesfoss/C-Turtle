@@ -4,8 +4,8 @@
 // See LICENSE for details.
 #ifndef CTURTLE_TYPES_COLOR_HPP
 #define CTURTLE_TYPES_COLOR_HPP
-#include <cstdint>
 #include <stdint.h>
+#include <cstdint>
 #include <string>
 #include <unordered_map>
 

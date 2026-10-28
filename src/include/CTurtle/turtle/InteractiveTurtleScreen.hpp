@@ -4,15 +4,29 @@
 // See LICENSE for details.
 #ifndef CTURTLE_TURTLE_INTERACTIVETURTLESCREEN_HPP
 #define CTURTLE_TURTLE_INTERACTIVETURTLESCREEN_HPP
+#include <mutex>
+#include <thread>
+#include <cstdint>
+#include <list>
+#include <memory>
+#include <string>
+#include <tuple>
+#include <unordered_map>
+
 #include "AbstractTurtleScreen.hpp"
 #include "CTurtle/types/DisplayCImg.hpp"
 #include "CTurtle/util/io.hpp"
 #include "CTurtle/version.h"
-
-#include <mutex>
-#include <thread>
+#include "geometry/ivec2.hpp"
+#include "turtle/ScreenMode.hpp"
+#include "types/Color.hpp"
+#include "types/Image.hpp"
 
 namespace cturtle {
+class BitmapFont;
+class Turtle;
+struct SceneObject;
+
 /**
  * \brief The InteractiveTurtleScreen class holds and maintains facilities in
  * relation to displaying \ turtles and consuming input events from users

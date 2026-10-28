@@ -7,13 +7,21 @@
 extern "C" {
 #include "getarg.h"
 #include "gif_lib.h"
+#include "geometry/Transform.hpp"
+#include "geometry/ivec2.hpp"
+#include "objects/AbstractDrawableObject.hpp"
+#include "objects/Polygon.hpp"
+#include "objects/SceneObject.hpp"
 }
-#include "turtle/Turtle.hpp"
-#include "util/base64.hpp"
-
-#include <algorithm>
 #include <fstream>
 #include <iostream>
+#include <iterator>
+#include <stdexcept>
+#include <unordered_map>
+#include <vector>
+
+#include "turtle/Turtle.hpp"
+#include "util/base64.hpp"
 
 namespace cturtle {
 /*Used to output Base-64 GIF and HTML source for HeadlessTurtleScreen.*/

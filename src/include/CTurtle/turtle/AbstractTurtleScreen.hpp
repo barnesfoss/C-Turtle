@@ -4,6 +4,10 @@
 // See LICENSE for details.
 #ifndef CTURTLE_TURTLE_ABSTRACTTURTLESCREEN_HPP
 #define CTURTLE_TURTLE_ABSTRACTTURTLESCREEN_HPP
+#include <list>
+#include <string>
+#include <unordered_map>
+
 #include "CTurtle/font/BitmapFont.hpp"
 #include "CTurtle/geometry/Transform.hpp"
 #include "CTurtle/geometry/ivec2.hpp"
@@ -13,10 +17,11 @@
 #include "CTurtle/types/Image.hpp"
 #include "ScreenMode.hpp"
 
-#include <list>
-
 namespace cturtle {
 class Turtle;
+class AbstractDrawableObject;
+class BitmapFont;
+struct SceneObject;
 
 /**
  * \brief The AbstractTurtleScreen class is the abstract type for most turtle

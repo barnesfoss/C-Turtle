@@ -4,9 +4,11 @@
 // See LICENSE for details.
 #ifndef CTURTLE_OBJECTS_POLYGON_HPP
 #define CTURTLE_OBJECTS_POLYGON_HPP
-#include "AbstractDrawableObject.hpp"
-
 #include <vector>
+
+#include "AbstractDrawableObject.hpp"
+#include "geometry/ivec2.hpp"
+#include "types/Color.hpp"
 
 namespace cturtle {
 /**\brief The polygon class merely holds a vector of points and a function

@@ -4,6 +4,9 @@
 // See LICENSE for details.
 #include "objects/Sprite.hpp"
 
+#include "geometry/Transform.hpp"
+#include "geometry/ivec2.hpp"
+
 namespace cturtle {
 Sprite::Sprite(Image<> &img, int outlineWidth, const Color &outlineColor) : spriteImg(img) {
   srcX = srcY = 0;

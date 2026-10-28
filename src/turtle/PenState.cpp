@@ -4,6 +4,9 @@
 // See LICENSE for details.
 #include "turtle/PenState.hpp"
 
+#include "geometry/Transform.hpp"
+#include "objects/AbstractDrawableObject.hpp"
+
 namespace cturtle {
 PenState::PenState(const PenState &copy) {
   transform = copy.transform;

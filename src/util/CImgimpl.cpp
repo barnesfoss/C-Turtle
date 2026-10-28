@@ -1,5 +1,8 @@
+#include <cstdint>
+#include <string>
+#include <utility>
+
 #include "CImg.h"
-#include "types/AbstractDisplay.hpp"
 #include "types/DisplayCImg.hpp"
 #include "types/Image.hpp"
 #include "util/io.hpp"

@@ -5,15 +5,33 @@
 // File : draw.cpp
 // Definitions for the `Turtle` class drawing methods
 
+#include <list>
+#include <string>
+#include <cstdint>
+#include <iterator>
+#include <memory>
+#include <vector>
+
 #include "font.hpp"
 #include "objects/Circle.hpp"
 #include "objects/Text.hpp"
 #include "turtle/Turtle.hpp"
-
-#include <list>
-#include <string>
+#include "font/TextAlign.hpp"
+#include "geometry/Transform.hpp"
+#include "geometry/ivec2.hpp"
+#include "objects/AbstractDrawableObject.hpp"
+#include "objects/Line.hpp"
+#include "objects/Polygon.hpp"
+#include "objects/SceneObject.hpp"
+#include "turtle/AbstractTurtleScreen.hpp"
+#include "turtle/PenState.hpp"
+#include "turtle/ScreenMode.hpp"
+#include "types/Color.hpp"
+#include "types/Image.hpp"
 
 namespace cturtle {
+class BitmapFont;
+
 void Turtle::circle(int radius, int steps, const Color &color) {
   pushGeometry(*transform, new Circle(radius, steps, color));
   updateParent(false, true);

@@ -4,13 +4,16 @@
 // See LICENSE for details.
 #ifndef CTURTLE_OBJECTS_TEXT_HPP
 #define CTURTLE_OBJECTS_TEXT_HPP
+#include <string>
+
 #include "AbstractDrawableObject.hpp"
 #include "CTurtle/font/BitmapFont.hpp"
 #include "CTurtle/font/TextAlign.hpp"
-
-#include <string>
+#include "types/Color.hpp"
 
 namespace cturtle {
+class BitmapFont;
+
 /**\brief The Text class represents a basic string that is drawn on the screen.
  */
 class Text : public AbstractDrawableObject {
