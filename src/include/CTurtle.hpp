@@ -6,6 +6,9 @@
 // This is an "Amalgam" header that includes everything for convenience
 #ifndef CTURTLE_CTURTLE_HPP
 #define CTURTLE_CTURTLE_HPP
+// Defining an Include What You Use pragma here silences warnings from IWYU and clangd
+// "Included header CTurtle.hpp is not used directly"
+// IWYU pragma: begin_exports
 #include "CTurtle/font.hpp"
 #include "CTurtle/font/BitmapFont.hpp"
 #include "CTurtle/font/TextAlign.hpp"
@@ -31,4 +34,5 @@
 #include "CTurtle/util/base64.hpp"
 #include "CTurtle/util/io.hpp"
 #include "CTurtle/version.h"
+// IWYU pragma: end_exports
 #endif
