@@ -7,6 +7,7 @@
 #include "CTurtle/geometry/ivec2.hpp"
 #include "CTurtle/types/Image.hpp"
 
+#include <cmath>
 #include <vector>
 
 namespace cturtle {

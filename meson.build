@@ -11,18 +11,38 @@ project(
     license: 'MIT',
     license_files: 'LICENSE.txt',
 )
+cc = meson.get_compiler('cpp')
 
-if meson.get_compiler('cpp').get_id() == 'msvc'
+if cc.get_id() == 'msvc'
     add_project_arguments('/bigobj', language: 'cpp')
 endif
+
+cturtle_args = []
 
 cturtle_deps = [
   dependency('CImg'),
   dependency('giflib', default_options: ['tests=disabled','progs=disabled'])
 ]
 
-if host_machine.system() == 'linux'
-    cturtle_deps += dependency('x11')
+if host_machine.system() == 'linux' or host_machine.system('darwin')
+
+    # CImg either needs X11 or SDL3 for windowing
+    # SDL3 is prefered as it would automatically pick a native display
+    # We use X11 as a fallback here
+    sdl = dependency('sdl3', required: false)
+    if sdl.found()
+      cturtle_deps += sdl
+      cturtle_args += '-Dcimg_display=3' # Tells CImg to use SDL 
+    else
+      cturtle_deps += dependency('x11', required: true)
+      cturtle_args += '-Dcimg_display=1' # Tells CImg to use X11
+    endif
+
+elif host_machine.system() == 'windows'
+
+    cturtle_deps += cc.find_library('kernel32')
+    cturtle_deps += cc.find_library('gdi32')
+
 endif
 
 cturtle_sources = files(
@@ -57,7 +77,6 @@ cturtle_sources = files(
     'src/util/io.cpp',
     'src/util/CImgimpl.cpp',
 )
-cturtle_args = []
 
 cturtle_lib = library(
     'cturtle',

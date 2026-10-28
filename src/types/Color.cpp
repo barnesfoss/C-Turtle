@@ -6,6 +6,7 @@
 
 #include <chrono>
 #include <random>
+#include <stdexcept>
 #include <string>
 #include <thread>
 

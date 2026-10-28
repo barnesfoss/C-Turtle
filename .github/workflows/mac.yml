@@ -29,6 +29,7 @@ jobs:
 
       - name: Setup Tools
         run: |
+          brew install libx11 libxext sdl3
           python -m pip install meson
           python -m pip install ninja
 
