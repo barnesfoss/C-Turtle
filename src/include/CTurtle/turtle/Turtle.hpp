@@ -2,18 +2,18 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
+#include "AbstractTurtleScreen.hpp"
+#include "CTurtle/font/TextAlign.hpp"
+#include "CTurtle/geometry/ivec2.hpp"
+#include "CTurtle/objects/Line.hpp"
+#include "CTurtle/objects/Polygon.hpp"
+#include "CTurtle/types/Color.hpp"
+#include "CTurtle/types/Image.hpp"
+#include "PenState.hpp"
+
 #include <cstdint>
 #include <list>
 #include <string>
-
-#include "AbstractTurtleScreen.hpp"
-#include "CTurtle/font/TextAlign.hpp"
-#include "CTurtle/objects/Line.hpp"
-#include "PenState.hpp"
-#include "geometry/ivec2.hpp"
-#include "objects/Polygon.hpp"
-#include "types/Color.hpp"
-#include "types/Image.hpp"
 
 namespace cturtle {
 class AbstractDrawableObject;
@@ -22,7 +22,7 @@ class BitmapFont;
 class Line;
 class Transform;
 struct SceneObject;
-}  // namespace cturtle
+} // namespace cturtle
 #ifndef CTURTLE_TURTLE_TURTLE_HPP
 #define CTURTLE_TURTLE_TURTLE_HPP
 

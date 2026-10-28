@@ -6,10 +6,6 @@
 // Unclassified method definitions for the `Turtle` class
 #include "turtle/Turtle.hpp"
 
-#include <string>
-#include <iterator>
-#include <memory>
-
 #include "geometry/Transform.hpp"
 #include "objects/AbstractDrawableObject.hpp"
 #include "objects/Line.hpp"
@@ -17,6 +13,10 @@
 #include "turtle/AbstractTurtleScreen.hpp"
 #include "turtle/PenState.hpp"
 #include "turtle/ScreenMode.hpp"
+
+#include <iterator>
+#include <memory>
+#include <string>
 
 namespace cturtle {
 Turtle::Turtle(AbstractTurtleScreen &scr) {

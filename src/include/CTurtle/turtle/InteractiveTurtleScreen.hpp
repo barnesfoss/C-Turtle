@@ -4,23 +4,23 @@
 // See LICENSE for details.
 #ifndef CTURTLE_TURTLE_INTERACTIVETURTLESCREEN_HPP
 #define CTURTLE_TURTLE_INTERACTIVETURTLESCREEN_HPP
-#include <mutex>
-#include <thread>
+#include "AbstractTurtleScreen.hpp"
+#include "CTurtle/geometry/ivec2.hpp"
+#include "CTurtle/turtle/ScreenMode.hpp"
+#include "CTurtle/types/Color.hpp"
+#include "CTurtle/types/DisplayCImg.hpp"
+#include "CTurtle/types/Image.hpp"
+#include "CTurtle/util/io.hpp"
+#include "CTurtle/version.h"
+
 #include <cstdint>
 #include <list>
 #include <memory>
+#include <mutex>
 #include <string>
+#include <thread>
 #include <tuple>
 #include <unordered_map>
-
-#include "AbstractTurtleScreen.hpp"
-#include "CTurtle/types/DisplayCImg.hpp"
-#include "CTurtle/util/io.hpp"
-#include "CTurtle/version.h"
-#include "geometry/ivec2.hpp"
-#include "turtle/ScreenMode.hpp"
-#include "types/Color.hpp"
-#include "types/Image.hpp"
 
 namespace cturtle {
 class BitmapFont;

@@ -5,29 +5,29 @@
 // File : draw.cpp
 // Definitions for the `Turtle` class drawing methods
 
-#include <list>
-#include <string>
-#include <cstdint>
-#include <iterator>
-#include <memory>
-#include <vector>
-
 #include "font.hpp"
-#include "objects/Circle.hpp"
-#include "objects/Text.hpp"
-#include "turtle/Turtle.hpp"
 #include "font/TextAlign.hpp"
 #include "geometry/Transform.hpp"
 #include "geometry/ivec2.hpp"
 #include "objects/AbstractDrawableObject.hpp"
+#include "objects/Circle.hpp"
 #include "objects/Line.hpp"
 #include "objects/Polygon.hpp"
 #include "objects/SceneObject.hpp"
+#include "objects/Text.hpp"
 #include "turtle/AbstractTurtleScreen.hpp"
 #include "turtle/PenState.hpp"
 #include "turtle/ScreenMode.hpp"
+#include "turtle/Turtle.hpp"
 #include "types/Color.hpp"
 #include "types/Image.hpp"
+
+#include <cstdint>
+#include <iterator>
+#include <list>
+#include <memory>
+#include <string>
+#include <vector>
 
 namespace cturtle {
 class BitmapFont;

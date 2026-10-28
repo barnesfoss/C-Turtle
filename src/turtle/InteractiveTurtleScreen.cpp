@@ -4,26 +4,26 @@
 // See LICENSE for details.
 #include "turtle/InteractiveTurtleScreen.hpp"
 
-#include <algorithm>
-#include <list>
-#include <memory>
-#include <mutex>
-#include <string>
-#include <thread>
-#include <functional>
-#include <iterator>
-#include <utility>
-
 #include "font.hpp"
-#include "turtle/Turtle.hpp"
-#include "types/Color.hpp"
-#include "util/io.hpp"
 #include "font/BitmapFont.hpp"
 #include "geometry/Transform.hpp"
 #include "objects/AbstractDrawableObject.hpp"
 #include "objects/Polygon.hpp"
 #include "objects/SceneObject.hpp"
+#include "turtle/Turtle.hpp"
+#include "types/Color.hpp"
 #include "types/DisplayCImg.hpp"
+#include "util/io.hpp"
+
+#include <algorithm>
+#include <functional>
+#include <iterator>
+#include <list>
+#include <memory>
+#include <mutex>
+#include <string>
+#include <thread>
+#include <utility>
 
 namespace cturtle {
 InteractiveTurtleScreen::InteractiveTurtleScreen(const std::string &title)

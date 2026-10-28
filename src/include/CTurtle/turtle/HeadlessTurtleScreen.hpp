@@ -4,19 +4,19 @@
 // See LICENSE for details.
 #ifndef CTURTLE_TURTLE_HEADLESSTURTLESCREEN_HPP
 #define CTURTLE_TURTLE_HEADLESSTURTLESCREEN_HPP
-#include <string>
+#include "CTurtle/font.hpp"
+#include "CTurtle/font/BitmapFont.hpp"
+#include "CTurtle/turtle/AbstractTurtleScreen.hpp"
+#include "CTurtle/turtle/Turtle.hpp"
+#include "turtle/ScreenMode.hpp"
+#include "types/Color.hpp"
+#include "types/Image.hpp"
+
 #include <cstddef>
 #include <cstdint>
 #include <list>
 #include <memory>
-
-#include "CTurtle/font.hpp"
-#include "CTurtle/turtle/AbstractTurtleScreen.hpp"
-#include "CTurtle/turtle/Turtle.hpp"
-#include "font/BitmapFont.hpp"
-#include "turtle/ScreenMode.hpp"
-#include "types/Color.hpp"
-#include "types/Image.hpp"
+#include <string>
 
 #ifndef CTURTLE_HEADLESS_WIDTH
 #define CTURTLE_HEADLESS_WIDTH 400

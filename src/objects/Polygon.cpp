@@ -4,12 +4,12 @@
 // See LICENSE for details.
 #include "objects/Polygon.hpp"
 
+#include "geometry/Transform.hpp"
+#include "types/Image.hpp"
+
 #include <cstddef>
 #include <cstdint>
 #include <utility>
-
-#include "geometry/Transform.hpp"
-#include "types/Image.hpp"
 
 namespace cturtle {
 Polygon::Polygon(const std::initializer_list<Point> &init) : points(init) {

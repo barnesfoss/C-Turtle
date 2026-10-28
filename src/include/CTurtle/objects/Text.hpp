@@ -4,12 +4,12 @@
 // See LICENSE for details.
 #ifndef CTURTLE_OBJECTS_TEXT_HPP
 #define CTURTLE_OBJECTS_TEXT_HPP
-#include <string>
-
 #include "AbstractDrawableObject.hpp"
 #include "CTurtle/font/BitmapFont.hpp"
 #include "CTurtle/font/TextAlign.hpp"
-#include "types/Color.hpp"
+#include "CTurtle/types/Color.hpp"
+
+#include <string>
 
 namespace cturtle {
 class BitmapFont;

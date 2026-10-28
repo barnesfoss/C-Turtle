@@ -4,10 +4,10 @@
 // See LICENSE for details.
 #ifndef CTURTLE_OBJECTS_SCENEOBJECT_HPP
 #define CTURTLE_OBJECTS_SCENEOBJECT_HPP
-#include <memory>
-
 #include "AbstractDrawableObject.hpp"
-#include "geometry/Transform.hpp"
+#include "CTurtle/geometry/Transform.hpp"
+
+#include <memory>
 
 namespace cturtle {
 /**\brief Turtles append Scene Objects to a list to keep

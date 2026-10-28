@@ -4,6 +4,12 @@
 // See LICENSE for details.
 #include "objects/Text.hpp"
 
+#include "font/BitmapFont.hpp"
+#include "font/TextAlign.hpp"
+#include "geometry/Transform.hpp"
+#include "geometry/ivec2.hpp"
+#include "types/Image.hpp"
+
 #include <algorithm>
 #include <cmath>
 #include <cstdint>
@@ -11,12 +17,6 @@
 #include <sstream>
 #include <string>
 #include <utility>
-
-#include "font/BitmapFont.hpp"
-#include "font/TextAlign.hpp"
-#include "geometry/Transform.hpp"
-#include "geometry/ivec2.hpp"
-#include "types/Image.hpp"
 
 namespace cturtle {
 Text::Text(

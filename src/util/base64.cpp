@@ -4,11 +4,11 @@
 // See LICENSE for details.
 #include "util/base64.hpp"
 
+#include <cstddef>
 #include <cstdint> // For well-defined integer types.
 #include <sstream> // used for base64 encoding.
 #include <string>  // Strings...
 #include <vector>  // For Polygon point storage
-#include <cstddef>
 
 // See https://github.com/mvorbrodt/blog/blob/master/src/base64.hpp for original
 // source. The below has been modified to use unsigned characters to avoid

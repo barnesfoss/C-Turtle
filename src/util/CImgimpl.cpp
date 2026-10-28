@@ -1,11 +1,11 @@
-#include <cstdint>
-#include <string>
-#include <utility>
-
 #include "CImg.h"
 #include "types/DisplayCImg.hpp"
 #include "types/Image.hpp"
 #include "util/io.hpp"
+
+#include <cstdint>
+#include <string>
+#include <utility>
 
 namespace cturtle {
 Display::Display(int x, int y, const std::string &name, int normalization) {
