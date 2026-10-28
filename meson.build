@@ -24,7 +24,7 @@ cturtle_deps = [
   dependency('giflib', default_options: ['tests=disabled','progs=disabled'])
 ]
 
-if host_machine.system() == 'linux' or host_machine.system() == 'darwin'
+if host_machine.system() in ['linux','darwin']
 
     # CImg either needs X11 or SDL3 for windowing
     # SDL3 is prefered as it would automatically pick a native display
