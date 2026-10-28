@@ -24,25 +24,13 @@ cturtle_deps = [
   dependency('giflib', default_options: ['tests=disabled','progs=disabled'])
 ]
 
-if host_machine.system() in ['linux','darwin']
-
-    # CImg either needs X11 or SDL3 for windowing
-    # SDL3 is prefered as it would automatically pick a native display
-    # We use X11 as a fallback here
-    sdl = dependency('sdl3', required: false)
-    if sdl.found()
-      cturtle_deps += sdl
-      cturtle_args += '-Dcimg_display=3' # Tells CImg to use SDL 
-    else
-      cturtle_deps += dependency('x11', required: true)
-      cturtle_args += '-Dcimg_display=1' # Tells CImg to use X11
-    endif
-
+if host_machine.system() in ['linux']
+    cturtle_deps += dependency('x11', required: true)
+elif host_machine.system() == 'darwin'
+    cturtle_deps += dependency('sdl3', required: true)
 elif host_machine.system() == 'windows'
-
     cturtle_deps += cc.find_library('kernel32')
     cturtle_deps += cc.find_library('gdi32')
-
 endif
 
 cturtle_sources = files(
