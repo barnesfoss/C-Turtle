@@ -12,6 +12,10 @@ project(
     license_files: 'LICENSE.txt',
 )
 
+if meson.get_compiler('cpp').get_id() == 'msvc'
+    add_project_arguments('/bigobj', language: 'cpp')
+endif
+
 cturtle_deps = [
   dependency('CImg'),
   dependency('giflib', default_options: ['tests=disabled','progs=disabled'])

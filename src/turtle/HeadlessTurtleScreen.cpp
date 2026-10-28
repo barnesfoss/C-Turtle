@@ -14,30 +14,6 @@ extern "C" {
 #include <algorithm>
 #include <fstream>
 #include <iostream>
-// Automatic linking when operating under MSVC
-// If linking errors occur when compiling on Non-MSVC,
-// Make sure you link X11 and PThread when using Unix-Like environments, when
-// NOT using headless mode.
-#ifndef CTURTLE_MSVC_NO_AUTOLINK
-#ifdef _MSC_VER
-/*Automatically link to the necessary windows libraries while under MSVC.*/
-#pragma comment(lib, "kernel32.lib")
-#pragma comment(lib, "gdi32.lib")
-#endif
-#endif
-
-// MSVC 2017 doesn't seem to like defining M_PI. We define it ourselves
-// when compiling under VisualC++.
-#ifdef _MSC_VER
-#ifndef M_PI
-#define M_PI 3.14159265358979323846264338327950288
-#endif
-// Disable MSVC warnings for CImg. Irrelevant to project.
-#include <CodeAnalysis/Warnings.h>
-#pragma warning(push, 0)
-#pragma warning(disable : ALL_CODE_ANALYSIS_WARNINGS)
-#pragma warning(pop)
-#endif
 
 namespace cturtle {
 /*Used to output Base-64 GIF and HTML source for HeadlessTurtleScreen.*/

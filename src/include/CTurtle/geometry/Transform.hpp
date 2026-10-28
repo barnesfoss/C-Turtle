@@ -11,6 +11,11 @@
 #include <array>
 #include <math.h>
 
+// For some reason windows does not like defining M_PI so we explicitly define it here
+#ifdef _WIN32
+#define M_PI 3.14159265358979323846264338327950288
+#endif
+
 namespace cturtle {
 /**\brief The Transform class provides a myriad of functions to
  *        simply transform points.
