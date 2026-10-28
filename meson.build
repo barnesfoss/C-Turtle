@@ -27,7 +27,18 @@ cturtle_deps = [
 if host_machine.system() in ['linux']
     cturtle_deps += dependency('x11', required: true)
 elif host_machine.system() == 'darwin'
-    cturtle_deps += dependency('sdl3', required: true)
+
+    # CImg either needs X11 or SDL3 for windowing on darwin
+    # Kind of unsure how darwin operates with this
+    x11 = dependency('x11', required: false)
+    if x11.found()
+      cturtle_deps += x11
+      cturtle_args += '-Dcimg_display=1' # Tells CImg to use X11
+    else
+      cturtle_deps += dependency('sdl', required: true)
+      cturtle_args += '-Dcimg_display=3' # Tells CImg to use SDL
+    endif
+
 elif host_machine.system() == 'windows'
     cturtle_deps += cc.find_library('kernel32')
     cturtle_deps += cc.find_library('gdi32')
