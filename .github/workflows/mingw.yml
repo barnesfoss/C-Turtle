@@ -1,0 +1,37 @@
+name: Windows-mingw32 Build
+on:
+  push:
+    branches: ["main"]
+    paths: &workflow_paths
+      - "**.cpp"
+      - "**.hpp"
+      - "**.c"
+      - "**.h"
+      - "**/meson.build"
+
+  pull_request:
+    paths: *workflow_paths
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ !contains(github.ref, 'dev/') }}
+
+permissions: read-all
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+
+      - name: Setup Tools
+        run: |
+          python -m pip install meson
+
+      - name: Compile
+        run: |
+          meson setup build 
+          meson compile -C build
