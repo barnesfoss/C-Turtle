@@ -7,10 +7,10 @@
 #include "CTurtle/font.hpp"
 #include "CTurtle/font/BitmapFont.hpp"
 #include "CTurtle/turtle/AbstractTurtleScreen.hpp"
+#include "CTurtle/turtle/ScreenMode.hpp"
 #include "CTurtle/turtle/Turtle.hpp"
-#include "turtle/ScreenMode.hpp"
-#include "types/Color.hpp"
-#include "types/Image.hpp"
+#include "CTurtle/types/Color.hpp"
+#include "CTurtle/types/Image.hpp"
 
 #include <cstddef>
 #include <cstdint>
