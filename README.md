@@ -6,7 +6,7 @@
 </p>
 
 # C-Turtle 1.0.5
-[![Linux Build](https://github.com/barnesfoss/C-Turtle/actions/workflows/linux.yml/badge.svg)](https://github.com/barnesfoss/C-Turtle/actions/workflows/linux.yml)[![MacOS Build](https://github.com/barnesfoss/C-Turtle/actions/workflows/mac.yml/badge.svg)](https://github.com/barnesfoss/C-Turtle/actions/workflows/mac.yml)[![Windows-mingw32 Build](https://github.com/barnesfoss/C-Turtle/actions/workflows/mingw.yml/badge.svg)](https://github.com/barnesfoss/C-Turtle/actions/workflows/mingw.yml)[![Windows-MSVC Build](https://github.com/barnesfoss/C-Turtle/actions/workflows/msvc.yml/badge.svg)](https://github.com/barnesfoss/C-Turtle/actions/workflows/msvc.yml)
+[![Linux Build](https://github.com/barnesfoss/C-Turtle/actions/workflows/linux.yml/badge.svg)](https://github.com/barnesfoss/C-Turtle/actions/workflows/linux.yml) [![MacOS Build](https://github.com/barnesfoss/C-Turtle/actions/workflows/mac.yml/badge.svg)](https://github.com/barnesfoss/C-Turtle/actions/workflows/mac.yml) [![Windows-mingw32 Build](https://github.com/barnesfoss/C-Turtle/actions/workflows/mingw.yml/badge.svg)](https://github.com/barnesfoss/C-Turtle/actions/workflows/mingw.yml) [![Windows-MSVC Build](https://github.com/barnesfoss/C-Turtle/actions/workflows/msvc.yml/badge.svg)](https://github.com/barnesfoss/C-Turtle/actions/workflows/msvc.yml)
 > [!IMPORTANT]
 > Unlike the [original C-Turtle](https://github.com/walkerje/C-Turtle) this branch isn't a single header file, you instead should set it up with [Meson](https://build.meson).
 > <br>
