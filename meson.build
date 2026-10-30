@@ -35,7 +35,7 @@ elif host_machine.system() == 'darwin'
       cturtle_deps += x11
       cturtle_args += '-Dcimg_display=1' # Tells CImg to use X11
     else
-      cturtle_deps += dependency('sdl', required: true)
+      cturtle_deps += dependency('sdl3', required: true)
       cturtle_args += '-Dcimg_display=3' # Tells CImg to use SDL
     endif
 
