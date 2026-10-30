@@ -5,6 +5,7 @@
 #include "types/Color.hpp"
 
 #include <chrono>
+#include <cstring>
 #include <random>
 #include <stdexcept>
 #include <string>
@@ -76,4 +77,12 @@ Color::Color(const std::string &name) {
   g = c.g;
   b = c.b;
 }
+
+bool operator==(Color self, Color other) {
+  return std::memcmp(self.rgbPtr(), other.rgbPtr(), 3) == 0;
+};
+
+bool operator!=(Color self, Color other) {
+  return std::memcmp(self.rgbPtr(), other.rgbPtr(), 3) != 0;
+};
 } // namespace cturtle
