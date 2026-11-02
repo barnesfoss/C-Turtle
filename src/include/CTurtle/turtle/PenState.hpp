@@ -4,9 +4,9 @@
 // See LICENSE for details.
 #ifndef CTURTLE_TURTLE_PENSTATE_HPP
 #define CTURTLE_TURTLE_PENSTATE_HPP
-#include "CTurtle/geometry/Transform.hpp"
-#include "CTurtle/objects/AbstractDrawableObject.hpp"
-#include "CTurtle/types/Color.hpp"
+#include "../geometry/Transform.hpp"
+#include "../objects/AbstractDrawableObject.hpp"
+#include "../types/Color.hpp"
 #include "TurtleSpeed.hpp"
 
 #include <cstddef>

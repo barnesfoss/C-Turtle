@@ -4,13 +4,13 @@
 // See LICENSE for details.
 #ifndef CTURTLE_TURTLE_ABSTRACTTURTLESCREEN_HPP
 #define CTURTLE_TURTLE_ABSTRACTTURTLESCREEN_HPP
-#include "CTurtle/font/BitmapFont.hpp"
-#include "CTurtle/geometry/Transform.hpp"
-#include "CTurtle/geometry/ivec2.hpp"
-#include "CTurtle/objects/Polygon.hpp"
-#include "CTurtle/objects/SceneObject.hpp"
-#include "CTurtle/types/Color.hpp"
-#include "CTurtle/types/Image.hpp"
+#include "../font/BitmapFont.hpp"
+#include "../geometry/Transform.hpp"
+#include "../geometry/ivec2.hpp"
+#include "../objects/Polygon.hpp"
+#include "../objects/SceneObject.hpp"
+#include "../types/Color.hpp"
+#include "../types/Image.hpp"
 #include "ScreenMode.hpp"
 
 #include <list>

@@ -1,4 +1,4 @@
-#include "CTurtle/types/AbstractDisplay.hpp"
+#include "../types/AbstractDisplay.hpp"
 
 #include <stdint.h>
 #ifndef CTURTLE_TYPES_DISPLAYCIMG_HPP

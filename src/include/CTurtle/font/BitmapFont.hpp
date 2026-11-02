@@ -4,8 +4,8 @@
 // See LICENSE for details.
 #ifndef CTURTLE_FONT_BITMAPFONT_HPP
 #define CTURTLE_FONT_BITMAPFONT_HPP
-#include "CTurtle/geometry/ivec2.hpp"
-#include "CTurtle/types/Image.hpp"
+#include "../geometry/ivec2.hpp"
+#include "../types/Image.hpp"
 
 #include <vector>
 

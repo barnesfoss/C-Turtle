@@ -2,13 +2,13 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
+#include "../font/TextAlign.hpp"
+#include "../geometry/ivec2.hpp"
+#include "../objects/Line.hpp"
+#include "../objects/Polygon.hpp"
+#include "../types/Color.hpp"
+#include "../types/Image.hpp"
 #include "AbstractTurtleScreen.hpp"
-#include "CTurtle/font/TextAlign.hpp"
-#include "CTurtle/geometry/ivec2.hpp"
-#include "CTurtle/objects/Line.hpp"
-#include "CTurtle/objects/Polygon.hpp"
-#include "CTurtle/types/Color.hpp"
-#include "CTurtle/types/Image.hpp"
 #include "PenState.hpp"
 
 #include <cstdint>

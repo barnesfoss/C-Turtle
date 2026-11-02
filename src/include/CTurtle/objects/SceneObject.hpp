@@ -4,8 +4,8 @@
 // See LICENSE for details.
 #ifndef CTURTLE_OBJECTS_SCENEOBJECT_HPP
 #define CTURTLE_OBJECTS_SCENEOBJECT_HPP
+#include "../geometry/Transform.hpp"
 #include "AbstractDrawableObject.hpp"
-#include "CTurtle/geometry/Transform.hpp"
 
 #include <memory>
 

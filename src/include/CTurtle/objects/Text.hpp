@@ -4,10 +4,10 @@
 // See LICENSE for details.
 #ifndef CTURTLE_OBJECTS_TEXT_HPP
 #define CTURTLE_OBJECTS_TEXT_HPP
+#include "../font/BitmapFont.hpp"
+#include "../font/TextAlign.hpp"
+#include "../types/Color.hpp"
 #include "AbstractDrawableObject.hpp"
-#include "CTurtle/font/BitmapFont.hpp"
-#include "CTurtle/font/TextAlign.hpp"
-#include "CTurtle/types/Color.hpp"
 
 #include <string>
 

@@ -4,9 +4,9 @@
 // See LICENSE for details.
 #ifndef CTURTLE_OBJECTS_SPRITE_HPP
 #define CTURTLE_OBJECTS_SPRITE_HPP
+#include "../types/Color.hpp"
+#include "../types/Image.hpp"
 #include "AbstractDrawableObject.hpp"
-#include "CTurtle/types/Color.hpp"
-#include "CTurtle/types/Image.hpp"
 
 namespace cturtle {
 /**\brief The Sprite class represents a selection of a larger image.

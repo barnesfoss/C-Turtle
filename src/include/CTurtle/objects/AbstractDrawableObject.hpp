@@ -4,8 +4,8 @@
 // See LICENSE for details.
 #ifndef CTURTLE_OBJECTS_ABSTRACTDRAWABLEOBJECT_HPP
 #define CTURTLE_OBJECTS_ABSTRACTDRAWABLEOBJECT_HPP
-#include "CTurtle/geometry/Transform.hpp"
-#include "CTurtle/types/Color.hpp"
+#include "../geometry/Transform.hpp"
+#include "../types/Color.hpp"
 
 namespace cturtle {
 /**\brief AbstractDrawableObject is a base class, intended to be

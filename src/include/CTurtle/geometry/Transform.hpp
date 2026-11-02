@@ -4,9 +4,9 @@
 // See LICENSE for details.
 #ifndef CTURTLE_GEOMETRY_TRANSFORM_HPP
 #define CTURTLE_GEOMETRY_TRANSFORM_HPP
-#include "CTurtle/geometry/ivec2.hpp" // for Point, ivec2 (ptr only)
-#include "CTurtle/types/Color.hpp"    // for Color
-#include "CTurtle/types/Image.hpp"    // for Image
+#include "../geometry/ivec2.hpp" // for Point, ivec2 (ptr only)
+#include "../types/Color.hpp"    // for Color
+#include "../types/Image.hpp"    // for Image
 
 #include <array> // for array
 #include <cmath> // for M_PI, round

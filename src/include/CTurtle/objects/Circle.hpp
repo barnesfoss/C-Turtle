@@ -4,8 +4,8 @@
 // See LICENSE for details.
 #ifndef CTURTLE_OBJECTS_CIRCLE_HPP
 #define CTURTLE_OBJECTS_CIRCLE_HPP
+#include "../types/Color.hpp"         // for Color
 #include "AbstractDrawableObject.hpp" // for AbstractDrawableObject
-#include "CTurtle/types/Color.hpp"    // for Color
 
 namespace cturtle {
 /**\brief The Circle class holds a radius and total number of steps, used

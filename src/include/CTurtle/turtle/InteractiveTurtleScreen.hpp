@@ -4,14 +4,14 @@
 // See LICENSE for details.
 #ifndef CTURTLE_TURTLE_INTERACTIVETURTLESCREEN_HPP
 #define CTURTLE_TURTLE_INTERACTIVETURTLESCREEN_HPP
+#include "../geometry/ivec2.hpp"
+#include "../turtle/ScreenMode.hpp"
+#include "../types/Color.hpp"
+#include "../types/DisplayCImg.hpp"
+#include "../types/Image.hpp"
+#include "../util/io.hpp"
+#include "../version.h"
 #include "AbstractTurtleScreen.hpp"
-#include "CTurtle/geometry/ivec2.hpp"
-#include "CTurtle/turtle/ScreenMode.hpp"
-#include "CTurtle/types/Color.hpp"
-#include "CTurtle/types/DisplayCImg.hpp"
-#include "CTurtle/types/Image.hpp"
-#include "CTurtle/util/io.hpp"
-#include "CTurtle/version.h"
 
 #include <cstdint>
 #include <list>
