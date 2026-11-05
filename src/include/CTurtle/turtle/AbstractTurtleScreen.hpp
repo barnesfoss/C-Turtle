@@ -2,7 +2,6 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
 #ifndef CTURTLE_TURTLE_ABSTRACTTURTLESCREEN_HPP
 #define CTURTLE_TURTLE_ABSTRACTTURTLESCREEN_HPP
 #include "../font/AbstractFont.hpp"

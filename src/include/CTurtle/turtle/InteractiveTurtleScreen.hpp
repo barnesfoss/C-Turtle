@@ -2,7 +2,6 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
 #ifndef CTURTLE_TURTLE_INTERACTIVETURTLESCREEN_HPP
 #define CTURTLE_TURTLE_INTERACTIVETURTLESCREEN_HPP
 #include "../geometry/ivec2.hpp"
@@ -24,6 +23,10 @@
 #include <unordered_map>
 
 namespace cturtle {
+class BitmapFont;
+class Turtle;
+struct SceneObject;
+
 /**
  * \brief The InteractiveTurtleScreen class holds and maintains facilities in
  * relation to displaying \ turtles and consuming input events from users

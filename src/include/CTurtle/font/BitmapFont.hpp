@@ -2,7 +2,6 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
 #ifndef CTURTLE_FONT_BITMAPFONT_HPP
 #define CTURTLE_FONT_BITMAPFONT_HPP
 #include "../geometry/ivec2.hpp"
@@ -31,8 +30,16 @@ public:
   BitmapFont(
       const Image<> &img, int asciiOffs, int glyphWidth, int glyphHeight, int glyphsX, int glyphsY);
 
+  /**
+   * Returns the appropriate image for the specified character.
+   * \param c character to retrieve the associated image for.
+   */
   const Image<> &getGlyphImage(unsigned char c) const override;
 
+  /**
+   * Returns the appropriate image for the specified character.
+   * \param c character to retrieve the associated image for.
+   */
   const Image<> &operator[](unsigned char c) const override;
 
   ivec2 getGlyphPosition(unsigned char c) const override;
