@@ -3,12 +3,25 @@
 // Licensed under the MIT License.
 // See LICENSE for details.
 #pragma once
-#include "CTurtle.hpp"
-#include "CTurtle/font/BitmapFont.hpp"
-#include "CTurtle/util/io.hpp"
+#ifndef CTURTLE_TURTLE_INTERACTIVETURTLESCREEN_HPP
+#define CTURTLE_TURTLE_INTERACTIVETURTLESCREEN_HPP
+#include "../geometry/ivec2.hpp"
+#include "../turtle/ScreenMode.hpp"
+#include "../types/Color.hpp"
+#include "../types/DisplayCImg.hpp"
+#include "../types/Image.hpp"
+#include "../util/io.hpp"
+#include "../version.h"
+#include "AbstractTurtleScreen.hpp"
 
+#include <cstdint>
+#include <list>
+#include <memory>
 #include <mutex>
+#include <string>
 #include <thread>
+#include <tuple>
+#include <unordered_map>
 
 namespace cturtle {
 /**
@@ -62,10 +75,10 @@ public:
    * Sets the background image. Please note that the background image
    * takes precedence over background color.
    *\param img The background image.*/
-  void bgpic(const Image &img);
+  void bgpic(const Image<> &img);
 
   /**Returns a const reference to the background image.*/
-  const Image &bgpic();
+  const Image<> &bgpic();
 
   bool supports_live_animation() const override;
 
@@ -126,13 +139,10 @@ public:
   void mainloop();
 
   /**Resets and closes this display.*/
-  void bye() override;
+  void bye(bool _ = false) override;
 
   /**Returns the canvas image used by this screen.*/
-  Image &getcanvas() override;
-
-  /**Returns the internal CImg display.*/
-  cimg_library::CImgDisplay &internaldisplay();
+  Image<> &getcanvas() override;
 
   /**Returns a boolean indicating if the
     screen has been closed.*/
@@ -226,16 +236,16 @@ public:
 
 protected:
   /**The underlying display mechanism for a TurtleScreen.*/
-  cimg_library::CImgDisplay display;
+  Display display;
 
   /**The canvas onto which scene objects are drawn to.*/
-  Image canvas;
+  Image<> canvas;
 
   // The turtle composite image.
   // This image copies the canvas and has
   // turtles drawn to it to avoid redrawing a "busy" canvas.
   // Trace lines are also drawn on this when filling.
-  Image turtleComposite;
+  Image<> turtleComposite;
 
   /**The total objects on screen the last time this screen was drawn.
    * Used to keep track of newer scene objects for a speed improvement.*/
@@ -243,10 +253,12 @@ protected:
 
   /**The background color of this TurtleScreen.*/
   Color backgroundColor = Color("white");
+
   /**The background image of this TurtleScreen.
    * When not empty, this image takes precedence over
    * the background color when drawing.**/
-  Image backgroundImage;
+  Image<> backgroundImage;
+
   /**The current screen mode.
    *\sa mode(m)*/
   ScreenMode curMode = SM_STANDARD;
@@ -257,6 +269,7 @@ protected:
   /** These variables are used specifically in tracer settings.**/
   /**Redraw Counter.*/
   int redrawCounter = 0;
+
   /**Redraw counter max.*/
   int redrawCounterMax = 1;
 
@@ -276,19 +289,24 @@ protected:
   /**A unique pointer to the event thread.
    *\sa initEventThread()*/
   std::unique_ptr<std::thread> eventThread;
+
   /**A list of cached events. Filled by event thread,
    * processed and emptied by main thread.*/
   std::list<InputEvent> cachedEvents;
+
   /**A boolean indicating whether or not to kill the event thread.*/
   bool killEventThread = false;
+
   /**The mutex which controls synchronization between the main
    * thread and the event thread.*/
   std::mutex eventCacheMutex;
 
   // this is an array. 0 for keyDown bindings, 1 for keyUp bindings.
   std::unordered_map<KeyboardKey, std::list<KeyFunc>> keyBindings[2] = {{}, {}};
+
   // similar, mouseb_left mouseb_middle mouseb_right bindings.
   std::list<MouseFunc> mouseBindings[3] = {{}, {}, {}};
+
   // timer bindings, one function per originating time and delta.
   std::list<std::tuple<TimerFunc, uint64_t, uint64_t>> timerBindings;
 
@@ -299,3 +317,4 @@ protected:
 typedef InteractiveTurtleScreen TurtleScreen;
 #endif
 } // namespace cturtle
+#endif

@@ -2,10 +2,10 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#include "CTurtle/util/base64.hpp"
+#include "util/base64.hpp"
 
+#include <cstddef>
 #include <cstdint> // For well-defined integer types.
-#include <cstring> // For memcpy
 #include <sstream> // used for base64 encoding.
 #include <string>  // Strings...
 #include <vector>  // For Polygon point storage

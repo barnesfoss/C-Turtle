@@ -2,7 +2,9 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
+#ifndef CTURTLE_OBJECTS_COMPOUNDPOLYGON_HPP
+#define CTURTLE_OBJECTS_COMPOUNDPOLYGON_HPP
+#include "../geometry/Transform.hpp"
 #include "AbstractDrawableObject.hpp"
 
 #include <list>
@@ -45,9 +47,10 @@ public:
 
   /**Draws this CompoundPolygon.
    * Disregards the Color attribute in favor of the components' colors*/
-  void draw(const Transform &t, Image &imgRef) const override;
+  void draw(const Transform &t, Image<> &imgRef) const override;
 
 protected:
   std::list<component_t> components;
 };
 } // namespace cturtle
+#endif

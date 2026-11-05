@@ -2,8 +2,10 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
-#include "AbstractDrawableObject.hpp"
+#ifndef CTURTLE_OBJECTS_CIRCLE_HPP
+#define CTURTLE_OBJECTS_CIRCLE_HPP
+#include "../types/Color.hpp"         // for Color
+#include "AbstractDrawableObject.hpp" // for AbstractDrawableObject
 
 namespace cturtle {
 /**\brief The Circle class holds a radius and total number of steps, used
@@ -35,6 +37,7 @@ public:
 
   AbstractDrawableObject *copy() const override;
 
-  void draw(const Transform &t, Image &imgRef) const override;
+  void draw(const Transform &t, Image<> &imgRef) const override;
 };
 } // namespace cturtle
+#endif

@@ -3,19 +3,26 @@
 // Licensed under the MIT License.
 // See LICENSE for details.
 #pragma once
-#include "CTurtle/font/AbstractFont.hpp"
-#include "CTurtle/geometry/Transform.hpp"
-#include "CTurtle/geometry/ivec2.hpp"
-#include "CTurtle/objects/Polygon.hpp"
-#include "CTurtle/objects/SceneObject.hpp"
-#include "CTurtle/types/Color.hpp"
-#include "CTurtle/types/Image.hpp"
+#ifndef CTURTLE_TURTLE_ABSTRACTTURTLESCREEN_HPP
+#define CTURTLE_TURTLE_ABSTRACTTURTLESCREEN_HPP
+#include "../font/AbstractFont.hpp"
+#include "../geometry/Transform.hpp"
+#include "../geometry/ivec2.hpp"
+#include "../objects/Polygon.hpp"
+#include "../objects/SceneObject.hpp"
+#include "../types/Color.hpp"
+#include "../types/Image.hpp"
 #include "ScreenMode.hpp"
 
 #include <list>
+#include <string>
+#include <unordered_map>
 
 namespace cturtle {
 class Turtle;
+class AbstractDrawableObject;
+class BitmapFont;
+struct SceneObject;
 
 /**
  * \brief The AbstractTurtleScreen class is the abstract type for most turtle
@@ -95,9 +102,9 @@ public:
   /**
    * Closes this turtle screen.
    */
-  virtual void bye() = 0;
+  virtual void bye(bool option) = 0;
 
-  virtual Image &getcanvas() = 0;
+  virtual Image<> &getcanvas() = 0;
 
   virtual bool isclosed() = 0;
 
@@ -155,7 +162,7 @@ protected:
    * point while performing default initialization.
    * @return the decoded default font image.
    */
-  static Image decodeDefaultFont();
+  static Image<> decodeDefaultFont();
 
   /*The default shapes that screens initialize with.*/
   std::unordered_map<std::string, Polygon> shapes = {
@@ -175,3 +182,4 @@ protected:
   AbstractTurtleScreen() = default;
 };
 } // namespace cturtle
+#endif

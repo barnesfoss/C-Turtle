@@ -5,7 +5,11 @@
 // File: pen.cpp
 // Definitions for the `Turtle` class pen methods
 
-#include "CTurtle.hpp"
+#include "turtle/PenState.hpp"
+#include "turtle/Turtle.hpp"
+#include "types/Color.hpp"
+
+#include <list>
 
 namespace cturtle {
 const PenState &Turtle::penstate() const {

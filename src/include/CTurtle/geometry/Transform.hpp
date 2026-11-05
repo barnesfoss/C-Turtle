@@ -2,13 +2,19 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
-#include "CTurtle/geometry/ivec2.hpp"
-#include "CTurtle/types/Color.hpp"
-#include "CTurtle/types/Image.hpp"
+#ifndef CTURTLE_GEOMETRY_TRANSFORM_HPP
+#define CTURTLE_GEOMETRY_TRANSFORM_HPP
+#include "../geometry/ivec2.hpp" // for Point, ivec2 (ptr only)
+#include "../types/Color.hpp"    // for Color
+#include "../types/Image.hpp"    // for Image
 
-#include <array>
-#include <math.h>
+#include <array> // for array
+#include <cmath> // for M_PI, round
+
+// For some reason windows does not like defining M_PI so we explicitly define it here
+#ifndef M_PI
+#define M_PI 3.14159265358979323846264338327950288
+#endif
 
 namespace cturtle {
 /**\brief The Transform class provides a myriad of functions to
@@ -219,5 +225,6 @@ template <typename T> T toDegrees(T val) {
  *\param the Y component of the second coordinate.
  *\param c The color with which to draw the line.
  *\param width The width of the line.*/
-void drawLine(Image &imgRef, int x1, int y1, int x2, int y2, const Color &c, int width = 1);
+void drawLine(Image<> &imgRef, int x1, int y1, int x2, int y2, const Color &c, int width = 1);
 } // namespace cturtle
+#endif

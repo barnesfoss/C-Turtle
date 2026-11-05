@@ -5,7 +5,10 @@
 // File: math.cpp
 // Definitions for the `Turtle` class arithmetic functions
 
-#include "CTurtle.hpp"
+#include "geometry/Transform.hpp"
+#include "geometry/ivec2.hpp"
+#include "turtle/PenState.hpp"
+#include "turtle/Turtle.hpp"
 
 #include <cmath>
 

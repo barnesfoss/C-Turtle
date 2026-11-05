@@ -2,9 +2,11 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#include "CTurtle/geometry/Transform.hpp"
+#include "geometry/Transform.hpp"
 
-#include <math.h>
+#include "geometry/ivec2.hpp" // for Point, ivec2
+#include "types/Color.hpp"    // for Color
+#include "types/Image.hpp"    // for Image
 
 namespace cturtle {
 Transform::Transform() : value() {
@@ -215,7 +217,7 @@ float Transform::at(int row, int col) const {
   return value[row * 3 + col];
 }
 
-void drawLine(Image &imgRef, int x1, int y1, int x2, int y2, const Color &c, int width) {
+void drawLine(Image<> &imgRef, int x1, int y1, int x2, int y2, const Color &c, int width) {
   if (x1 == x2 && y1 == y2)
     return;
   else if (width == 1) {
@@ -226,7 +228,7 @@ void drawLine(Image &imgRef, int x1, int y1, int x2, int y2, const Color &c, int
   }
 
   const int radius = width / 2; // integer division, be careful here...
-  cimg_library::CImg<int> lineGeom(4, 2);
+  Image<int> lineGeom(4, 2);
 
   // convert line (p1, p2) to polygon (p1,p2,p3,p4)... huzzah, O(1)
   // implementation! start with two transforms (one for each coordinate pair),

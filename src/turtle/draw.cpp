@@ -5,15 +5,33 @@
 // File : draw.cpp
 // Definitions for the `Turtle` class drawing methods
 
-#include "CTurtle.hpp"
-#include "CTurtle/font.hpp"
-#include "CTurtle/objects/Circle.hpp"
-#include "CTurtle/objects/Text.hpp"
+#include "font.hpp"
+#include "font/TextAlign.hpp"
+#include "geometry/Transform.hpp"
+#include "geometry/ivec2.hpp"
+#include "objects/AbstractDrawableObject.hpp"
+#include "objects/Circle.hpp"
+#include "objects/Line.hpp"
+#include "objects/Polygon.hpp"
+#include "objects/SceneObject.hpp"
+#include "objects/Text.hpp"
+#include "turtle/AbstractTurtleScreen.hpp"
+#include "turtle/PenState.hpp"
+#include "turtle/ScreenMode.hpp"
+#include "turtle/Turtle.hpp"
+#include "types/Color.hpp"
+#include "types/Image.hpp"
 
+#include <cstdint>
+#include <iterator>
 #include <list>
+#include <memory>
 #include <string>
+#include <vector>
 
 namespace cturtle {
+class BitmapFont;
+
 void Turtle::circle(int radius, int steps, const Color &color) {
   pushGeometry(*transform, new Circle(radius, steps, color));
   updateParent(false, true);
@@ -182,7 +200,7 @@ unsigned int Turtle::undobufferentries() {
   return static_cast<unsigned int>(stateStack.size());
 }
 
-void Turtle::draw(const Transform &screenTransform, Image &canvas) {
+void Turtle::draw(const Transform &screenTransform, Image<> &canvas) {
   if (this->screen == nullptr)
     return;
 

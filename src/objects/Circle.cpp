@@ -2,7 +2,13 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#include "CTurtle/objects/Circle.hpp"
+#include "objects/Circle.hpp"
+
+#include "geometry/Transform.hpp" // for drawLine, Transform
+#include "geometry/ivec2.hpp"     // for Point
+#include "types/Image.hpp"        // for Imagenamespace cturtle {
+
+#include <cmath> // for M_PI, cos, sin
 
 namespace cturtle {
 Circle::Circle(
@@ -13,10 +19,10 @@ Circle::Circle(
   this->outlineColor = outlineColor;
 }
 
-void Circle::draw(const Transform &t, Image &imgRef) const {
+void Circle::draw(const Transform &t, Image<> &imgRef) const {
   if (steps <= 0)
     return; // no step check
-  cimg_library::CImg<int> passPts(steps, 2);
+  Image<int> passPts(steps, 2);
 
   for (int i = 0; i < steps; i++) {
     Point p;

@@ -2,7 +2,8 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
+#ifndef CTURTLE_UTIL_BASE64_HPP
+#define CTURTLE_UTIL_BASE64_HPP
 #include <string> // Strings...
 #include <vector> // For Polygon point storage
 
@@ -22,3 +23,4 @@ static constexpr unsigned char kPadCharacter = '=';
  */
 std::string encode(const std::vector<unsigned char> &input);
 } // namespace base64
+#endif

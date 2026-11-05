@@ -21,7 +21,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Set up Doxygen
-        run: sudo apt-get update && sudo apt-get install -y doxygen graphviz build-essential libsdl2-dev libgl-dev libglu1-mesa-dev libpthread-stubs0-dev
+        run: sudo apt-get update && sudo apt-get install -y doxygen graphviz build-essential
       - name: Update doxygen-awesome
         run: git submodule update --init --recursive
       - name: Generate Docs

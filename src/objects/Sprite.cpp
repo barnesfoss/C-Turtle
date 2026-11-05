@@ -2,17 +2,25 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#include "CTurtle/objects/Sprite.hpp"
+#include "objects/Sprite.hpp"
+
+#include "geometry/Transform.hpp"
+#include "geometry/ivec2.hpp"
 
 namespace cturtle {
-Sprite::Sprite(Image &img, int outlineWidth, const Color &outlineColor) : spriteImg(img) {
+Sprite::Sprite(Image<> &img, int outlineWidth, const Color &outlineColor) : spriteImg(img) {
   srcX = srcY = 0;
   srcW = img.width();
   srcH = img.height();
 }
 
-Sprite::Sprite(
-    Image &img, int srcX, int srcY, int srcW, int srcH, int outlineWidth, const Color &outlineColor)
+Sprite::Sprite(Image<> &img,
+               int srcX,
+               int srcY,
+               int srcW,
+               int srcH,
+               int outlineWidth,
+               const Color &outlineColor)
     : spriteImg(img) {
   this->srcX = srcX;
   this->srcY = srcY;
@@ -22,7 +30,7 @@ Sprite::Sprite(
   this->outlineColor = outlineColor;
 }
 
-void Sprite::draw(const Transform &t, Image &imgRef) const {
+void Sprite::draw(const Transform &t, Image<> &imgRef) const {
   // Vertex order is as follows for the constructed quad.
   //  0--3   3
   //  | /   /|

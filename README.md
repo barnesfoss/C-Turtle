@@ -6,7 +6,7 @@
 </p>
 
 # C-Turtle 1.0.5
-
+[![Linux Build](https://github.com/barnesfoss/C-Turtle/actions/workflows/linux.yml/badge.svg)](https://github.com/barnesfoss/C-Turtle/actions/workflows/linux.yml) [![MacOS Build](https://github.com/barnesfoss/C-Turtle/actions/workflows/mac.yml/badge.svg)](https://github.com/barnesfoss/C-Turtle/actions/workflows/mac.yml) [![Windows-mingw32 Build](https://github.com/barnesfoss/C-Turtle/actions/workflows/mingw.yml/badge.svg)](https://github.com/barnesfoss/C-Turtle/actions/workflows/mingw.yml) [![Windows-MSVC Build](https://github.com/barnesfoss/C-Turtle/actions/workflows/msvc.yml/badge.svg)](https://github.com/barnesfoss/C-Turtle/actions/workflows/msvc.yml)
 > [!IMPORTANT]
 > Unlike the [original C-Turtle](https://github.com/walkerje/C-Turtle) this branch isn't a single header file, you instead should set it up with [Meson](https://build.meson).
 > <br>
@@ -86,7 +86,7 @@ The following table contains examples, which do the exact same thing, between C-
 
 C-Turtle also supports drawing to an animated GIF instead of a display (e.g, "headless").
 This is configurable through the "headless" macro, or by using a `HeadlessTurtleScreen`.
-To write GIFs, C-Turtle uses [jo_gif](https://www.jonolick.com/home/gif-writer), a wonderful public domain GIF library created by Jon Olick.
+To write GIFs, C-Turtle uses [giflib](https://giflib.sourceforge.net/), an amazing open-source MIT license library written in 1989 and used for gifs almost everywhere!
 This avoids having ImageMagick as a dependency, which is what CImg uses by default to save animated GIFs.
 
 In "headless" mode, TurtleScreen has all functionality relating to input and background images removed.

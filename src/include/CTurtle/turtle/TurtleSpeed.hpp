@@ -2,7 +2,8 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
+#ifndef CTURTLE_TURTLE_TURTLESPEED_HPP
+#define CTURTLE_TURTLE_TURTLESPEED_HPP
 
 namespace cturtle {
 // SECTION: TURTLE & TURTLE SCREEN
@@ -22,3 +23,4 @@ enum TurtleSpeed {
   TS_SLOWEST = 1
 };
 } // namespace cturtle
+#endif

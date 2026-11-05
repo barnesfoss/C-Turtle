@@ -2,12 +2,16 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
-#include "CTurtle/geometry/Transform.hpp"
-#include "CTurtle/objects/AbstractDrawableObject.hpp"
+#ifndef CTURTLE_TURTLE_PENSTATE_HPP
+#define CTURTLE_TURTLE_PENSTATE_HPP
+#include "../geometry/Transform.hpp"
+#include "../objects/AbstractDrawableObject.hpp"
+#include "../types/Color.hpp"
 #include "TurtleSpeed.hpp"
 
+#include <cstddef>
 #include <memory>
+#include <string>
 
 namespace cturtle {
 /**\brief The Pen State structure Holds all pen attributes, which are grouped in
@@ -50,3 +54,4 @@ struct PenState {
   PenState &operator=(const PenState &copy);
 };
 } // namespace cturtle
+#endif

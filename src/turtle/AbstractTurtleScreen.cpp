@@ -2,9 +2,12 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#include "CTurtle/turtle/AbstractTurtleScreen.hpp"
+#include "turtle/AbstractTurtleScreen.hpp"
 
-#include "CTurtle/font.hpp"
+#include "font.hpp"
+#include "types/Image.hpp"
+
+#include <cstdint>
 
 namespace cturtle {
 void AbstractTurtleScreen::clear() {
@@ -15,7 +18,7 @@ void AbstractTurtleScreen::reset() {
   resetscreen();
 }
 
-Image AbstractTurtleScreen::decodeDefaultFont() {
+Image<> AbstractTurtleScreen::decodeDefaultFont() {
   Image img(DEFAULT_FONT_PIXELS_WIDTH, DEFAULT_FONT_PIXELS_HEIGHT);
   img.channels(0, 3); // force RGBA
   for (uint32_t pixId = 0; pixId < DEFAULT_FONT_PIXELS_LEN; pixId++) {

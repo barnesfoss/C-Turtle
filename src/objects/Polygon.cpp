@@ -2,7 +2,14 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#include "CTurtle/objects/Polygon.hpp"
+#include "objects/Polygon.hpp"
+
+#include "geometry/Transform.hpp"
+#include "types/Image.hpp"
+
+#include <cstddef>
+#include <cstdint>
+#include <utility>
 
 namespace cturtle {
 Polygon::Polygon(const std::initializer_list<Point> &init) : points(init) {
@@ -25,14 +32,14 @@ AbstractDrawableObject *Polygon::copy() const {
   return new Polygon(*this);
 }
 
-void Polygon::draw(const Transform &t, Image &imgRef) const {
+void Polygon::draw(const Transform &t, Image<uint8_t> &imgRef) const {
   if (points.empty())
     return;
   /*CImg requires all polygons to be passed in as an instance of
     the image object. Therefore, we can specify an "int" image with
     a width of 2 (x,y) and height of the total number of
     elements in the point vector.*/
-  cimg_library::CImg<int> passPts(static_cast<int>(points.size()), 2);
+  Image<int> passPts(static_cast<int>(points.size()), 2);
 
   for (size_t i = 0; i < points.size(); i++) {
     const Point pt = t(points[i]);

@@ -5,7 +5,20 @@
 // File: movement.cpp
 // Definitions for the `Turtle` class's movement methods
 
-#include "CTurtle.hpp"
+#include "geometry/Transform.hpp"
+#include "geometry/ivec2.hpp"
+#include "objects/Line.hpp"
+#include "objects/Polygon.hpp"
+#include "turtle/AbstractTurtleScreen.hpp"
+#include "turtle/PenState.hpp"
+#include "turtle/ScreenMode.hpp"
+#include "turtle/Turtle.hpp"
+#include "types/Color.hpp"
+
+#include <cmath>
+#include <cstdint>
+#include <list>
+#include <vector>
 
 namespace cturtle {
 void Turtle::forward(int pixels) {

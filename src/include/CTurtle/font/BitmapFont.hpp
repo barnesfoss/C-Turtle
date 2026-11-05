@@ -3,9 +3,11 @@
 // Licensed under the MIT License.
 // See LICENSE for details.
 #pragma once
-#include "CTurtle/font/AbstractFont.hpp"
-#include "CTurtle/geometry/ivec2.hpp"
-#include "CTurtle/types/Image.hpp"
+#ifndef CTURTLE_FONT_BITMAPFONT_HPP
+#define CTURTLE_FONT_BITMAPFONT_HPP
+#include "../geometry/ivec2.hpp"
+#include "../types/Image.hpp"
+#include "AbstractFont.hpp"
 
 #include <vector>
 
@@ -27,11 +29,11 @@ public:
    * @param glyphsY
    */
   BitmapFont(
-      const Image &img, int asciiOffs, int glyphWidth, int glyphHeight, int glyphsX, int glyphsY);
+      const Image<> &img, int asciiOffs, int glyphWidth, int glyphHeight, int glyphsX, int glyphsY);
 
-  const Image &getGlyphImage(unsigned char c) const override;
+  const Image<> &getGlyphImage(unsigned char c) const override;
 
-  const Image &operator[](unsigned char c) const override;
+  const Image<> &operator[](unsigned char c) const override;
 
   ivec2 getGlyphPosition(unsigned char c) const override;
 
@@ -44,7 +46,8 @@ public:
   ivec2 getGlyphAxes() const override;
 
 private:
-  std::vector<Image> glyphs;
+  std::vector<Image<>> glyphs;
   int asciiOffset, glyphWidth, glyphHeight, glyphsX, glyphsY;
 };
 } // namespace cturtle
+#endif

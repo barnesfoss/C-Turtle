@@ -2,14 +2,18 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
+#ifndef CTURTLE_OBJECTS_TEXT_HPP
+#define CTURTLE_OBJECTS_TEXT_HPP
+#include "../font/BitmapFont.hpp"
+#include "../font/TextAlign.hpp"
+#include "../types/Color.hpp"
 #include "AbstractDrawableObject.hpp"
-#include "CTurtle/font/AbstractFont.hpp"
-#include "CTurtle/font/TextAlign.hpp"
 
 #include <string>
 
 namespace cturtle {
+class BitmapFont;
+
 /**\brief The Text class represents a basic string that is drawn on the screen.
  */
 class Text : public AbstractDrawableObject {
@@ -30,8 +34,9 @@ public:
 
   AbstractDrawableObject *copy() const override;
 
-  void draw(const Transform &t, Image &imgRef) const override;
+  void draw(const Transform &t, Image<> &imgRef) const override;
 
   ~Text() override = default;
 };
 } // namespace cturtle
+#endif

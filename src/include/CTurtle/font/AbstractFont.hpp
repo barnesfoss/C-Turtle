@@ -1,6 +1,6 @@
 #pragma once
-#include "CTurtle/geometry/ivec2.hpp"
-#include "CTurtle/types/Image.hpp"
+#include "../geometry/ivec2.hpp"
+#include "../types/Image.hpp"
 
 namespace cturtle {
 class AbstractFont {
@@ -9,13 +9,13 @@ public:
    * Returns the appropriate image for the specified character.
    * \param c character to retrieve the associated image for.
    */
-  virtual const Image &getGlyphImage(unsigned char c) const = 0;
+  virtual const Image<> &getGlyphImage(unsigned char c) const = 0;
 
   /**
    * Returns the appropriate image for the specified character.
    * \param c character to retrieve the associated image for.
    */
-  virtual const Image &operator[](unsigned char c) const = 0;
+  virtual const Image<> &operator[](unsigned char c) const = 0;
 
   /**
    * \brief Returns the position of the specified character in the font image.

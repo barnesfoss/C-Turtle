@@ -2,7 +2,8 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
+#ifndef CTURTLE_TYPES_COLOR_HPP
+#define CTURTLE_TYPES_COLOR_HPP
 #include <cstdint>
 #include <stdint.h>
 #include <string>
@@ -1616,4 +1617,9 @@ Color randomColor();
  * their values. All of the names can be found here:
  * https://www.tcl.tk/man/tcl8.4/TkCmd/colors.htm */
 Color fromName(const std::string &name);
+
+bool operator==(Color self, Color other);
+
+bool operator!=(Color self, Color other);
 } // namespace cturtle
+#endif

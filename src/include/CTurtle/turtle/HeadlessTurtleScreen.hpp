@@ -3,21 +3,53 @@
 // Licensed under the MIT License.
 // See LICENSE for details.
 #pragma once
-#include "CTurtle/font.hpp"
-#include "CTurtle/font/BitmapFont.hpp"
-#include "CTurtle/turtle/AbstractTurtleScreen.hpp"
-#include "CTurtle/util/jo_gif.hpp"
+#ifndef CTURTLE_TURTLE_HEADLESSTURTLESCREEN_HPP
+#define CTURTLE_TURTLE_HEADLESSTURTLESCREEN_HPP
+#include "../font.hpp"
+#include "../font/AbstractFont.hpp"
+#include "../font/BitmapFont.hpp"
+#include "../turtle/AbstractTurtleScreen.hpp"
+#include "../turtle/ScreenMode.hpp"
+#include "../turtle/Turtle.hpp"
+#include "../types/Color.hpp"
+#include "../types/Image.hpp"
 
+#include <cstddef>
+#include <cstdint>
+#include <list>
+#include <memory>
 #include <string>
 
+#ifndef CTURTLE_HEADLESS_WIDTH
+#define CTURTLE_HEADLESS_WIDTH 400
+#endif
+#ifndef CTURTLE_HEADLESS_HEIGHT
+#define CTURTLE_HEADLESS_HEIGHT 300
+#endif
+
+#ifndef CTURTLE_HEADLESS_NO_HTML
+#define CTURTLE_HEADLESS_HTML true
+#else
+#define CTURTLE_HEADLESS_HTML false
+#endif
+
+#ifndef CTURTLE_HEADLESS_SAVEDIR
+#define CTURTLE_HEADLESS_SAVEDIR "./cturtle.gif"
+#endif
+
+struct GifFileType;
+
 namespace cturtle {
+class Turtle;
+struct SceneObject;
+
 std::string encodeFileBase64(const std::string &path);
 
 class HeadlessTurtleScreen : public AbstractTurtleScreen {
 public:
-  HeadlessTurtleScreen(size_t width = 400,
-                       size_t height = 300,
-                       const std::string saveDir = "./cturtle.gif");
+  HeadlessTurtleScreen(size_t width = CTURTLE_HEADLESS_WIDTH,
+                       size_t height = CTURTLE_HEADLESS_HEIGHT,
+                       const std::string saveDir = CTURTLE_HEADLESS_SAVEDIR);
 
   ~HeadlessTurtleScreen();
   ;
@@ -51,7 +83,7 @@ public:
 
   bool supports_live_animation() const;
 
-  Image &getcanvas();
+  Image<> &getcanvas();
 
   bool isclosed();
 
@@ -61,9 +93,7 @@ public:
 
   // Kind of a bad way of doing this but because bye() is a virtual function
   // we have to do this
-  void bye(bool printHtml);
-
-  void bye();
+  void bye(bool printHtml = CTURTLE_HEADLESS_HTML);
 
   Transform screentransform() const;
 
@@ -92,19 +122,20 @@ private:
   // this fits into uint32_t type quite nicely. (8+8+8+8 bits, r+g+b+a) = 32
 
   // This struct controls the writing of resulting GIFs.
-  jo_gif_t gif;
+  int gifError;
+  GifFileType *gif;
 
   std::list<SceneObject> objects;
   std::list<Turtle *> turtles;
 
   bool isClosed = true;
-  Image canvas;
+  Image<> canvas;
 
   // The turtle composite image.
   // This image copies the canvas and has
   // turtles drawn to it to avoid redrawing a "busy" canvas.
   // Trace lines are also drawn on this when filling.
-  Image turtleComposite;
+  Image<> turtleComposite;
 
   /**The total objects on screen the last time this screen was drawn.
    * Used to keep track of newer scene objects for a speed improvement.*/
@@ -143,3 +174,4 @@ private:
 typedef HeadlessTurtleScreen TurtleScreen;
 #endif
 } // namespace cturtle
+#endif

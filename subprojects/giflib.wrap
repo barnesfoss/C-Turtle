@@ -1,0 +1,14 @@
+[wrap-file]
+directory = giflib-6.1.3
+source_url = https://downloads.sourceforge.net/project/giflib/giflib-6.x/giflib-6.1.3.tar.gz
+source_filename = giflib-6.1.3.tar.gz
+source_hash = b65b66b99f0424b93525f987386f22fc5efb9da2bfc92ad4a532249aaffbab0e
+source_fallback_url = https://wrapdb.mesonbuild.com/v2/giflib_6.1.3-1/get_source/giflib-6.1.3.tar.gz
+patch_filename = giflib_6.1.3-1_patch.zip
+patch_url = https://wrapdb.mesonbuild.com/v2/giflib_6.1.3-1/get_patch
+patch_fallback_url = https://github.com/mesonbuild/wrapdb/releases/download/giflib_6.1.3-1/giflib_6.1.3-1_patch.zip
+patch_hash = caad49f08394ee5f29c7374c98f77f4a74bbe27554507f4256a89fe9e3345652
+wrapdb_version = 6.1.3-1
+
+[provide]
+dependency_names = giflib

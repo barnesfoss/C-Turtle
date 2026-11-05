@@ -2,7 +2,10 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
+#ifndef CTURTLE_OBJECTS_POLYGON_HPP
+#define CTURTLE_OBJECTS_POLYGON_HPP
+#include "../geometry/ivec2.hpp"
+#include "../types/Color.hpp"
 #include "AbstractDrawableObject.hpp"
 
 #include <vector>
@@ -44,6 +47,7 @@ public:
   /**\brief Empty de-constructor.*/
   ~Polygon() override = default;
 
-  void draw(const Transform &t, Image &imgRef) const override;
+  void draw(const Transform &t, Image<> &imgRef) const override;
 };
 } // namespace cturtle
+#endif

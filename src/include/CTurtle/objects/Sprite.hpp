@@ -2,7 +2,10 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
+#ifndef CTURTLE_OBJECTS_SPRITE_HPP
+#define CTURTLE_OBJECTS_SPRITE_HPP
+#include "../types/Color.hpp"
+#include "../types/Image.hpp"
 #include "AbstractDrawableObject.hpp"
 
 namespace cturtle {
@@ -16,9 +19,9 @@ public:
   int drawWidth = 0;
   int drawHeight = 0;
 
-  explicit Sprite(Image &img, int outlineWidth = 0, const Color &outlineColor = Color());
+  explicit Sprite(Image<> &img, int outlineWidth = 0, const Color &outlineColor = Color());
 
-  Sprite(Image &img,
+  Sprite(Image<> &img,
          int srcX,
          int srcY,
          int srcW,
@@ -34,9 +37,10 @@ public:
 
   /**Draws this Sprite.
    * Disregards the Color attribute in favor of sprites colors.*/
-  void draw(const Transform &t, Image &imgRef) const override;
+  void draw(const Transform &t, Image<> &imgRef) const override;
 
 protected:
-  Image &spriteImg;
+  Image<> &spriteImg;
 };
 } // namespace cturtle
+#endif

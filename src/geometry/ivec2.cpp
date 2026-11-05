@@ -2,9 +2,9 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#include "CTurtle/geometry/ivec2.hpp"
+#include "geometry/ivec2.hpp"
 
-#include <math.h>
+#include <cmath> // for pow, round, sqrt
 
 namespace cturtle {
 /**\brief Represents a coordinate pair (e.g, x & y)

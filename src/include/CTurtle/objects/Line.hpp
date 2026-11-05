@@ -2,7 +2,10 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
+#ifndef CTURTLE_OBJECTS_LINE_HPP
+#define CTURTLE_OBJECTS_LINE_HPP
+#include "../geometry/ivec2.hpp"
+#include "../types/Color.hpp"
 #include "AbstractDrawableObject.hpp"
 
 namespace cturtle {
@@ -41,6 +44,7 @@ public:
   /**\brief Empty de-constructor.*/
   ~Line() override = default;
 
-  void draw(const Transform &t, Image &imgRef) const override;
+  void draw(const Transform &t, Image<> &imgRef) const override;
 };
 } // namespace cturtle
+#endif

@@ -2,26 +2,35 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#include "CTurtle/turtle/InteractiveTurtleScreen.hpp"
+#include "turtle/InteractiveTurtleScreen.hpp"
 
-#include "CTurtle.hpp"
-#include "CTurtle/font.hpp"
-#include "CTurtle/types/Color.hpp"
-#include "CTurtle/util/io.hpp"
+#include "font.hpp"
+#include "font/BitmapFont.hpp"
+#include "geometry/Transform.hpp"
+#include "objects/AbstractDrawableObject.hpp"
+#include "objects/SceneObject.hpp"
+#include "turtle/Turtle.hpp"
+#include "types/Color.hpp"
+#include "types/DisplayCImg.hpp"
+#include "util/io.hpp"
 
+#include <algorithm>
+#include <functional>
+#include <iterator>
 #include <list>
 #include <memory>
 #include <mutex>
 #include <string>
 #include <thread>
+#include <utility>
 
 namespace cturtle {
 InteractiveTurtleScreen::InteractiveTurtleScreen(const std::string &title)
     : InteractiveTurtleScreen(600, 800, title) {}
 
 InteractiveTurtleScreen::InteractiveTurtleScreen(int width, int height, const std::string &title)
-    : display(width, height, title.c_str(), 0) {
-  display.set_title(title.c_str());
+    : display(width, height, title, 0) {
+  display.set_title(title);
   display.set_normalization(0);
   canvas.assign(display);
   initEventThread();
@@ -54,13 +63,13 @@ Color InteractiveTurtleScreen::bgcolor() const {
   return backgroundColor;
 };
 
-void InteractiveTurtleScreen::bgpic(const Image &img) {
+void InteractiveTurtleScreen::bgpic(const Image<> &img) {
   backgroundImage.assign(img);
   backgroundImage.resize(window_width(), window_height());
   redraw(true);
 }
 
-const Image &InteractiveTurtleScreen::bgpic() {
+const Image<> &InteractiveTurtleScreen::bgpic() {
   return backgroundImage;
 }
 
@@ -197,7 +206,7 @@ void InteractiveTurtleScreen::mainloop() {
   }
 }
 
-void InteractiveTurtleScreen::bye() {
+void InteractiveTurtleScreen::bye(bool _) {
   if (redrawCounter > 0 || redrawCounter >= redrawCounterMax) {
     tracer(1, delayMS);
   }
@@ -214,16 +223,12 @@ void InteractiveTurtleScreen::bye() {
     display.close();
 }
 
-Image &InteractiveTurtleScreen::getcanvas() {
+Image<> &InteractiveTurtleScreen::getcanvas() {
   return canvas;
 }
 
-cimg_library::CImgDisplay &InteractiveTurtleScreen::internaldisplay() {
-  return display;
-}
-
 bool InteractiveTurtleScreen::isclosed() {
-  return internaldisplay().is_closed();
+  return display.is_closed();
 }
 
 void InteractiveTurtleScreen::redraw(bool invalidate) {
@@ -499,7 +504,7 @@ void InteractiveTurtleScreen::initEventThread() {
       for (const auto &keyPair : keys) {
         KeyboardKey key = keyPair.second;
         const bool lastDown = std::find(mKeys.begin(), mKeys.end(), key) != mKeys.end();
-        const bool curDown = display.is_key((unsigned int)key);
+        const bool curDown = display.is_key(toCImgKey(key));
 
         int state = -1;
         if (!lastDown && curDown) {

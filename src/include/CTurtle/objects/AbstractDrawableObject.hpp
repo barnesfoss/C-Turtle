@@ -2,9 +2,10 @@
 //
 // Licensed under the MIT License.
 // See LICENSE for details.
-#pragma once
-#include "CTurtle/geometry/Transform.hpp"
-#include "CTurtle/types/Color.hpp"
+#ifndef CTURTLE_OBJECTS_ABSTRACTDRAWABLEOBJECT_HPP
+#define CTURTLE_OBJECTS_ABSTRACTDRAWABLEOBJECT_HPP
+#include "../geometry/Transform.hpp"
+#include "../types/Color.hpp"
 
 namespace cturtle {
 /**\brief AbstractDrawableObject is a base class, intended to be
@@ -39,10 +40,11 @@ public:
    * \param t The transform at which to draw the geometry.
    * \param imgRef The canvas on which to draw.
    * \param c The color with to draw the geometry.*/
-  virtual void draw(const Transform &t, Image &imgRef) const = 0;
+  virtual void draw(const Transform &t, Image<> &imgRef) const = 0;
 
 protected:
   /**\brief Empty default constructor.*/
   AbstractDrawableObject() = default;
 };
 } // namespace cturtle
+#endif

@@ -4,8 +4,18 @@
 // See LICENSE for details.
 // File: turtle.cpp
 // Unclassified method definitions for the `Turtle` class
-#include "CTurtle.hpp"
+#include "turtle/Turtle.hpp"
 
+#include "geometry/Transform.hpp"
+#include "objects/AbstractDrawableObject.hpp"
+#include "objects/Line.hpp"
+#include "objects/SceneObject.hpp"
+#include "turtle/AbstractTurtleScreen.hpp"
+#include "turtle/PenState.hpp"
+#include "turtle/ScreenMode.hpp"
+
+#include <iterator>
+#include <memory>
 #include <string>
 
 namespace cturtle {
